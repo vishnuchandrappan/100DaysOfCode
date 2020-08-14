@@ -6,4 +6,4 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 
 ## Task Completion Status
 
-* [Day 1]('./day01-redux') : Learned Redux & some related packages.
+* [Day 1]('https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day01-redux') : Learned Redux & some related packages.
