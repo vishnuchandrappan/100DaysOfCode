@@ -8,15 +8,20 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: lavenderblush;
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+
+.app{
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .container {
   max-width: 60%;
-  margin: auto;
+  margin: 0 10px;
 }
 
-.app h1 {
+h1 {
   font-size: 4rem;
   font-weight: bold;
   letter-spacing: 8px;
@@ -50,7 +55,6 @@ button:hover {
 }
 
 .status {
-  margin: 20px;
   padding: 20px;
   width: 100%;
   min-height: 40vh;
@@ -60,7 +64,7 @@ button:hover {
 }
 
 .status h2 {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .status h2 span {

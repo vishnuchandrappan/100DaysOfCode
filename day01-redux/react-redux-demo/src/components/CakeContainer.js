@@ -1,10 +1,10 @@
 import React from "react";
 import { buyCake } from "../redux/cakeActions";
 import { connect } from "react-redux";
+import CakeContainerWithHooks from "./CakeContainerWithHooks";
 const CakeContainer = ({ numberOfCakes, buyCake }) => {
   return (
     <div className="app">
-      <h1>Cake App</h1>
       <div className="container">
         <div className="menu align-center">
           <button
@@ -22,6 +22,7 @@ const CakeContainer = ({ numberOfCakes, buyCake }) => {
           </h2>
         </div>
       </div>
+      <CakeContainerWithHooks />
     </div>
   );
 };
