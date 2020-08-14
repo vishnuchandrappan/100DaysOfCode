@@ -1,5 +1,5 @@
 import React from "react";
-import { buyCake } from "../redux/cakeActions";
+import { buyCake } from "../../redux/actions";
 import { connect } from "react-redux";
 import CakeContainerWithHooks from "./CakeContainerWithHooks";
 const CakeContainer = ({ numberOfCakes, buyCake }) => {
@@ -27,7 +27,7 @@ const CakeContainer = ({ numberOfCakes, buyCake }) => {
   );
 };
 
-const mapStateToProps = ({ numberOfCakes }) => {
+const mapStateToProps = ({ cake: { numberOfCakes } }) => {
   return {
     numberOfCakes,
   };

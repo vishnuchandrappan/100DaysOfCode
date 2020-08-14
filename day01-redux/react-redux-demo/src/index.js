@@ -2,13 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import "./index.css";
-import CakeContainer from "./components/CakeContainer";
 import store from "./redux/store";
+import AppContainer from "./components/AppContainer";
 
 ReactDOM.render(
   <Provider store={store}>
-    <h1>Cake App</h1>
-    <CakeContainer />
+    <AppContainer />
   </Provider>,
   document.getElementById("root")
 );

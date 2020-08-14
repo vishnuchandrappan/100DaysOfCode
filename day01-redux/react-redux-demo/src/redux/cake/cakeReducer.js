@@ -4,12 +4,12 @@ const initialState = {
   numberOfCakes: 100,
 };
 
-const cakeReducer = (state = initialState, { type }) => {
+const cakeReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case Types.BUY_CAKE:
       return {
         ...state,
-        numberOfCakes: state.numberOfCakes - 1,
+        numberOfCakes: state.numberOfCakes - parseInt(payload),
       };
 
     default:

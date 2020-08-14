@@ -2,38 +2,65 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-align: center;
 }
 
 body {
   width: 100vw;
-  height: 100vh;
-  background-color: lavenderblush;
-  /* overflow: hidden; */
+  min-height: 100vh;
+  background-color: var(--primary-color);
+  overflow-x: hidden;
+  --primary-color: white;
+  --secondary-color: #0d69a7;
+  --op-color: white;
 }
 
-.app{
+.apps {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 100px);
+}
+
+.app {
   display: flex;
   justify-content: space-evenly;
+  flex: 1;
+}
+
+.iceCream__app {
+  max-width: 50%;
+  margin: 10px auto;
+  border: solid 10px var(--secondary-color)
 }
 
 .container {
-  max-width: 60%;
   margin: 0 10px;
+  background-color: var(--op-color);
+}
+
+.iceCream__container {
+  flex: 1;
+  margin: 0;
 }
 
 h1 {
   font-size: 4rem;
   font-weight: bold;
   letter-spacing: 8px;
-  background-color: crimson;
-  padding: 10px;
-  color: lavenderblush;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
   text-transform: uppercase;
   text-align: center;
+  height: 100px;
+}
+
+input {
+  margin-right: 10px;
 }
 
 .menu {
-  min-height: 20vh;
+  padding: 20px;
+  align-items: center;
 }
 
 button {
@@ -41,26 +68,30 @@ button {
   border: none;
   min-width: 150px;
   padding: 10px;
-  background-color: crimson;
-  color: lavenderblush;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   transition: 0.3s;
   font-weight: bold;
   border-radius: 4px;
 }
 
 button:hover {
-  box-shadow: 0px 0px 40px crimson;
+  box-shadow: 0px 0px 20px var(--secondary-color);
   cursor: pointer;
   transform: scale(1.1);
 }
 
 .status {
   padding: 20px;
-  width: 100%;
-  min-height: 40vh;
   color: #2f2f2f;
-  background-color: rgba(220, 20, 60, 0.418);
+  background-color: var(--op-color);
   border-radius: 4px;
+  padding: 40px;
+  height: 250px;
+}
+
+.iceCream__status {
+  margin: 10px;
 }
 
 .status h2 {
@@ -68,7 +99,7 @@ button:hover {
 }
 
 .status h2 span {
-  color: crimson;
+  color: var(--secondary-color);
   font-size: 5rem;
 }
 
