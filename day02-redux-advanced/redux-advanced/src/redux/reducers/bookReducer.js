@@ -1,8 +1,8 @@
-import { UPDATE_BOOKS } from "../actions/books";
+import { Types } from "../actions/books";
 
 export function booksReducer(state = [], action) {
   switch (action.type) {
-    case UPDATE_BOOKS:
+    case Types.UPDATE_BOOKS:
       return action.payload;
 
     default:

@@ -2,13 +2,8 @@ import React, { useEffect } from "react";
 import Spinner from "./Spinner";
 import { useSelector, useDispatch } from "react-redux";
 import { getBooks } from "../redux/actions";
-import OrderBook from "./OrderBook";
-import Books from "./Books";
+import Routes from "../routes/Routes";
 
-const Content = () => {
-  const orderInProcess = useSelector(({ ui }) => ui.orderInProcess);
-  return orderInProcess ? <OrderBook /> : <Books />;
-};
 
 export default function App() {
   const isLoading = useSelector(({ ui }) => ui.isLoading);
@@ -24,7 +19,7 @@ export default function App() {
 
       {isLoading && <Spinner />}
 
-      <Content />
+      <Routes />
     </div>
   );
 }

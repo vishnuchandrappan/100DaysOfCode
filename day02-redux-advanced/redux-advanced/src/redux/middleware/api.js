@@ -1,6 +1,6 @@
-import { API_REQUEST } from "../actions/api";
+import { Types } from "../actions/api";
 export const api = ({ dispatch }) => (next) => (action) => {
-  if (action.type === API_REQUEST) {
+  if (action.type === Types.API_REQUEST) {
     const { method, url, onSuccess, onError } = action.meta;
 
     fetch(url, { method })

@@ -1,4 +1,4 @@
-import { UPDATE_ORDER } from "../actions/order";
+import { Types } from "../actions/order";
 
 const initialState = {
   date: null,
@@ -8,7 +8,7 @@ const initialState = {
 
 export function orderReducer(state = initialState, action) {
   switch (action.type) {
-    case UPDATE_ORDER:
+    case Types.UPDATE_ORDER:
       return {
         ...state,
         ...action.payload,

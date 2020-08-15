@@ -1,20 +1,12 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { selectBook } from "../redux/actions";
-
+import { useSelector } from "react-redux";
+import Book from "./_Book";
 export default function Books() {
   const books = useSelector((state) => state.books);
-  const dispatch = useDispatch();
   return (
     <div className="books__container">
-      {books.map(({ volumeInfo: { imageLinks, title, authors }, id }) => (
-        <div className="book" key={id} onClick={() => dispatch(selectBook(id))}>
-          <img alt={title} src={imageLinks.thumbnail} />
-          <span>
-            <strong>{title}</strong>
-          </span>
-          <p>{authors[0]}</p>
-        </div>
+      {books.map(({ volumeInfo, id }) => (
+        <Book key={id} {...volumeInfo} id={id} />
       ))}
     </div>
   );

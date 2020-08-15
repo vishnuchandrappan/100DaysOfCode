@@ -22,3 +22,4 @@ export const orderInProgress = () => ({
 export const orderComplete = () => ({
   type: Types.ORDER_COMPLETE,
 });
+

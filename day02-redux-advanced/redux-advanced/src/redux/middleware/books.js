@@ -15,7 +15,13 @@ export const getBooksFlow = ({ dispatch }) => (next) => (action) => {
 
   if (action.type === Types.GET_BOOKS) {
     dispatch(
-      apiRequest("GET", URL, null, FETCH_BOOKS_SUCCESS, FETCH_BOOKS_ERROR)
+      apiRequest(
+        "GET",
+        URL,
+        null,
+        Types.FETCH_BOOKS_SUCCESS,
+        Types.FETCH_BOOKS_ERROR
+      )
     );
     dispatch(showSpinner());
   }
