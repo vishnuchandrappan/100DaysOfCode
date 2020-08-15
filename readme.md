@@ -4,6 +4,7 @@
 
 Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 
-## Task Completion Status
+## Challenge Completion Status
 
-* [Day 1]('https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day01-redux') : Learned Redux & some related packages.
+* [Day 1](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day01-redux) :  Redux & some related packages.
+* [Day 2](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day02-redux-advanced) : Advanced Redux, Generic Codes & redux design patterns.
