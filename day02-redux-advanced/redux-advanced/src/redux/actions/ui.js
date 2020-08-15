@@ -1,22 +1,24 @@
 const entity = "[UI]";
 
-export const SHOW_SPINNER = `${entity} show spinner`;
-export const HIDE_SPINNER = `${entity} hide spinner`;
-export const ORDER_IN_PROGRESS = `${entity} Order in progress`;
-export const ORDER_COMPLETE = `${entity} Order complete`;
+export const Types = {
+  SHOW_SPINNER: `${entity} show spinner`,
+  HIDE_SPINNER: `${entity} hide spinner`,
+  ORDER_IN_PROGRESS: `${entity} Order in progress`,
+  ORDER_COMPLETE: `${entity} Order complete`,
+};
 
 export const showSpinner = () => ({
-  type: SHOW_SPINNER,
+  type: Types.SHOW_SPINNER,
 });
 
 export const hideSpinner = () => ({
-  type: HIDE_SPINNER,
+  type: Types.HIDE_SPINNER,
 });
 
 export const orderInProgress = () => ({
-  type: ORDER_IN_PROGRESS,
+  type: Types.ORDER_IN_PROGRESS,
 });
 
 export const orderComplete = () => ({
-  type: ORDER_COMPLETE,
+  type: Types.ORDER_COMPLETE,
 });

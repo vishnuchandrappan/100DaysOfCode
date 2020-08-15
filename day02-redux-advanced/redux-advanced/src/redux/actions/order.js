@@ -1,20 +1,22 @@
 const entity = "[Order]";
 
-export const CREATE_ORDER = `${entity} Create`;
-export const UPDATE_ORDER = `${entity} Update`;
-export const SUBMIT_ORDER = `${entity} Complete Order`;
+export const Types = {
+  CREATE_ORDER: `${entity} Create`,
+  UPDATE_ORDER: `${entity} Update`,
+  SUBMIT_ORDER: `${entity} Complete Order`,
+};
 
 export const createOrder = (bookId) => ({
-  type: CREATE_ORDER,
+  type: Types.CREATE_ORDER,
   payload: bookId,
 });
 
 export const updateOrder = (details) => ({
-  type: UPDATE_ORDER,
+  type: Types.UPDATE_ORDER,
   payload: details,
 });
 
 export const submitOrder = (email) => ({
-  type: SUBMIT_ORDER,
+  type: Types.SUBMIT_ORDER,
   payload: email,
 });

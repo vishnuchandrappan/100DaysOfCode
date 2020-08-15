@@ -1,8 +1,5 @@
+import { Types } from "../actions";
 import {
-  FETCH_BOOKS_SUCCESS,
-  FETCH_BOOKS_ERROR,
-  GET_BOOKS,
-  SELECT_BOOK,
   updateBooks,
   showSpinner,
   hideSpinner,
@@ -16,7 +13,7 @@ const URL = "https://www.googleapis.com/books/v1/volumes?q=react";
 export const getBooksFlow = ({ dispatch }) => (next) => (action) => {
   next(action);
 
-  if (action.type === GET_BOOKS) {
+  if (action.type === Types.GET_BOOKS) {
     dispatch(
       apiRequest("GET", URL, null, FETCH_BOOKS_SUCCESS, FETCH_BOOKS_ERROR)
     );
@@ -27,7 +24,7 @@ export const getBooksFlow = ({ dispatch }) => (next) => (action) => {
 export const processBooksCollection = ({ dispatch }) => (next) => (action) => {
   next(action);
 
-  if (action.type === FETCH_BOOKS_SUCCESS) {
+  if (action.type === Types.FETCH_BOOKS_SUCCESS) {
     dispatch(updateBooks(action.payload.items));
     dispatch(hideSpinner());
   }
@@ -36,7 +33,7 @@ export const processBooksCollection = ({ dispatch }) => (next) => (action) => {
 export const selectBookFlow = ({ dispatch }) => (next) => (action) => {
   next(action);
 
-  if (action.type === SELECT_BOOK) {
+  if (action.type === Types.SELECT_BOOK) {
     dispatch(orderInProgress());
     dispatch(createOrder(action.payload));
   }

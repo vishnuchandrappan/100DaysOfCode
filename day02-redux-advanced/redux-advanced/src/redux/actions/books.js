@@ -1,21 +1,23 @@
 const entity = "[Books]";
 
-export const GET_BOOKS = `${entity} Request`;
-export const FETCH_BOOKS_SUCCESS = `${entity} Request Success`;
-export const FETCH_BOOKS_ERROR = `${entity} Request Error`;
-export const UPDATE_BOOKS = `${entity} Update`;
-export const SELECT_BOOK = `${entity} Select`;
+export const Types = {
+  GET_BOOKS: `${entity} Request`,
+  FETCH_BOOKS_SUCCESS: `${entity} Request Success`,
+  FETCH_BOOKS_ERROR: `${entity} Request Error`,
+  UPDATE_BOOKS: `${entity} Update`,
+  SELECT_BOOK: `${entity} Select`,
+};
 
 export const getBooks = () => ({
-  type: GET_BOOKS,
+  type: Types.GET_BOOKS,
 });
 
 export const updateBooks = (data) => ({
-  type: UPDATE_BOOKS,
+  type: Types.UPDATE_BOOKS,
   payload: data,
 });
 
 export const selectBook = (bookId) => ({
-  type: SELECT_BOOK,
+  type: Types.SELECT_BOOK,
   payload: bookId,
 });
