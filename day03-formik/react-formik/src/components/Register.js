@@ -1,5 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 export const Register = () => {
   const onSubmit = (values) => {
     setTimeout(() => {
@@ -16,38 +17,18 @@ export const Register = () => {
     password_confirmation: "",
   };
 
-  const validate = (values) => {
-    const errors = {};
-
-    if (!values.name) {
-      errors.name = "Required";
-    }
-
-    if (!values.email) {
-      errors.email = "Required";
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-      errors.email = "Invalid Email";
-    }
-
-    if (!values.password) {
-      errors.password = "Required";
-    } else if (values.password.length < 8) {
-      errors.password = "Min 8 Chars. Required";
-    }
-
-    if (!values.password_confirmation) {
-      errors.password_confirmation = "Required";
-    } else if (values.password_confirmation !== values.password) {
-      errors.password_confirmation = "Password confirmation doesn't match";
-    }
-
-    return errors;
-  };
+  const validationSchema = Yup.object({
+    name: Yup.string().required(),
+    email: Yup.string().email("Invalid Email ID").required(),
+    password: Yup.string().min(8).required(),
+    password_confirmation: Yup.string()
+      .oneOf([Yup.ref("password")], "Password Confirmation doesn't match").required(),
+  });
 
   const formik = useFormik({
     initialValues,
-    validate,
     onSubmit,
+    validationSchema,
   });
 
   const {
@@ -62,8 +43,6 @@ export const Register = () => {
     touched,
     handleBlur,
   } = formik;
-
-  console.log(errors);
 
   return (
     <div className="form register__form">
