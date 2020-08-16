@@ -1,0 +1,18 @@
+.alert-danger {
+  color: crimson;
+  margin-left: 20px;
+  animation: blink 0.6s infinite alternate;
+}
+
+label {
+  display: inline !important;
+}
+
+@keyframes blink {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
