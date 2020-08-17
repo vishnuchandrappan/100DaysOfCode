@@ -1,0 +1,12 @@
+@import "../../node_modules/milligram/dist/milligram.min.css";
+
+* {
+  transition: 0.3s;
+}
+
+button {
+  margin-bottom: 0;
+  &:hover {
+    background-color: rebeccapurple;
+  }
+}

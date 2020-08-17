@@ -1,0 +1,20 @@
+.todo {
+  margin: 2px 0;
+  text-align: center;
+  border: solid 2px gray;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center !important;
+  padding: 0 20px;
+  border-radius: 4px;
+  .title {
+    font-size: 3rem;
+  }
+}
+
+.done {
+  background-color: #2f2f2f;
+  color: white;
+}
+

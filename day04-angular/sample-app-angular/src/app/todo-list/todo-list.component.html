@@ -1,0 +1,14 @@
+<div class="todo-list">
+  <app-todo
+    *ngFor="let todo of todoList"
+    [todo]="todo"
+    (todoCompleted)="setTodoAsDone($event)"
+    (todoDeleted)="deleteTodo($event)"
+  ></app-todo>
+  <div *ngIf="!todoList.length">
+    <h1>Create your first todo...</h1>
+  </div>
+</div>
+<div class="new">
+  <app-new (todoCreated)="createTodo($event)"></app-new>
+</div>

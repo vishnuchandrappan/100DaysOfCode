@@ -1,0 +1,4 @@
+<div class="todo" [ngClass]="{ done: todo.completed }" (click)="onTodoToggle()">
+  <span class="title">{{ todo.title }}</span>
+  <button (click)="handleDelete(todo.id)" class="delete-btn">delete</button>
+</div>

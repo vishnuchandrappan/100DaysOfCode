@@ -9,3 +9,4 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 - [Day 1](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day01-redux) : Redux & some related packages.
 - [Day 2](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day02-redux-advanced) : Advanced Redux, Generic Codes & redux design patterns.
 - [Day 3](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day03-formik) : Learned formik and some related packages.
+- [Day 4](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day04-angular) : Recap Angular.
