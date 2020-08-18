@@ -1,17 +1,5 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
-})
-export class TodoListComponent {
-  public todoList: {
-    id: number,
-    title: string,
-    completed: boolean
-  }[];
-
+export class TodoService {
+  todoList = [];
   constructor() {
     this.todoList = [
       {
@@ -32,13 +20,9 @@ export class TodoListComponent {
     ];
   }
 
-  setTodoAsDone(id: number): void {
-    this.todoList = this.todoList.map(todo => {
-      if (todo.id === id) {
-        todo.completed = !todo.completed;
-      }
-      return todo;
-    });
+  // tslint:disable-next-line: typedef
+  getTodoList() {
+    return this.todoList;
   }
 
   createTodo(newTodo: {
@@ -52,6 +36,15 @@ export class TodoListComponent {
   deleteTodo(id: number): void {
     this.todoList = this.todoList.filter(todo => todo.id !== id);
     console.log(this.todoList);
+  }
+
+  setTodoAsDone(id: number): void {
+    this.todoList = this.todoList.map(todo => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    });
   }
 
 }
