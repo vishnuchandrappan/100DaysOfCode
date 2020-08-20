@@ -1,0 +1,33 @@
+header {
+  width: 100vw;
+  nav {
+    margin-top: 8px !important;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2f2f2f;
+    width: 60%;
+    margin: auto;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 16px 16px 47px #191919, -16px -16px 47px #454545;
+    .nav-logo {
+      h3 {
+        margin: 0;
+      }
+    }
+    .nav-links {
+      a {
+        border-bottom: solid 1px transparent;
+        padding: 5px 10px;
+        &:hover {
+          border-color: #606c76;
+        }
+      }
+    }
+    a {
+      margin: 0 10px;
+    }
+  }
+}

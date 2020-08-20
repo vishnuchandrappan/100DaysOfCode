@@ -12,3 +12,4 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 - [Day 4](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day04-05-angular) : Recap Angular.
 - [Day 5](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day04-05-angular) : Angular - Services.
 - [Day 6](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day06-dynamic-form) : React - dynamic form.
+- [Day 7](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day07-protected-routes) : React - Protected Routes.

@@ -1,0 +1,42 @@
+.container {
+  max-width: 60%;
+  margin: 20px auto auto;
+  .heading {
+    text-align: center;
+    font-weight: bolder;
+  }
+  p {
+    text-align: center;
+  }
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.button,
+button {
+  background: #2f2f2f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  svg {
+    margin: 0 10px;
+  }
+}
+
+input {
+  color: white;
+  padding: 20px !important;
+}
+
+.form {
+  div {
+    color: crimson;
+    margin-bottom: 10px;
+    font-weight: bolder;
+  }
+}
