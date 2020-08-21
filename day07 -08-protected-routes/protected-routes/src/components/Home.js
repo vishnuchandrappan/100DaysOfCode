@@ -1,9 +1,12 @@
 import React from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
-import auth from "./auth/auth";
+import { userLogout } from "../redux/actions/auth";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Home() {
+  const isAuthenticated = useSelector(({ auth }) => auth.isAuthenticated);
+  const dispatch = useDispatch();
   return (
     <div className="container home__container">
       <h1 className="heading home__heading">100DaysOfCode</h1>
@@ -15,22 +18,21 @@ export default function Home() {
 
       <div className="container">
         <div className="btn-container">
-          {console.log(auth.isAuthenticated)}
-          {!auth.getAuth() ? (
+          {!isAuthenticated ? (
             <Link className="button" to="/auth/login">
               Login
             </Link>
           ) : (
             <button
               onClick={() => {
-                auth.logOut();
+                dispatch(userLogout());
               }}
             >
               Logout
             </button>
           )}
 
-          {auth.getAuth() && (
+          {isAuthenticated && (
             <div className="btn-container">
               <Link to="/users" className="button">
                 Users List
