@@ -1,19 +1,14 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import auth from "./auth";
-import { Redirect } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { updateUser } from "../../redux/actions/auth";
 import axios from "axios";
 
-export default function Login({ history }) {
-  const isAuthenticated = useSelector(({ auth }) => auth.isAuthenticated);
+export const Login = ({ history }) => {
   const dispatch = useDispatch();
-  return isAuthenticated ? (
-    <Redirect to="/" />
-  ) : (
-    <div className="container login__container">
-      {auth.getAuth() ? <Redirect to="/" /> : ""}
+  return (
+    <div className="login">
       <h1 className="heading">Login</h1>
 
       <Formik
@@ -45,12 +40,12 @@ export default function Login({ history }) {
               history.push("/");
             })
             .catch((error) => {
-              console.log("[Login Error]", error);
+              console.log("[Login.js] Error", error);
               setSubmitting(false);
             });
         }}
       >
-        {({ errors, touched, values, isSubmitting }) => (
+        {({ isSubmitting }) => (
           <Form className="form login__form">
             <ErrorMessage name="email" component="div" />
             <Field name="email" placeholder="john@example.com" />
@@ -68,6 +63,16 @@ export default function Login({ history }) {
           </Form>
         )}
       </Formik>
+      <div className="auth__other-options">
+        <div className="auth__other-option">
+          <span>Forgot Password ?</span>
+          <Link to="/auth/forgot-password">Reset Here</Link>
+        </div>
+        <div className="auth__other-option">
+          <span>Don't have an account ?</span>
+          <Link to="/auth/register">Create Now</Link>
+        </div>
+      </div>
     </div>
   );
-}
+};

@@ -8,3 +8,9 @@
 
 ### Resources
 * [Reqres.in](https://reqres.in/)
+
+## Day 9
+* Implemented Nested routes in react.
+
+### Resources
+* [reactrouter.com](https://reactrouter.com/web/guides/quick-start)
