@@ -8,7 +8,7 @@ const validationSchema = Yup.object({
   email: Yup.string().email("Invalid Email ID").required(),
 });
 
-export const ForgotPassword = ({ history }) => {
+export const ForgotPassword = () => {
   return (
     <div className="forgot_password">
       <h1 className="heading">Forgot Password</h1>

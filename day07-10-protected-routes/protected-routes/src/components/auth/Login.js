@@ -1,12 +1,14 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../redux/actions/auth";
 import axios from "axios";
+import { setSubmitting, resetSubmitting } from "../../redux/actions/ui";
 
-export const Login = ({ history }) => {
+export const Login = ({ from }) => {
   const dispatch = useDispatch();
+  const isSubmitting = useSelector(({ ui }) => ui.isSubmitting);
   return (
     <div className="login">
       <h1 className="heading">Login</h1>
@@ -31,21 +33,21 @@ export const Login = ({ history }) => {
 
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values) => {
+          dispatch(setSubmitting());
           axios
             .post("https://reqres.in/api/login", values)
             .then(({ data }) => {
               dispatch(updateUser(data.token));
-              setSubmitting(false);
-              history.push("/");
+              dispatch(resetSubmitting());
             })
             .catch((error) => {
               console.log("[Login.js] Error", error);
-              setSubmitting(false);
+              dispatch(resetSubmitting());
             });
         }}
       >
-        {({ isSubmitting }) => (
+        {() => (
           <Form className="form login__form">
             <ErrorMessage name="email" component="div" />
             <Field name="email" placeholder="john@example.com" />

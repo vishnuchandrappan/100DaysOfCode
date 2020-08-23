@@ -14,3 +14,7 @@
 
 ### Resources
 * [reactrouter.com](https://reactrouter.com/web/guides/quick-start)
+
+## Day 10
+* Converting direct dispatches to middleware. **The Nir kaufman way**.
+

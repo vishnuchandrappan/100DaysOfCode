@@ -1,11 +1,13 @@
 import React from "react";
 import AuthRoutes from "../routes/AuthRoutes";
 import { useSelector } from "react-redux";
-import LogoutButton from "../buttons/LogoutButton";
+import { useLocation, Redirect } from "react-router-dom";
 
 const Auth = ({ history }) => {
   const isAuthenticated = useSelector(({ auth }) => auth.isAuthenticated);
-  console.log(history);
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
+
   return (
     <div className="container auth__container row">
       <div className="column auth__left-column">
@@ -16,11 +18,9 @@ const Auth = ({ history }) => {
       </div>
       <div className="column auth__right-column">
         {isAuthenticated ? (
-          <div className="full-content">
-            <LogoutButton />
-          </div>
+          <Redirect to={from.pathname} />
         ) : (
-          <AuthRoutes />
+          <AuthRoutes from={from} />
         )}
       </div>
     </div>
