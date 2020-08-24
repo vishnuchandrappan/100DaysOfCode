@@ -5,6 +5,7 @@ import About from "../pages/About";
 import Contact from "../pages/Contact";
 import ProtectedRoute from "./ProtectedRoute";
 import Users from "../private/Users";
+import User from "../private/User";
 import Auth from "../auth/Auth";
 
 const Routes = () => {
@@ -19,6 +20,7 @@ const Routes = () => {
         // protected routes
       }
       <ProtectedRoute path="/users" component={Users} />
+      <ProtectedRoute path="/users/:userId" component={User}/>
 
       <Redirect to="/" />
     </Switch>
