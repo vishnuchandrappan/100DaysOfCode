@@ -16,3 +16,4 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 - [Day 8](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day07-10-protected-routes) : React - Protected Routes With Redux.
 - [Day 9](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day07-10-protected-routes) : React - Implemented nested routes.
 - [Day 10](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day07-10-protected-routes) : React - Programming with actions.
+- [Day 11](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day07-10-protected-routes) : React - Programming with actions & Redux Middleware.
