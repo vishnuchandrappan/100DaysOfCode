@@ -3,7 +3,7 @@ import {
   setSubmitting,
   resetSubmitting,
   updateUser,
-  apiRequest,
+  authApiRequest,
 } from "../actions";
 
 
@@ -12,7 +12,7 @@ export const userLoginFlow = ({ dispatch }) => (next) => (action) => {
 
   if (action.type === Types.USER_LOGIN) {
     dispatch(
-      apiRequest(
+      authApiRequest(
         "POST",
         "/login",
         action.payload,

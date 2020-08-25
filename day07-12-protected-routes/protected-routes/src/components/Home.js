@@ -37,6 +37,9 @@ export default function Home() {
               <Link to="/users" className="button">
                 Users List
               </Link>
+              <Link to="/users/1" className="button">
+                User 1
+              </Link>
             </div>
           )}
         </div>

@@ -19,7 +19,7 @@ const Routes = () => {
       {
         // protected routes
       }
-      <ProtectedRoute path="/users" component={Users} />
+      <ProtectedRoute path="/users" exact component={Users} />
       <ProtectedRoute path="/users/:userId" component={User}/>
 
       <Redirect to="/" />
