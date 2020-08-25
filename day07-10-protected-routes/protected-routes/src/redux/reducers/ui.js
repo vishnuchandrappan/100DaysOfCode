@@ -16,7 +16,7 @@ export function uiReducer(state = initialState, action) {
     case Types.UPDATE_SUBMITTING:
       return {
         ...state,
-        isLoading: action.payload,
+        isSubmitting: action.payload,
       };
 
     default:

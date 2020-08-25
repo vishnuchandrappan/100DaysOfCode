@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import './loading.scss';
 
-export function LoadingPage() {
+export function LoadingAnimation() {
   return (
     <div className="ellipsis">
       <div></div>
@@ -17,7 +18,7 @@ const Loading = () => {
   return (
     isLoading && (
       <div className="loading">
-        <LoadingPage />
+        <LoadingAnimation />
       </div>
     )
   );

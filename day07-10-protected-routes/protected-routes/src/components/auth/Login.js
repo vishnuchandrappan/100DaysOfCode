@@ -2,9 +2,8 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../redux/actions/auth";
-import axios from "axios";
-import { setSubmitting, resetSubmitting } from "../../redux/actions/ui";
+import { userLogin } from "../../redux/actions/auth";
+import { LoadingAnimation } from "../shared/Loading";
 
 export const Login = ({ from }) => {
   const dispatch = useDispatch();
@@ -34,17 +33,7 @@ export const Login = ({ from }) => {
           return errors;
         }}
         onSubmit={(values) => {
-          dispatch(setSubmitting());
-          axios
-            .post("https://reqres.in/api/login", values)
-            .then(({ data }) => {
-              dispatch(updateUser(data.token));
-              dispatch(resetSubmitting());
-            })
-            .catch((error) => {
-              console.log("[Login.js] Error", error);
-              dispatch(resetSubmitting());
-            });
+          dispatch(userLogin(values));
         }}
       >
         {() => (
@@ -60,7 +49,9 @@ export const Login = ({ from }) => {
             />
 
             <div className="btn-container">
-              <button type="submit">{isSubmitting ? "..." : "Login"}</button>
+              <button type="submit">
+                {isSubmitting ? <LoadingAnimation /> : "Login"}
+              </button>
             </div>
           </Form>
         )}

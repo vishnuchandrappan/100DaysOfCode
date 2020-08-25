@@ -18,6 +18,9 @@
 ## Day 10
 * Converting direct dispatches to middleware. **The Nir kaufman way**.
 
-## Day 12
+## Day 11
 * Covered everything on reactrouter.com & still with the 'Programming with Actions' way.
+
+## Day 12
+* Finally I've acquired **PROGRAMMING WITH ACTIONS** skill.
 

@@ -8,8 +8,9 @@ export const Types = {
   USER_LOGOUT: `${entity} Logout`,
 };
 
-export const userLogin = () => ({
+export const userLogin = (data) => ({
   type: Types.USER_LOGIN,
+  payload: data,
 });
 
 export const userLoginSuccess = () => ({
