@@ -18,3 +18,4 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 - [Day 10](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day07-12-protected-routes) : React - Programming with actions.
 - [Day 11](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day07-12-protected-routes) : React - Programming with actions & Redux Middleware.
 - [Day 12](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day07-12-protected-routes) : React - Programming with actions. Complete.
+- [Day 13](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day07-12-protected-routes) : React - Animated Routes.

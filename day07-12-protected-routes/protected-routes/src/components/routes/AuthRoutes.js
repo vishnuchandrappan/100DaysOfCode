@@ -1,19 +1,21 @@
 import React from "react";
-import { Switch, useRouteMatch, Route } from "react-router-dom";
-import { Login } from "../auth/Login";
+gimport { Login } from "../auth/Login";
 import { Register } from "../auth/Register";
 import { ForgotPassword } from "../auth/ForgotPassword";
+import AnimatedRoute from "./AnimatedRoute";
 
 export default function AuthRoutes({ from }) {
-  let { path } = useRouteMatch();
   return (
-    <Switch>
-      <Route path={`${path}`} exact>
+    <>
+      <AnimatedRoute path="/auth" exact>
         <Login from={from} />
-      </Route>
-      <Route path={`${path}/login`} component={Login} />
-      <Route path={`${path}/register`} component={Register} />
-      <Route path={`${path}/forgot-password`} component={ForgotPassword}/>
-    </Switch>
+      </AnimatedRoute>
+      <AnimatedRoute path="/auth/login" Component={Login} />
+      <AnimatedRoute path="/auth/register" Component={Register} />
+      <AnimatedRoute
+        path="/auth/forgot-password"
+        Component={ForgotPassword}
+      />
+    </>
   );
 }

@@ -24,3 +24,5 @@
 ## Day 12
 * Finally I've acquired **PROGRAMMING WITH ACTIONS** skill.
 
+## Day 13
+* Implemented animated routes with react-transition-group.
