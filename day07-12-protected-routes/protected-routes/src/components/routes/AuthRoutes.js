@@ -1,5 +1,5 @@
 import React from "react";
-gimport { Login } from "../auth/Login";
+import { Login } from "../auth/Login";
 import { Register } from "../auth/Register";
 import { ForgotPassword } from "../auth/ForgotPassword";
 import AnimatedRoute from "./AnimatedRoute";

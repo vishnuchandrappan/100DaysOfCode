@@ -26,3 +26,6 @@
 
 ## Day 13
 * Implemented animated routes with react-transition-group.
+
+## Day 14
+* Tried styled components. Implemented few concepts.

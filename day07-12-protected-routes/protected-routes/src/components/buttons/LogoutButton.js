@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { userLogout } from "../../redux/actions/auth";
+
 export default function LogoutButton() {
   const dispatch = useDispatch();
   return (
