@@ -11,7 +11,7 @@ export function authReducer(state = initialState, action) {
       return {
         ...state,
         isAuthenticated: true,
-        token: action.payload,
+        token: action.payload.token,
       };
 
     case Types.USER_LOGOUT:
