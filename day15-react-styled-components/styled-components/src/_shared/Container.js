@@ -11,10 +11,16 @@ export const Container = styled.div`
       max-width: 90%;
     `};
 
-  @media screen and (max-width: 768px){
+  ${(props) =>
+    props.primary &&
+    css`
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    `};
+
+  @media screen and (max-width: 768px) {
     max-width: 100%;
   }
-
 `;
 
 export default Container;

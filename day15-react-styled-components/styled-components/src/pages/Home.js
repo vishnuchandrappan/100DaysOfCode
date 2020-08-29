@@ -3,6 +3,7 @@ import Container from "../_shared/Container";
 import Heading from "../_shared/Heading";
 import styled from "styled-components";
 import Button from "../_shared/Button";
+import DocTitle from "../components/DocTitle";
 import { Link } from "react-router-dom";
 
 const BtnContainer = styled.div`
@@ -41,7 +42,10 @@ const reducer = (state, action) => {
 
 export default function Home() {
   const [num, setNum] = useState(0);
+  const [secondNum, setSecondNum] = useState(0);
   const [count, dispatch] = useReducer(reducer, initialState);
+  const [secondCount, secondDispatch] = useReducer(reducer, initialState);
+
   return (
     <Container>
       <Heading center>Home</Heading>
@@ -53,7 +57,7 @@ export default function Home() {
           <StyledLink to="/users">Users</StyledLink>
         </Button>
       </BtnContainer>
-      <Container fluid>
+      <Container fluid primary>
         <Heading center>Count : {count}</Heading>
         <BtnContainer>
           <Button onClick={() => dispatch({ type: "DECREMENT" })}>
@@ -81,6 +85,38 @@ export default function Home() {
           </Button>
         </BtnContainer>
       </Container>
+
+      <Container fluid>
+        <Heading center>Count : {secondCount}</Heading>
+        <BtnContainer>
+          <Button onClick={() => secondDispatch({ type: "DECREMENT" })}>
+            Decrement
+          </Button>
+          <Button onClick={() => secondDispatch({ type: "INCREMENT" })}>
+            Increment
+          </Button>
+          <Button onClick={() => secondDispatch({ type: "RESET" })}>
+            Reset
+          </Button>
+        </BtnContainer>
+        <BtnContainer>
+          <input
+            type="text"
+            value={secondNum}
+            onChange={(e) => setSecondNum(e.target.value)}
+          />
+          <Button
+            primary
+            onClick={() => {
+              secondDispatch({ type: "UPDATE", payload: secondNum });
+              setSecondNum(0);
+            }}
+          >
+            Update !
+          </Button>
+        </BtnContainer>
+      </Container>
+      <DocTitle />
     </Container>
   );
 }
