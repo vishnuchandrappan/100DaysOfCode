@@ -7,6 +7,8 @@ export const Button = styled.button`
   color: #2f2f2f;
   border-radius: 4px;
   border: solid 2px;
+  cursor: pointer;
+  margin: 2px 0;
 
   ${(props) =>
     props.primary &&

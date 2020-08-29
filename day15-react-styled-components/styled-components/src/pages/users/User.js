@@ -1,5 +1,6 @@
-import React from "react";
-import styled from 'styled-components';
+import React, { useContext } from "react";
+import styled, { css } from "styled-components";
+import { UserContext } from "../../App";
 
 const UserCard = styled.div`
   padding: 20px;
@@ -28,13 +29,21 @@ const Username = styled.span`
   font-weight: normal;
   padding-left: 20px;
 
-  &:before{
-    content: "@"
+  &:before {
+    content: "@";
   }
 
+  ${(props) =>
+    props.without &&
+    css`
+      &:before {
+        content: "";
+      }
+    `};
 `;
 
 export default function User({ user }) {
+  const data = useContext(UserContext);
   return (
     <UserCard>
       <Name>
@@ -42,6 +51,8 @@ export default function User({ user }) {
         <Username>{user.username}</Username>
       </Name>
       <Email>{user.email}</Email>
+      <small>Created By: {data.name}</small>
+      <Username without>{data.email}</Username>
     </UserCard>
   );
 }

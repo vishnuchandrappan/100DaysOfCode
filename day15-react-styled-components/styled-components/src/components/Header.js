@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "../_shared/Container";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { UserContext } from "../App";
 
 const Nav = styled.nav`
   padding: 20px;
@@ -51,6 +52,7 @@ const StyledLink = styled(Link)`
 `;
 
 export default function Header() {
+  const user = useContext(UserContext);
   return (
     <Container fluid>
       <Nav>
@@ -59,6 +61,11 @@ export default function Header() {
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/posts">Posts</StyledLink>
           <StyledLink to="/users">Users</StyledLink>
+          {user.isLoggedIn ? (
+            <StyledLink to="/profile">{user.name}</StyledLink>
+          ) : (
+            <StyledLink to="/login">Login</StyledLink>
+          )}
         </NavLinks>
       </Nav>
     </Container>
