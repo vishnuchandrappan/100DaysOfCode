@@ -6,3 +6,6 @@
 
 ## Day 16
 * Learned react hooks. Created custom hooks.
+
+## Day 17
+* Completed basic react hooks. Tried building a simple app with context API and useReducer hook.

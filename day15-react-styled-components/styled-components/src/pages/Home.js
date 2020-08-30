@@ -1,10 +1,11 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useContext } from "react";
 import Container from "../_shared/Container";
 import Heading from "../_shared/Heading";
 import styled from "styled-components";
 import Button from "../_shared/Button";
 import DocTitle from "../components/DocTitle";
 import { Link } from "react-router-dom";
+import { UserContext } from "../App";
 
 const BtnContainer = styled.div`
   padding: 20px;
@@ -42,10 +43,8 @@ const reducer = (state, action) => {
 
 export default function Home() {
   const [num, setNum] = useState(0);
-  const [secondNum, setSecondNum] = useState(0);
   const [count, dispatch] = useReducer(reducer, initialState);
-  const [secondCount, secondDispatch] = useReducer(reducer, initialState);
-
+  const { user } = useContext(UserContext);
   return (
     <Container>
       <Heading center>Home</Heading>
@@ -57,65 +56,46 @@ export default function Home() {
           <StyledLink to="/users">Users</StyledLink>
         </Button>
       </BtnContainer>
-      <Container fluid primary>
-        <Heading center>Count : {count}</Heading>
-        <BtnContainer>
-          <Button onClick={() => dispatch({ type: "DECREMENT" })}>
-            Decrement
-          </Button>
-          <Button onClick={() => dispatch({ type: "INCREMENT" })}>
-            Increment
-          </Button>
-          <Button onClick={() => dispatch({ type: "RESET" })}>Reset</Button>
-        </BtnContainer>
-        <BtnContainer>
-          <input
-            type="text"
-            value={num}
-            onChange={(e) => setNum(e.target.value)}
-          />
-          <Button
-            primary
-            onClick={() => {
-              dispatch({ type: "UPDATE", payload: num });
-              setNum(0);
-            }}
-          >
-            Update !
-          </Button>
-        </BtnContainer>
-      </Container>
 
-      <Container fluid>
-        <Heading center>Count : {secondCount}</Heading>
-        <BtnContainer>
-          <Button onClick={() => secondDispatch({ type: "DECREMENT" })}>
-            Decrement
-          </Button>
-          <Button onClick={() => secondDispatch({ type: "INCREMENT" })}>
-            Increment
-          </Button>
-          <Button onClick={() => secondDispatch({ type: "RESET" })}>
-            Reset
-          </Button>
-        </BtnContainer>
-        <BtnContainer>
-          <input
-            type="text"
-            value={secondNum}
-            onChange={(e) => setSecondNum(e.target.value)}
-          />
-          <Button
-            primary
-            onClick={() => {
-              secondDispatch({ type: "UPDATE", payload: secondNum });
-              setSecondNum(0);
-            }}
-          >
-            Update !
-          </Button>
-        </BtnContainer>
-      </Container>
+      {user.isLoggedIn && (
+        <Container fluid primary>
+          <Heading>Welcome {user.name}</Heading>
+        </Container>
+      )}
+
+      {user.isLoggedIn ? (
+        <Container fluid primary>
+          <Heading center>Count : {count}</Heading>
+          <BtnContainer>
+            <Button onClick={() => dispatch({ type: "DECREMENT" })}>
+              Decrement
+            </Button>
+            <Button onClick={() => dispatch({ type: "INCREMENT" })}>
+              Increment
+            </Button>
+            <Button onClick={() => dispatch({ type: "RESET" })}>Reset</Button>
+          </BtnContainer>
+          <BtnContainer>
+            <input
+              type="text"
+              value={num}
+              onChange={(e) => setNum(e.target.value)}
+            />
+            <Button
+              primary
+              onClick={() => {
+                dispatch({ type: "UPDATE", payload: num });
+                setNum(0);
+              }}
+            >
+              Update !
+            </Button>
+          </BtnContainer>
+        </Container>
+      ) : (
+        <h1>Login to continue</h1>
+      )}
+
       <DocTitle />
     </Container>
   );

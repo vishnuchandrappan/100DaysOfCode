@@ -3,6 +3,7 @@ import Container from "../_shared/Container";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { UserContext } from "../App";
+import Button from "../_shared/Button";
 
 const Nav = styled.nav`
   padding: 20px;
@@ -52,7 +53,7 @@ const StyledLink = styled(Link)`
 `;
 
 export default function Header() {
-  const user = useContext(UserContext);
+  const { user, dispatchUser } = useContext(UserContext);
   return (
     <Container fluid>
       <Nav>
@@ -62,9 +63,13 @@ export default function Header() {
           <StyledLink to="/posts">Posts</StyledLink>
           <StyledLink to="/users">Users</StyledLink>
           {user.isLoggedIn ? (
-            <StyledLink to="/profile">{user.name}</StyledLink>
+            <Button onClick={() => dispatchUser({ type: "USER_LOGOUT" })}>
+              {user.name} - Logout
+            </Button>
           ) : (
-            <StyledLink to="/login">Login</StyledLink>
+            <Button onClick={() => dispatchUser({ type: "USER_LOGIN" })}>
+              Login
+            </Button>
           )}
         </NavLinks>
       </Nav>

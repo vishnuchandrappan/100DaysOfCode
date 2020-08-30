@@ -43,7 +43,7 @@ const Username = styled.span`
 `;
 
 export default function User({ user }) {
-  const data = useContext(UserContext);
+  const state = useContext(UserContext);
   return (
     <UserCard>
       <Name>
@@ -51,8 +51,8 @@ export default function User({ user }) {
         <Username>{user.username}</Username>
       </Name>
       <Email>{user.email}</Email>
-      <small>Created By: {data.name}</small>
-      <Username without>{data.email}</Username>
+      <small>Created By: {state.user.name}</small>
+      <Username without>{state.user.email}</Username>
     </UserCard>
   );
 }
