@@ -1,58 +1,40 @@
-import React, { useContext } from "react";
-import styled, { css } from "styled-components";
-import { UserContext } from "../../App";
+import React from "react";
+import styled from "styled-components";
 
 const UserCard = styled.div`
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 27px;
-  border: solid 4px;
-  border-color: #dadada;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 4px 4px 10px #2f2f2f6c;
 `;
 
-const Name = styled.h1`
+const Name = styled.span`
   color: #2f2f2f;
-  font-size: larger;
-  text-align: center;
-  padding: 5px;
-  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
-  text-transform: capitalize;
 `;
 
-const Email = styled.p`
-  text-align: center;
+const Email = styled.span`
+  font-weight: normal;
 `;
 
 const Username = styled.span`
-  font-style: italic;
   font-size: smaller;
+  padding-left: 10px;
+  font-style: italic;
   font-weight: normal;
-  padding-left: 20px;
 
   &:before {
     content: "@";
   }
-
-  ${(props) =>
-    props.without &&
-    css`
-      &:before {
-        content: "";
-      }
-    `};
 `;
 
 export default function User({ user }) {
-  const state = useContext(UserContext);
   return (
     <UserCard>
-      <Name>
-        {user.name}
+      <h3>
+        <Name>{user.name}</Name>
         <Username>{user.username}</Username>
-      </Name>
+      </h3>
       <Email>{user.email}</Email>
-      <small>Created By: {state.user.name}</small>
-      <Username without>{state.user.email}</Username>
     </UserCard>
   );
 }

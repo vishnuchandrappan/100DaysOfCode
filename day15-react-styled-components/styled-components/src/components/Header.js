@@ -62,6 +62,7 @@ export default function Header() {
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/posts">Posts</StyledLink>
           <StyledLink to="/users">Users</StyledLink>
+          <StyledLink to="/todos">Todos</StyledLink>
           {user.isLoggedIn ? (
             <Button onClick={() => dispatchUser({ type: "USER_LOGOUT" })}>
               {user.name} - Logout

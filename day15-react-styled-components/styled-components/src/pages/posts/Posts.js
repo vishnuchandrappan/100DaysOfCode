@@ -1,40 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import Container from "../../_shared/Container";
 import Heading from "../../_shared/Heading";
-import Axios from "axios";
 import Post from "./Post";
-import Button from "../../_shared/Button";
+import { FetchData } from "../../render-props/FetchData";
 
-export default function Posts() {
-  const [posts, setPosts] = useState([]);
-  // useEffect(() => {
-  //   fetchPosts();
-  // }, []);
-
-  const fetchPosts = () => {
-    Axios.get("https://jsonplaceholder.typicode.com/posts")
-      .then(({ data }) => {
-        setPosts(data);
-      })
-      .catch((error) => {
-        alert(error.toString());
-      });
-  };
-
+const PostsContainer = ({ posts }) => {
   return (
     <Container>
       <Heading center>Posts</Heading>
-      {posts.length > 0 ? (
-        posts.map((post) => <Post key={post.id} post={post} />)
-      ) : (
-        <Button
-          onClick={() => {
-            fetchPosts();
-          }}
-        >
-          Fetch Posts
-        </Button>
-      )}
+      {posts.map((post) => (
+        <Post key={post.id} post={post} />
+      ))}
     </Container>
   );
-}
+};
+
+export const Posts = () => {
+  return (
+    <FetchData
+      render={(posts) => <PostsContainer posts={posts} />}
+      entity="posts"
+    />
+  );
+};
+
+export default Posts;
