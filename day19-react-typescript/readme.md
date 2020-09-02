@@ -3,4 +3,5 @@
 * Quickly revisited basics of typescript.
 
 ## Day 20
-* React & Typescript
+* React Typescript
+* Stared Creating a blog.
