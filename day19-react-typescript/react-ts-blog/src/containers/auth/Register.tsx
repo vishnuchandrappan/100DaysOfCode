@@ -27,7 +27,7 @@ const validationSchema = Yup.object({
     .required(),
 });
 
-const Register = () => {
+export const Register = () => {
   const dispatch = useDispatch();
   const handleSubmit = ({ name, email, password }: Values) => {
     dispatch(

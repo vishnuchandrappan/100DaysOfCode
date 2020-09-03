@@ -17,7 +17,7 @@ const validationSchema = Yup.object({
   password: Yup.string().min(8).required(),
 });
 
-const Login = () => {
+export const Login = () => {
   const handleSubmit = (values: Values) => {
     // handleSubmit here;
   };
