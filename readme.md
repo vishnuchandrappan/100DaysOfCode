@@ -27,3 +27,4 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 - [Day 19](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day19-react-typescript) : Typescript & React
 - [Day 20](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day19-react-typescript) : React TypeScript
 - [Day 21](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day21-nextjs-blog) : Next.js
+- [Day 22](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day21-nextjs-blog) : Next.js - Static Rendering
