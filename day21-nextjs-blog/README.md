@@ -7,3 +7,7 @@
 ## Day 22
 * Learned Pre-rendering concepts
 * Implemented Static Rendering with markdown files.
+
+## Day 23
+* Learned about handling APIs
+* Stared going through doc. deeply.
