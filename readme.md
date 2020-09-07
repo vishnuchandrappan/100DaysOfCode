@@ -29,3 +29,4 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 - [Day 21](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day21-nextjs-blog) : Next.js
 - [Day 22](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day21-nextjs-blog) : Next.js - Static Rendering
 - [Day 23](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day21-nextjs-blog) : Next.js - API Routes
+- [Day 24](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day21-nextjs-blog) : Next.js - API Post Request

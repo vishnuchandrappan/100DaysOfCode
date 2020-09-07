@@ -11,3 +11,7 @@
 ## Day 23
 * Learned about handling APIs
 * Stared going through doc. deeply.
+
+## Day 24
+* Learned about handling Post Request
+* Custom 404.
