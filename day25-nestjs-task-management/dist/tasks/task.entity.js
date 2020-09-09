@@ -9,17 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateTaskDto = void 0;
-const class_validator_1 = require("class-validator");
-class CreateTaskDto {
-}
+exports.Task = void 0;
+const typeorm_1 = require("typeorm");
+const task_status_enum_1 = require("./task-status.enum");
+let Task = class Task extends typeorm_1.BaseEntity {
+};
 __decorate([
-    class_validator_1.IsNotEmpty(),
-    __metadata("design:type", String)
-], CreateTaskDto.prototype, "title", void 0);
+    typeorm_1.PrimaryGeneratedColumn(),
+    __metadata("design:type", Number)
+], Task.prototype, "id", void 0);
 __decorate([
-    class_validator_1.IsNotEmpty(),
+    typeorm_1.Column(),
     __metadata("design:type", String)
-], CreateTaskDto.prototype, "description", void 0);
-exports.CreateTaskDto = CreateTaskDto;
-//# sourceMappingURL=create-task.dto.js.map
+], Task.prototype, "title", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Task.prototype, "description", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Task.prototype, "status", void 0);
+Task = __decorate([
+    typeorm_1.Entity()
+], Task);
+exports.Task = Task;
+//# sourceMappingURL=task.entity.js.map

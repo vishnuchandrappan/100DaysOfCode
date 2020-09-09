@@ -1,9 +1,10 @@
 import { TasksService } from './tasks.service';
-import { Task } from './tasks.model';
 import { CreateTaskDto } from './dto/create-task.dto';
+import { Task } from './task.entity';
 export declare class TasksController {
     private tasksService;
     constructor(tasksService: TasksService);
-    index(): Task[];
-    store(createTaskDto: CreateTaskDto): Task;
+    store(createTaskDto: CreateTaskDto): Promise<Task>;
+    show(id: number): Promise<Task>;
+    delete(id: number): Promise<string>;
 }

@@ -20,26 +20,38 @@ let TasksController = class TasksController {
     constructor(tasksService) {
         this.tasksService = tasksService;
     }
-    index() {
-        return this.tasksService.getAllTasks();
-    }
     store(createTaskDto) {
         return this.tasksService.createTask(createTaskDto);
     }
+    show(id) {
+        return this.tasksService.getTaskById(id);
+    }
+    delete(id) {
+        return this.tasksService.deleteTask(id);
+    }
 };
 __decorate([
-    common_1.Get(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Array)
-], TasksController.prototype, "index", null);
-__decorate([
     common_1.Post(),
+    common_1.UsePipes(common_1.ValidationPipe),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_task_dto_1.CreateTaskDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], TasksController.prototype, "store", null);
+__decorate([
+    common_1.Get('/:id'),
+    __param(0, common_1.Param('id', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], TasksController.prototype, "show", null);
+__decorate([
+    common_1.Delete('/:id'),
+    __param(0, common_1.Param('id', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], TasksController.prototype, "delete", null);
 TasksController = __decorate([
     common_1.Controller('tasks'),
     __metadata("design:paramtypes", [tasks_service_1.TasksService])

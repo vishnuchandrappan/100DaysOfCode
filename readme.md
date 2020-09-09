@@ -31,3 +31,4 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 - [Day 23](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day21-nextjs-blog) : Next.js - API Routes
 - [Day 24](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day21-nextjs-blog) : Next.js - API Post Request
 - [Day 25](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day25-nestjs-task-management) : Nest.js - Basic CRUD Operations
+- [Day 26](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day25-nestjs-task-management) : Nest.js - postgresql connection

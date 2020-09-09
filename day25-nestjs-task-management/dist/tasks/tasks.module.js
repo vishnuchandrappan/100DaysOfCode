@@ -10,12 +10,17 @@ exports.TasksModule = void 0;
 const common_1 = require("@nestjs/common");
 const tasks_controller_1 = require("./tasks.controller");
 const tasks_service_1 = require("./tasks.service");
+const task_repository_1 = require("./task.repository");
+const typeorm_1 = require("@nestjs/typeorm");
 let TasksModule = class TasksModule {
 };
 TasksModule = __decorate([
     common_1.Module({
         controllers: [tasks_controller_1.TasksController],
-        providers: [tasks_service_1.TasksService]
+        providers: [tasks_service_1.TasksService],
+        imports: [
+            typeorm_1.TypeOrmModule.forFeature([task_repository_1.TaskRepository])
+        ]
     })
 ], TasksModule);
 exports.TasksModule = TasksModule;

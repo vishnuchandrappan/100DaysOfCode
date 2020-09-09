@@ -9,17 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateTaskDto = void 0;
+exports.GetTasksFilterDto = void 0;
 const class_validator_1 = require("class-validator");
-class CreateTaskDto {
+const task_status_enum_1 = require("../task-status.enum");
+class GetTasksFilterDto {
 }
 __decorate([
-    class_validator_1.IsNotEmpty(),
+    class_validator_1.IsOptional(),
+    class_validator_1.IsIn([task_status_enum_1.TasksStatus.OPEN, task_status_enum_1.TasksStatus.DONE, task_status_enum_1.TasksStatus.IN_PROGRESS]),
     __metadata("design:type", String)
-], CreateTaskDto.prototype, "title", void 0);
+], GetTasksFilterDto.prototype, "status", void 0);
 __decorate([
+    class_validator_1.IsOptional(),
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
-], CreateTaskDto.prototype, "description", void 0);
-exports.CreateTaskDto = CreateTaskDto;
-//# sourceMappingURL=create-task.dto.js.map
+], GetTasksFilterDto.prototype, "search", void 0);
+exports.GetTasksFilterDto = GetTasksFilterDto;
+//# sourceMappingURL=get-tasks-filter.dto.js.map
