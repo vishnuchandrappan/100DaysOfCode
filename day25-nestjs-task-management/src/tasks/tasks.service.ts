@@ -5,7 +5,6 @@ import { TasksStatus } from './task-status.enum';
 import { TaskRepository } from './task.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from './task.entity';
-import { async } from 'rxjs';
 
 @Injectable()
 export class TasksService {
@@ -15,22 +14,9 @@ export class TasksService {
     private taskRepository: TaskRepository
   ) { }
 
-  // getAllTasks = (): Task[] => this.tasks;
-
-  // getTasksWithFilters = (filterDto: GetTasksFilterDto): Task[] => {
-  //   const { status, search } = filterDto;
-  //   let Tasks = this.tasks;
-
-  //   if (status) {
-  //     Tasks = Tasks.filter(task => task.status === status);
-  //   }
-
-  //   if (search) {
-  //     Tasks = Tasks.filter(task => task.description.includes(search) || task.title.includes(search))
-  //   }
-
-  //   return Tasks;
-  // }
+  getTasks = async (filterDto: GetTasksFilterDto) => {
+    return this.taskRepository.getTasks(filterDto);
+  }
 
   getTaskById = async (id: number): Promise<Task> => {
     const task = await this.taskRepository.findOne(id);
@@ -48,8 +34,9 @@ export class TasksService {
     return this.taskRepository.deleteTask(id);
   }
 
-  // updateTaskStatus = async (id: number, status: TasksStatus): Promise<Task> => {
-  //   return this.taskRepository.updateTask(id, status);
-  // }
+  updateTaskStatus = async (id: number, status: TasksStatus): Promise<Task> => {
+    const task = await this.getTaskById(id);
+    return this.taskRepository.updateTask(task, status);
+  }
 
 }

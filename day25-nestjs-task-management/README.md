@@ -7,3 +7,8 @@
 ## Day 26
 * Connected Postgresql
 * Implemented create, delete and show
+
+
+## Day 27
+* Basic Auth
+* bcrypt & validating password

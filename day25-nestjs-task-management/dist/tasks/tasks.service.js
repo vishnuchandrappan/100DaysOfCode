@@ -19,6 +19,9 @@ const typeorm_1 = require("@nestjs/typeorm");
 let TasksService = class TasksService {
     constructor(taskRepository) {
         this.taskRepository = taskRepository;
+        this.getTasks = async (filterDto) => {
+            return this.taskRepository.getTasks(filterDto);
+        };
         this.getTaskById = async (id) => {
             const task = await this.taskRepository.findOne(id);
             if (!task) {
@@ -31,6 +34,10 @@ let TasksService = class TasksService {
         };
         this.deleteTask = async (id) => {
             return this.taskRepository.deleteTask(id);
+        };
+        this.updateTaskStatus = async (id, status) => {
+            const task = await this.getTaskById(id);
+            return this.taskRepository.updateTask(task, status);
         };
     }
 };

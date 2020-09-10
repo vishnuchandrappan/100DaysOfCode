@@ -14,6 +14,18 @@ const common_1 = require("@nestjs/common");
 let TaskRepository = class TaskRepository extends typeorm_1.Repository {
     constructor() {
         super(...arguments);
+        this.getTasks = async (filterDto) => {
+            const { search, status } = filterDto;
+            const query = this.createQueryBuilder('task');
+            if (status) {
+                query.andWhere('task.status = :status', { status });
+            }
+            if (search) {
+                query.andWhere('task.title LIKE :search OR task.description LIKE :search', { search: `%${search}%` });
+            }
+            const tasks = await query.getMany();
+            return tasks;
+        };
         this.createTask = async (CreateTaskDto) => {
             const { title, description } = CreateTaskDto;
             const task = new task_entity_1.Task();
@@ -29,6 +41,11 @@ let TaskRepository = class TaskRepository extends typeorm_1.Repository {
                 throw new common_1.NotFoundException();
             }
             return "Deleted Successfully";
+        };
+        this.updateTask = async (task, status) => {
+            task.status = status;
+            await task.save();
+            return task;
         };
     }
 };
