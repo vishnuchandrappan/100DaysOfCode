@@ -12,3 +12,8 @@
 ## Day 27
 * Basic Auth
 * bcrypt & validating password
+
+## Day 28
+* Added JWT
+* Created custom Guards (AuthGuard)
+* Created custom decorator

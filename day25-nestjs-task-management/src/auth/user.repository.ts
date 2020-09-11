@@ -3,9 +3,16 @@ import { User } from "./user.entity";
 import { AuthCredentialsDto } from './dto/auth-credentials.dto';
 import { ConflictException, InternalServerErrorException, UnauthorizedException } from "@nestjs/common";
 import * as bcrypt from 'bcrypt';
+import { JwtService } from '@nestjs/jwt';
+import { JwtResponse, JwtPayload } from "./jwt-payload.interface";
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User>{
+  constructor(
+    private jwtService: JwtService
+  ) {
+    super()
+  }
   signUp = async (authCredentialsDto: AuthCredentialsDto): Promise<User> => {
     const { username, password } = authCredentialsDto;
 
@@ -29,15 +36,18 @@ export class UserRepository extends Repository<User>{
 
   }
 
-  signIn = async (authCredentialsDto: AuthCredentialsDto): Promise<string> => {
+  signIn = async (authCredentialsDto: AuthCredentialsDto): Promise<JwtResponse> => {
     const { username, password } = authCredentialsDto;
     const user = await this.findOne({ username });
 
-    if(!(user && await user.validatePassword(password))) {
+    if (!(user && await user.validatePassword(password))) {
       throw new UnauthorizedException();
     }
 
-    return user.username;
+    const payload: JwtPayload = { username };
+    const accessToken = await this.jwtService.sign(payload);
+
+    return { accessToken };
   }
 
   private hashPassword = async (password: string, salt: string): Promise<string> => {

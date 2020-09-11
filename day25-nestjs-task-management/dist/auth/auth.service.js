@@ -11,14 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 const user_repository_1 = require("./user.repository");
 const typeorm_1 = require("@nestjs/typeorm");
 let AuthService = class AuthService {
-    constructor(userRepository) {
+    constructor(userRepository, jwtService) {
         this.userRepository = userRepository;
+        this.jwtService = jwtService;
         this.signUp = async (authCredentialsDto) => {
             return this.userRepository.signUp(authCredentialsDto);
         };
@@ -30,7 +32,7 @@ let AuthService = class AuthService {
 AuthService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_1.InjectRepository(user_repository_1.UserRepository)),
-    __metadata("design:paramtypes", [user_repository_1.UserRepository])
+    __metadata("design:paramtypes", [user_repository_1.UserRepository, typeof (_a = typeof JwtService !== "undefined" && JwtService) === "function" ? _a : Object])
 ], AuthService);
 exports.AuthService = AuthService;
 //# sourceMappingURL=auth.service.js.map
