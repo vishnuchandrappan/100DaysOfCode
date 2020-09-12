@@ -34,3 +34,4 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 - [Day 26](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day25-nestjs-task-management) : Nest.js - postgresql connection
 - [Day 27](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day25-nestjs-task-management) : Nest.js - basic Auth
 - [Day 28](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day25-nestjs-task-management) : Nest.js - jwt passport
+- [Day 29](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day25-nestjs-task-management) : Nest.js - Authorization, Logging and ENV config

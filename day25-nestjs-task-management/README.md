@@ -17,3 +17,8 @@
 * Added JWT
 * Created custom Guards (AuthGuard)
 * Created custom decorator
+
+## Day 29
+* Added Authorization
+* Added Logging
+* Implemented ENV config

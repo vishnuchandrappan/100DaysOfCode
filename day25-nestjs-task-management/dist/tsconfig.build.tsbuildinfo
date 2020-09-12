@@ -3172,8 +3172,8 @@
         "affectsGlobalScope": false
       },
       "../src/tasks/tasks.controller.ts": {
-        "version": "40565700da7aaff6a79e0d8f5128d34aca3835bb15b8902ac946b0b6444413d5",
-        "signature": "f465264100e579a7b2a273cb0c16b2c909a72034086d7a26be0b69e82463a9a2",
+        "version": "dec87b2bad3b039e584c36cd90e13982331110a088b35a2a18b306fb149a0aa2",
+        "signature": "647875ad3c9fbf8a110162cb808ef8ab93a2619857dd36617e83f6d195429ea0",
         "affectsGlobalScope": false
       },
       "../src/auth/dto/auth-credentials.dto.ts": {
@@ -3752,7 +3752,7 @@
         "affectsGlobalScope": false
       },
       "../src/main.ts": {
-        "version": "e25d9bd8f80b6ffbcc8826ed1b407e747e4fbe346c5bab62cbe5837da4eeb189",
+        "version": "5bd46266da4874616702c7125867865428591bd3f7776ac040782745e8d0107b",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -11359,6 +11359,7 @@
         "../node_modules/@types/node/ts3.4/util.d.ts"
       ],
       "../src/main.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/core/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/ts3.1/fs.d.ts",
