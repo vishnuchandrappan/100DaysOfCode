@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Task = void 0;
 const typeorm_1 = require("typeorm");
 const task_status_enum_1 = require("./task-status.enum");
+const user_entity_1 = require("../auth/user.entity");
 let Task = class Task extends typeorm_1.BaseEntity {
 };
 __decorate([
@@ -30,6 +31,14 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
 ], Task.prototype, "status", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => user_entity_1.User, user => user.tasks, { eager: false }),
+    __metadata("design:type", user_entity_1.User)
+], Task.prototype, "user", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Number)
+], Task.prototype, "userId", void 0);
 Task = __decorate([
     typeorm_1.Entity()
 ], Task);

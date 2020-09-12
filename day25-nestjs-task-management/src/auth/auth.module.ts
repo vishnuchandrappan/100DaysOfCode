@@ -18,8 +18,8 @@ import { JwtStrategy } from './jwt.strategy';
       defaultStrategy: 'jwt'
     }),
     JwtModule.register({
-      secret: 'someRandomString',
-      signOptions: { expiresIn: '60s' },
+      secret: 'SomeRandomString',
+      signOptions: { expiresIn: '3600s' },
     }),
     TypeOrmModule.forFeature([UserRepository])
   ],

@@ -28,8 +28,9 @@ export class AuthController {
 
   @Post('/test')
   @UseGuards(AuthGuard()) //custom guard: similar to middleware
-  test(@GetUser() user: User) { // @GetUser: custom decorator that extracts user from request
-    return user;
+  test(@GetUser() user) { // @GetUser: custom decorator that extracts user from request
+    console.log(user)
+    return "test";
   }
 
 }

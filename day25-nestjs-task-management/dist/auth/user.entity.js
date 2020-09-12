@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const typeorm_1 = require("typeorm");
 const bcrypt = require("bcrypt");
+const task_entity_1 = require("../tasks/task.entity");
 let User = class User extends typeorm_1.BaseEntity {
     constructor() {
         super(...arguments);
@@ -37,6 +38,10 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
 ], User.prototype, "salt", void 0);
+__decorate([
+    typeorm_1.OneToMany(type => task_entity_1.Task, task => task.user, { eager: true }),
+    __metadata("design:type", Array)
+], User.prototype, "tasks", void 0);
 User = __decorate([
     typeorm_1.Entity(),
     typeorm_1.Unique(['username'])

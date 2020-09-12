@@ -36,20 +36,6 @@ export class UserRepository extends Repository<User>{
 
   }
 
-  signIn = async (authCredentialsDto: AuthCredentialsDto): Promise<JwtResponse> => {
-    const { username, password } = authCredentialsDto;
-    const user = await this.findOne({ username });
-
-    if (!(user && await user.validatePassword(password))) {
-      throw new UnauthorizedException();
-    }
-
-    const payload: JwtPayload = { username };
-    const accessToken = await this.jwtService.sign(payload);
-
-    return { accessToken };
-  }
-
   private hashPassword = async (password: string, salt: string): Promise<string> => {
     return bcrypt.hash(password, salt);
   }

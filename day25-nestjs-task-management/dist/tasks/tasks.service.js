@@ -19,24 +19,29 @@ const typeorm_1 = require("@nestjs/typeorm");
 let TasksService = class TasksService {
     constructor(taskRepository) {
         this.taskRepository = taskRepository;
-        this.getTasks = async (filterDto) => {
-            return this.taskRepository.getTasks(filterDto);
+        this.getTasks = async (filterDto, user) => {
+            return this.taskRepository.getTasks(filterDto, user);
         };
-        this.getTaskById = async (id) => {
-            const task = await this.taskRepository.findOne(id);
+        this.getTaskById = async (id, user) => {
+            const task = await this.taskRepository.findOne({
+                where: {
+                    id,
+                    userId: user.id
+                }
+            });
             if (!task) {
                 throw new common_1.NotFoundException();
             }
             return task;
         };
-        this.createTask = async (createTaskDto) => {
-            return this.taskRepository.createTask(createTaskDto);
+        this.createTask = async (createTaskDto, user) => {
+            return this.taskRepository.createTask(createTaskDto, user);
         };
-        this.deleteTask = async (id) => {
-            return this.taskRepository.deleteTask(id);
+        this.deleteTask = async (id, user) => {
+            return this.taskRepository.deleteTask(id, user);
         };
-        this.updateTaskStatus = async (id, status) => {
-            const task = await this.getTaskById(id);
+        this.updateTaskStatus = async (id, status, user) => {
+            const task = await this.getTaskById(id, user);
             return this.taskRepository.updateTask(task, status);
         };
     }
