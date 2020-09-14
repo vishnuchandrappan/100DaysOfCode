@@ -35,4 +35,5 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 - [Day 27](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day25-nestjs-task-management) : Nest.js - basic Auth
 - [Day 28](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day25-nestjs-task-management) : Nest.js - jwt passport
 - [Day 29](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day25-nestjs-task-management) : Nest.js - Authorization, Logging and ENV config
-- [Day 30](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day30-nestjs-blog) : Nest.js - blog
+- [Day 30](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day30-nestjs-blog) : Nest.js - blog: created BlogPost model
+- [Day 31](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day30-nestjs-blog) : Nest.js - blog: created User model

@@ -1,7 +1,9 @@
+import { User } from '../auth/user.entity';
 import {
   BaseEntity,
   Column,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn
 } from "typeorm";
 
@@ -19,5 +21,15 @@ export class BlogPost extends BaseEntity {
 
   @Column()
   image: string;
+
+  @ManyToOne(
+    type => User,
+    user => user.blogPosts,
+    { eager: false }
+  )
+  user: User;
+
+  @Column()
+  userId: number;
 
 }
