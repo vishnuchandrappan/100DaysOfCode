@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   ParseIntPipe,
   Post,
   Put,
@@ -24,7 +25,7 @@ import { User } from '../auth/user.entity';
 @Controller('blog-post')
 @UseGuards(AuthGuard())
 export class BlogPostController {
-  constructor(private blogPostService: BlogPostService) {}
+  constructor(private blogPostService: BlogPostService) { }
 
   @Get()
   index(
@@ -45,7 +46,7 @@ export class BlogPostController {
 
   @Get(':id')
   show(
-    @Query('id', ParseIntPipe) id: number,
+    @Param('id', ParseIntPipe) id: number,
     @GetUser() user: User,
   ): Promise<BlogPost> {
     return this.blogPostService.getPostById(id, user);
@@ -53,19 +54,22 @@ export class BlogPostController {
 
   @Delete(':id')
   destroy(
-    @Query('id', ParseIntPipe) id: number,
+    @Param('id', ParseIntPipe) id: number,
     @GetUser() user: User,
   ): Promise<SuccessResponse> {
     return this.blogPostService.deletePost(id, user);
   }
 
   @Put(':id')
-  @UsePipes(ValidationPipe)
   update(
-    @Query('id', ParseIntPipe) id: number,
+    @Param('id', ParseIntPipe) id: number,
     @GetUser() user: User,
     @Body() updateBlogDto: UpdateBlogDto,
   ): Promise<BlogPost> {
-    return this.blogPostService.updatePost(id, updateBlogDto, user);
+    return this.blogPostService.updatePost(
+      id,
+      updateBlogDto,
+      user
+    );
   }
 }

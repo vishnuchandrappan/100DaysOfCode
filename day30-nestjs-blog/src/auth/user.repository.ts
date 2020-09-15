@@ -16,10 +16,11 @@ export class UserRepository extends Repository<User> {
     const { name, password, email, password_confirmation } = createUserDto;
 
     if (password !== password_confirmation) {
-      throw new HttpException('Password confirmation does not match', 200);
+      throw new HttpException('Password confirmation does not match', 422);
     }
 
-    const salt = await bcrypt.getSalt();
+    const salt = await bcrypt.genSalt();
+
     const user = new User();
     user.name = name;
     user.email = email;

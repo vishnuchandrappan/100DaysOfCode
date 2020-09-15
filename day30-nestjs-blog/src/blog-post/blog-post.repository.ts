@@ -17,7 +17,7 @@ export class BlogPostRepository extends Repository<BlogPost> {
     const { key } = searchBlogDto;
     const query = this.createQueryBuilder('post');
 
-    query.where('task.userId = :userId', { userId: user.id });
+    query.where('post.userId = :userId', { userId: user.id });
 
     if (key) {
       query.andWhere('post.title LIKE :key OR post.body LIKE :key', {
