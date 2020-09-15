@@ -1,4 +1,10 @@
-import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Post,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { UserAllowed } from './models/user-allowed.model';
 import { LoginCredentialsDto } from './dto/login-credentials.dto';
@@ -7,10 +13,7 @@ import { CreateUserDto } from './dto/create-user-dto';
 
 @Controller('auth')
 export class AuthController {
-
-  constructor(
-    private authService: AuthService
-  ) { }
+  constructor(private authService: AuthService) {}
 
   @Post('/login')
   @UsePipes(ValidationPipe)
@@ -22,10 +25,7 @@ export class AuthController {
 
   @Post('/register')
   @UsePipes(ValidationPipe)
-  async register(
-    @Body() createUserDto: CreateUserDto,
-  ): Promise<UserAllowed> {
+  async register(@Body() createUserDto: CreateUserDto): Promise<UserAllowed> {
     return this.authService.register(createUserDto);
   }
-
 }

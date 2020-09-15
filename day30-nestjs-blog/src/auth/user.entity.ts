@@ -4,13 +4,12 @@ import {
   Column,
   Entity,
   OneToMany,
-  PrimaryGeneratedColumn
-} from "typeorm";
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
 @Entity()
 export class User extends BaseEntity {
-
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -29,21 +28,20 @@ export class User extends BaseEntity {
   @OneToMany(
     type => BlogPost,
     blogPost => blogPost.user,
-    { eager: true }
+    { eager: true },
   )
   blogPosts: BlogPost[];
 
   validatePassword = async (password: string): Promise<boolean> => {
     const hash = await bcrypt.hash(password, this.salt);
     return hash === this.password;
-  }
+  };
 
   getData = async (): Promise<any> => {
     return {
       id: this.id,
       name: this.name,
-      email: this.email
-    }
-  }
-
+      email: this.email,
+    };
+  };
 }

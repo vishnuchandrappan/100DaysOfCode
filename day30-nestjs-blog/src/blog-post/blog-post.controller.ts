@@ -1,60 +1,71 @@
-import { Body, Controller, Delete, Get, ParseIntPipe, Post, Put, Query, UsePipes, ValidationPipe } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  ParseIntPipe,
+  Post,
+  Put,
+  Query,
+  UseGuards,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { BlogPostService } from './blog-post.service';
 import { SearchBlogDto } from './dto/search-blog-dto';
 import { BlogPost } from './blog-post.entity';
 import { CreateBlogDto } from './dto/create-blog-dto';
 import { SuccessResponse } from '../shared/interfaces/SuccessMessage.interface';
 import { UpdateBlogDto } from './dto/update-blog-dto';
+import { AuthGuard } from '@nestjs/passport';
+import { GetUser } from '../decorators/get-user.decorator';
+import { User } from '../auth/user.entity';
 
 @Controller('blog-post')
+@UseGuards(AuthGuard())
 export class BlogPostController {
-
-  constructor(
-    private blogPostService: BlogPostService
-  ) { }
-
-
+  constructor(private blogPostService: BlogPostService) {}
 
   @Get()
   index(
     @Query(ValidationPipe) searchBlogDto: SearchBlogDto,
+    @GetUser() user: User,
   ): Promise<BlogPost[]> {
-    return this.blogPostService.getPosts(searchBlogDto);
+    return this.blogPostService.getPosts(searchBlogDto, user);
   }
-
-
 
   @Post()
   @UsePipes(ValidationPipe)
   create(
     @Body() createBlogDto: CreateBlogDto,
+    @GetUser() user: User,
   ): Promise<BlogPost> {
-    return this.blogPostService.createPost(createBlogDto);
+    return this.blogPostService.createPost(createBlogDto, user);
   }
-
 
   @Get(':id')
   show(
     @Query('id', ParseIntPipe) id: number,
+    @GetUser() user: User,
   ): Promise<BlogPost> {
-    return this.blogPostService.getPostById(id);
+    return this.blogPostService.getPostById(id, user);
   }
-
 
   @Delete(':id')
   destroy(
     @Query('id', ParseIntPipe) id: number,
+    @GetUser() user: User,
   ): Promise<SuccessResponse> {
-    return this.blogPostService.deletePost(id);
+    return this.blogPostService.deletePost(id, user);
   }
-
 
   @Put(':id')
   @UsePipes(ValidationPipe)
   update(
     @Query('id', ParseIntPipe) id: number,
-    @Body() updateBlogDto: UpdateBlogDto
+    @GetUser() user: User,
+    @Body() updateBlogDto: UpdateBlogDto,
   ): Promise<BlogPost> {
-    return this.blogPostService.updatePost(id, updateBlogDto);
+    return this.blogPostService.updatePost(id, updateBlogDto, user);
   }
 }

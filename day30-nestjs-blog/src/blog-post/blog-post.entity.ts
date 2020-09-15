@@ -4,12 +4,11 @@ import {
   Column,
   Entity,
   ManyToOne,
-  PrimaryGeneratedColumn
-} from "typeorm";
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class BlogPost extends BaseEntity {
-
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -25,11 +24,10 @@ export class BlogPost extends BaseEntity {
   @ManyToOne(
     type => User,
     user => user.blogPosts,
-    { eager: false }
+    { eager: false },
   )
   user: User;
 
   @Column()
   userId: number;
-
 }

@@ -3,9 +3,17 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BlogPostModule } from './blog-post/blog-post.module';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
+import { typeOrmConfig } from './config/typeorm.config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [BlogPostModule, AuthModule],
+  imports: [
+    BlogPostModule,
+    AuthModule,
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot(typeOrmConfig),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

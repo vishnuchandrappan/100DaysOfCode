@@ -3,16 +3,16 @@ import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { UserAllowed } from './models/user-allowed.model';
 import { CreateUserDto } from './dto/create-user-dto';
-import { ConflictException, HttpException, InternalServerErrorException } from '@nestjs/common';
+import {
+  ConflictException,
+  HttpException,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
-
 @EntityRepository(User)
-export class UserRepository extends Repository<User>{
-
-  createUser = async (
-    createUserDto: CreateUserDto
-  ): Promise<UserAllowed> => {
+export class UserRepository extends Repository<User> {
+  createUser = async (createUserDto: CreateUserDto): Promise<UserAllowed> => {
     const { name, password, email, password_confirmation } = createUserDto;
 
     if (password !== password_confirmation) {
@@ -30,16 +30,18 @@ export class UserRepository extends Repository<User>{
       await user.save();
     } catch (error) {
       if (error.code === '23505') {
-        throw new ConflictException("Email ID already exists");
+        throw new ConflictException('Email ID already exists');
       }
       throw new InternalServerErrorException();
     }
 
     return user.getData();
-  }
+  };
 
-  private hashPassword = async (password: string, salt: string): Promise<string> => {
+  private hashPassword = async (
+    password: string,
+    salt: string,
+  ): Promise<string> => {
     return bcrypt.hash(password, salt);
-  }
-
+  };
 }

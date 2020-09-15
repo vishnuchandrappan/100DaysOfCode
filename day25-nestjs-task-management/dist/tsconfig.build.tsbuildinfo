@@ -3487,12 +3487,12 @@
         "affectsGlobalScope": false
       },
       "../src/auth/jwt.strategy.ts": {
-        "version": "5a5ce5d975cec72dea7cb8e1f9aab81c2f9f58eea8a23feb19207c45fc16c522",
+        "version": "ca590322c30c3236f09afd17637f5a8401bf7eebc31cc3126c90ba3d9c51ed42",
         "signature": "36f2f48f5a1abd832fc435cbcd18b1896252f2594f83c53f3c0decd2fe6287e8",
         "affectsGlobalScope": false
       },
       "../src/auth/auth.module.ts": {
-        "version": "d19aaf733d59411f720c182f151b45998474172393c25976917b9381dcf345b8",
+        "version": "76b6377b8ae735086c7bb584c5ea21415d35f9aea5f51e2f5e262cb11a5f4967",
         "signature": "a28b5c0c372fb375910b3fe3c3ce4331509bc18ccef7cc39c9ee9d8daf8225d1",
         "affectsGlobalScope": false
       },
@@ -3502,7 +3502,7 @@
         "affectsGlobalScope": false
       },
       "../src/config/typeorm.config.ts": {
-        "version": "6796828abedc5d7e1d7e4a1860e5bc4c21d20393ada2e2ed6e992ff0be96164e",
+        "version": "85ab7b716ab7bf7e5969defa9118a4b9ad507c9f74361d7aa770d4edb9f81efc",
         "signature": "e48d1e836452920a823efe3c1f15dbaa531cbb2c536b3d47ad06ed5201a8b847",
         "affectsGlobalScope": false
       },
@@ -3752,7 +3752,7 @@
         "affectsGlobalScope": false
       },
       "../src/main.ts": {
-        "version": "5bd46266da4874616702c7125867865428591bd3f7776ac040782745e8d0107b",
+        "version": "a718068b621fba5a0d5fae99db877d2503ebbfdbfc9512301ebeb568036785ac",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -19536,16 +19536,12 @@
       "../node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
       "../src/app.module.ts",
       "../src/auth/auth.controller.ts",
-      "../src/auth/auth.module.ts",
       "../src/auth/auth.service.ts",
       "../src/auth/dto/auth-credentials.dto.ts",
       "../src/auth/get-user.decorator.ts",
       "../src/auth/jwt-payload.interface.ts",
-      "../src/auth/jwt.strategy.ts",
       "../src/auth/user.entity.ts",
       "../src/auth/user.repository.ts",
-      "../src/config/typeorm.config.ts",
-      "../src/main.ts",
       "../src/tasks/dto/create-task.dto.ts",
       "../src/tasks/dto/get-tasks-filter.dto.ts",
       "../src/tasks/pipes/tasks-status.validation.pipe.ts",

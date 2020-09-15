@@ -1,7 +1,6 @@
-import { IsNotEmpty } from "class-validator";
+import { IsNotEmpty } from 'class-validator';
 
 export class CreateUserDto {
-
   @IsNotEmpty()
   name: string;
 
@@ -13,5 +12,4 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   password_confirmation: string;
-
 }

@@ -8,17 +8,18 @@ import { CreateUserDto } from './dto/create-user-dto';
 
 @Injectable()
 export class AuthService {
-
   constructor(
     private userRepository: UserRepository,
-    private jwtService: JwtService
-  ) { }
+    private jwtService: JwtService,
+  ) {}
 
-  login = async (loginCredentialsDto: LoginCredentialsDto): Promise<JwtResponse> => {
+  login = async (
+    loginCredentialsDto: LoginCredentialsDto,
+  ): Promise<JwtResponse> => {
     const { email, password } = loginCredentialsDto;
     const user = await this.userRepository.findOne({ email });
 
-    if (!(user && await user.validatePassword(password))) {
+    if (!(user && (await user.validatePassword(password)))) {
       throw new UnauthorizedException();
     }
 
@@ -26,10 +27,9 @@ export class AuthService {
     const accessToken = await this.jwtService.sign(payload);
 
     return { accessToken };
-  }
+  };
 
   register = async (createUserDto: CreateUserDto): Promise<UserAllowed> => {
     return this.userRepository.createUser(createUserDto);
-  }
-
+  };
 }
