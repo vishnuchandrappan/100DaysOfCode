@@ -9,13 +9,17 @@ import { User } from '../auth/user.entity';
 
 @Injectable()
 export class BlogPostService {
-  constructor(private blogPostRepository: BlogPostRepository) {}
+  constructor(private blogPostRepository: BlogPostRepository) { }
 
   async getPosts(
     searchBlogDto: SearchBlogDto,
     user: User,
   ): Promise<BlogPost[]> {
     return this.blogPostRepository.getPosts(searchBlogDto, user);
+  }
+
+  async getAllPosts(): Promise<BlogPost[]> {
+    return this.blogPostRepository.getAllPosts();
   }
 
   async createPost(
@@ -25,11 +29,16 @@ export class BlogPostService {
     return this.blogPostRepository.createPost(createBlogDto, user);
   }
 
-  async getPostById(id: number, user: User): Promise<BlogPost> {
-    const blog = await this.blogPostRepository.findOne({
-      id,
-      userId: user.id,
-    });
+  async getPostById(id: number, user: User = null): Promise<BlogPost> {
+    const params: any = {
+      id
+    }
+
+    if(user){
+      params.userId = user.id;
+    }
+
+    const blog = await this.blogPostRepository.findOne(params);
 
     if (!blog) {
       throw new NotFoundException();

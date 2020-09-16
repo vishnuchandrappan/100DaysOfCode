@@ -38,4 +38,5 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 - [Day 30](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day30-nestjs-blog) : Nest.js - blog: created BlogPost model
 - [Day 31](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day30-nestjs-blog) : Nest.js - blog: created User model
 - [Day 32](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day30-nestjs-blog) : Nest.js - blog: implemented authorization
+- [Day 33](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day30-nestjs-blog) : Nest.js - blog: implemented comment feature
 

@@ -11,6 +11,7 @@ import { AuthModule } from '../auth/auth.module';
   imports: [
     TypeOrmModule.forFeature([BlogPostRepository]),
     AuthModule,
-  ]
+  ],
+  exports: [BlogPostService, TypeOrmModule]
 })
 export class BlogPostModule { }

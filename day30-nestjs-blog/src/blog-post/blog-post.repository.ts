@@ -29,6 +29,12 @@ export class BlogPostRepository extends Repository<BlogPost> {
     return posts;
   };
 
+  getAllPosts = async (): Promise<BlogPost[]> => {
+    const query = this.createQueryBuilder('post');
+    const posts = await query.getMany();
+    return posts;
+  }
+
   createPost = async (
     createBlogDto: CreateBlogDto,
     user: User,

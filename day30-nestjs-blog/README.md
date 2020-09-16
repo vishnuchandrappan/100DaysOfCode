@@ -9,3 +9,6 @@
 
 ## Day 32
 * Implemented authorization
+
+## Day 33
+* Created Comments

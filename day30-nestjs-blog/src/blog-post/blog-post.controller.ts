@@ -35,6 +35,11 @@ export class BlogPostController {
     return this.blogPostService.getPosts(searchBlogDto, user);
   }
 
+  @Get('/all')
+  getAll(): Promise<BlogPost[]> {
+    return this.blogPostService.getAllPosts();
+  }
+
   @Post()
   @UsePipes(ValidationPipe)
   create(
