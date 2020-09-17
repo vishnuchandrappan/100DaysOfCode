@@ -4,9 +4,8 @@ import { Comment } from './comment.entity';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { BlogPost } from '../blog-post/blog-post.entity';
 import { User } from 'src/auth/user.entity';
-import { NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { NotFoundException } from '@nestjs/common';
 import { SuccessResponse } from 'src/shared/interfaces/SuccessMessage.interface';
-import { EditCommentDto } from './dto/edit-comment.dto';
 
 @EntityRepository(Comment)
 export class CommentsRepository extends Repository<Comment> {
@@ -57,22 +56,29 @@ export class CommentsRepository extends Repository<Comment> {
   }
 
   updateComment = async (
-    comment: Comment,
-    postId : number,
+    id: number,
     userId: number,
-    editCommentDto: EditCommentDto
-  ): Promise<Comment> => {
-    const { body } = editCommentDto;
-    if (body) {
-      if (comment.blogPostId === postId && comment.userId === userId) {
-        comment.body = body;
-        await comment.save();
-      }
-      else {
-        throw new UnauthorizedException();
-      }
+    blogPostId: number,
+    editCommentDto: CreateCommentDto
+  ): Promise<SuccessResponse> => {
+    const { affected } = await Comment.update(
+      {
+        id,
+        userId,
+        blogPostId,
+      },
+      editCommentDto
+    )
+
+    if (affected === 0) {
+      throw new NotFoundException();
     }
-    return comment;
+
+    return {
+      status: 'OK',
+      message: 'Comment updated successfully'
+    };
+
   }
 
 }

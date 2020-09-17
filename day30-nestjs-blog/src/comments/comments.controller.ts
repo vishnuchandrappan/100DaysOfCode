@@ -4,7 +4,6 @@ import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from 'src/decorators/get-user.decorator';
 import { User } from '../auth/user.entity';
 import { CreateCommentDto } from './dto/create-comment.dto';
-import { EditCommentDto } from './dto/edit-comment.dto';
 
 @Controller('blog-posts/:postId/comments')
 @UseGuards(AuthGuard())
@@ -47,7 +46,7 @@ export class CommentsController {
     @Param('postId', ParseIntPipe) postId: number,
     @Param('commentId', ParseIntPipe) commentId: number,
     @GetUser() user: User,
-    @Body() editCommentDto: EditCommentDto,
+    @Body() editCommentDto: CreateCommentDto,
   ) {
     return this.commentsService.updateComment(postId, commentId, user, editCommentDto)
   }

@@ -3,12 +3,15 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinTable,
+  ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import * as gravatar from 'gravatar';
 import { Comment } from '../comments/comment.entity';
+import { Follow } from 'src/follow/follow.entity';
 
 @Entity()
 export class User extends BaseEntity {
@@ -40,6 +43,19 @@ export class User extends BaseEntity {
     { eager: true }
   )
   comments: Comment[]
+
+  @OneToMany(
+    type => Follow,
+    follow => follow.followerId
+  )
+  followers: Follow[];
+
+  @OneToMany(
+    type => Follow,
+    follow => follow.followedId
+  )
+  followed: Follow[];
+
 
   validatePassword = async (password: string): Promise<boolean> => {
     const hash = await bcrypt.hash(password, this.salt);

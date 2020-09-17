@@ -12,3 +12,6 @@
 
 ## Day 33
 * Created Comments
+
+## Day 34
+* Code Refactor & Started implementing follow feature.
