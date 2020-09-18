@@ -7,11 +7,11 @@ import {
   ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
+  RelationCount,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import * as gravatar from 'gravatar';
 import { Comment } from '../comments/comment.entity';
-import { Follow } from 'src/follow/follow.entity';
 
 @Entity()
 export class User extends BaseEntity {
@@ -44,18 +44,24 @@ export class User extends BaseEntity {
   )
   comments: Comment[]
 
-  @OneToMany(
-    type => Follow,
-    follow => follow.followerId
+  @ManyToMany(
+    type => User,
+    user => user.following
   )
-  followers: Follow[];
+  @JoinTable()
+  followers: User[];
 
-  @OneToMany(
-    type => Follow,
-    follow => follow.followedId
+  @ManyToMany(
+    type => User,
+    user => user.followers
   )
-  followed: Follow[];
+  following: User[];
 
+  @RelationCount((user: User) => user.followers)
+  followersCount: number;
+
+  @RelationCount((user: User) => user.following)
+  followingCount: number;
 
   validatePassword = async (password: string): Promise<boolean> => {
     const hash = await bcrypt.hash(password, this.salt);
@@ -68,7 +74,9 @@ export class User extends BaseEntity {
       id: this.id,
       name: this.name,
       email: this.email,
-      gravatarData
+      gravatarData,
+      followingCount: this.followingCount,
+      followersCount: this.followersCount
     };
   };
 }

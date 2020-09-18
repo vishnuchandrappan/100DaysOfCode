@@ -7,7 +7,6 @@ import { ConfigModule } from '@nestjs/config';
 import { typeOrmConfig } from './config/typeorm.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CommentsModule } from './comments/comments.module';
-import { FollowModule } from './follow/follow.module';
 
 @Module({
   imports: [
@@ -16,7 +15,6 @@ import { FollowModule } from './follow/follow.module';
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot(typeOrmConfig),
     CommentsModule,
-    FollowModule,
   ],
   controllers: [AppController],
   providers: [AppService],

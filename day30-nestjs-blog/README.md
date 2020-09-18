@@ -15,3 +15,6 @@
 
 ## Day 34
 * Code Refactor & Started implementing follow feature.
+
+## Day 35
+* Implemented follow user feature

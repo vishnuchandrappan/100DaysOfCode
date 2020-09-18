@@ -39,6 +39,14 @@ export class UserRepository extends Repository<User> {
     return user.getData();
   };
 
+  // followUser = async (
+  //   followedId: number,
+  //   follower: User
+  // ) => {
+
+  //   return
+  // }
+
   private hashPassword = async (
     password: string,
     salt: string,
