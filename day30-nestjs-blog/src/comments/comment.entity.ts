@@ -2,6 +2,7 @@ import { User } from '../auth/user.entity';
 import { BlogPost } from '../blog-post/blog-post.entity';
 import {
   BaseEntity,
+  BeforeUpdate,
   Column,
   Entity,
   ManyToOne,
@@ -16,6 +17,28 @@ export class Comment extends BaseEntity {
   @Column()
   body: string;
 
+  @Column()
+  commentable_id: number;
+
+  @Column()
+  commentable_type: 'comment' | 'blogPost';
+
+  @Column({
+    type: 'timestamp',
+    default: () => "CURRENT_TIMESTAMP"
+  })
+  created_at: Date;
+
+  @Column({
+    type: 'timestamp',
+    default: () => "CURRENT_TIMESTAMP"
+  })
+  updated_at: Date;
+
+  @BeforeUpdate()
+  updateTimestamp() {
+    this.updated_at = new Date;
+  }
 
   @ManyToOne(
     type => User,
@@ -26,15 +49,5 @@ export class Comment extends BaseEntity {
 
   @Column()
   userId: number;
-
-  @ManyToOne(
-    type => BlogPost,
-    blogPost => blogPost.comments,
-    { eager: false }
-  )
-  blogPost: BlogPost
-
-  @Column()
-  blogPostId: number
 
 }

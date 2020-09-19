@@ -39,13 +39,14 @@ export class UserRepository extends Repository<User> {
     return user.getData();
   };
 
-  // followUser = async (
-  //   followedId: number,
-  //   follower: User
-  // ) => {
-
-  //   return
-  // }
+  followUser = async (
+    followed: User,
+    follower: User
+  ): Promise<User> => {
+    followed.followers = [follower];
+    await followed.save();
+    return followed.getData();
+  }
 
   private hashPassword = async (
     password: string,

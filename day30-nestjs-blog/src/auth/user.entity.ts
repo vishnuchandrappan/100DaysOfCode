@@ -1,6 +1,7 @@
 import { BlogPost } from '../blog-post/blog-post.entity';
 import {
   BaseEntity,
+  BeforeUpdate,
   Column,
   Entity,
   JoinTable,
@@ -29,6 +30,23 @@ export class User extends BaseEntity {
 
   @Column()
   salt: string;
+
+  @Column({
+    type: 'timestamp',
+    default: () => "CURRENT_TIMESTAMP"
+  })
+  created_at: Date;
+
+  @Column({
+    type: 'timestamp',
+    default: () => "CURRENT_TIMESTAMP"
+  })
+  updated_at: Date;
+
+  @BeforeUpdate()
+  updateTimestamp() {
+    this.updated_at = new Date;
+  }
 
   @OneToMany(
     type => BlogPost,

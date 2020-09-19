@@ -5,7 +5,7 @@ import { GetUser } from 'src/decorators/get-user.decorator';
 import { User } from '../auth/user.entity';
 import { CreateCommentDto } from './dto/create-comment.dto';
 
-@Controller('blog-posts/:postId/comments')
+@Controller('blog-posts/:entityId/comments')
 @UseGuards(AuthGuard())
 export class CommentsController {
 
@@ -13,43 +13,61 @@ export class CommentsController {
     private commentsService: CommentsService
   ) { }
 
-  @Get()
-  index(
-    @Param('postId', ParseIntPipe) postId: number,
-  ) {
-    return this.commentsService.getComments(postId);
-  }
+  // @Get()
+  // index(
+  //   @Param('entityId', ParseIntPipe) postId: number,
+  // ) {
+  //   return this.commentsService.getComments(postId);
+  // }
 
   @Post()
   @UsePipes(ValidationPipe)
   create(
-    @Param('postId', ParseIntPipe) postId: number,
+    @Param('entityId', ParseIntPipe) postId: number,
     @GetUser() user: User,
     @Body() createCommentDto: CreateCommentDto
   ) {
-    return this.commentsService.createComment(postId, user, createCommentDto);
+    return this.commentsService.createComment(
+      postId,
+      user,
+      createCommentDto
+    );
   }
 
-  @Delete(':commentId')
+  @Post()
   @UsePipes(ValidationPipe)
-  destroy(
-    @Param('postId', ParseIntPipe) postId: number,
-    @Param('commentId', ParseIntPipe) commentId: number,
+  createReply(
+    @Param('entityId', ParseIntPipe) commentId: number,
     @GetUser() user: User,
+    @Body() createCommentDto: CreateCommentDto
   ) {
-    return this.commentsService.deleteComment(postId, commentId, user);
+    return this.commentsService.createReply(
+      commentId,
+      user,
+      createCommentDto
+    );
   }
 
-  @Put('/:commentId')
-  @UsePipes(ValidationPipe)
-  update(
-    @Param('postId', ParseIntPipe) postId: number,
-    @Param('commentId', ParseIntPipe) commentId: number,
-    @GetUser() user: User,
-    @Body() editCommentDto: CreateCommentDto,
-  ) {
-    return this.commentsService.updateComment(postId, commentId, user, editCommentDto)
-  }
+  // @Delete(':commentId')
+  // @UsePipes(ValidationPipe)
+  // destroy(
+  //   @Param('entityId', ParseIntPipe) entityId: number,
+  //   @Param('commentId', ParseIntPipe) commentId: number,
+  //   @GetUser() user: User,
+  // ) {
+  //   return this.commentsService.deleteComment(entityId, commentId, user);
+  // }
+
+  // @Put('/:commentId')
+  // @UsePipes(ValidationPipe)
+  // update(
+  //   @Param('entityId', ParseIntPipe) entityId: number,
+  //   @Param('commentId', ParseIntPipe) commentId: number,
+  //   @GetUser() user: User,
+  //   @Body() editCommentDto: CreateCommentDto,
+  // ) {
+  //   return this.commentsService.updateComment(entityId, commentId, user, editCommentDto)
+  // }
 
 
 }

@@ -16,14 +16,8 @@ export class UserService {
     if (followedId === follower.id) {
       throw new BadRequestException();
     }
-
     const followed = await this.getUserById(followedId);
-    followed.followers = [follower];
-
-    await followed.save();
-
-    // return this.userRepository.followUser(followed, follower);
-    return followed.getData();
+    return this.userRepository.followUser(followed, follower);
   }
 
   getFollowers = async (userId: number) => {

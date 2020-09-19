@@ -18,3 +18,6 @@
 
 ## Day 35
 * Implemented follow user feature
+
+## Day 36
+* Implemented Polymorphic association for comments
