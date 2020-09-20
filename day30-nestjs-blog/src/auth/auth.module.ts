@@ -9,6 +9,7 @@ import { UserRepository } from './user.repository';
 import * as config from 'config';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
+import { MailgunModule } from '@nextnm/nestjs-mailgun'
 
 const JwtConfig = config.get('jwt');
 
@@ -25,6 +26,10 @@ const JwtConfig = config.get('jwt');
       },
     }),
     TypeOrmModule.forFeature([UserRepository]),
+    MailgunModule.forRoot({
+      DOMAIN: process.env.MAIL_DOMAIN,
+      API_KEY: process.env.MAIL_API_KEY,
+    }),
   ],
   controllers: [AuthController, UserController],
   exports: [JwtStrategy, PassportModule],

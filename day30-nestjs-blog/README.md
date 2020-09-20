@@ -21,3 +21,7 @@
 
 ## Day 36
 * Implemented Polymorphic association for comments
+
+## Day 37
+* Implemented reply for comments.
+* Integrated Mailgun

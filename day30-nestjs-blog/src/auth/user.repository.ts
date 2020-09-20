@@ -9,6 +9,7 @@ import {
   InternalServerErrorException,
 } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
+import { SuccessResponse } from 'src/shared/interfaces/SuccessMessage.interface';
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
@@ -42,10 +43,13 @@ export class UserRepository extends Repository<User> {
   followUser = async (
     followed: User,
     follower: User
-  ): Promise<User> => {
+  ): Promise<SuccessResponse> => {
     followed.followers = [follower];
     await followed.save();
-    return followed.getData();
+    return {
+      status: "OK",
+      message: "successful following user"
+    };
   }
 
   private hashPassword = async (

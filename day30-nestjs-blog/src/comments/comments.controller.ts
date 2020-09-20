@@ -5,7 +5,7 @@ import { GetUser } from 'src/decorators/get-user.decorator';
 import { User } from '../auth/user.entity';
 import { CreateCommentDto } from './dto/create-comment.dto';
 
-@Controller('blog-posts/:entityId/comments')
+@Controller('blog-posts/:entityId')
 @UseGuards(AuthGuard())
 export class CommentsController {
 
@@ -13,16 +13,17 @@ export class CommentsController {
     private commentsService: CommentsService
   ) { }
 
-  // @Get()
-  // index(
-  //   @Param('entityId', ParseIntPipe) postId: number,
-  // ) {
-  //   return this.commentsService.getComments(postId);
-  // }
-
-  @Post()
+  @Get('/comments')
   @UsePipes(ValidationPipe)
-  create(
+  getComments(
+    @Param('entityId', ParseIntPipe) postId: number,
+  ) {
+    return this.commentsService.getComments(postId);
+  }
+
+  @Post('/comments')
+  @UsePipes(ValidationPipe)
+  createComment(
     @Param('entityId', ParseIntPipe) postId: number,
     @GetUser() user: User,
     @Body() createCommentDto: CreateCommentDto
@@ -34,7 +35,15 @@ export class CommentsController {
     );
   }
 
-  @Post()
+  @Get('/replies')
+  @UsePipes(ValidationPipe)
+  getReplies(
+    @Param('entityId', ParseIntPipe) commentId: number,
+  ) {
+    return this.commentsService.getReplies(commentId);
+  }
+
+  @Post('/replies')
   @UsePipes(ValidationPipe)
   createReply(
     @Param('entityId', ParseIntPipe) commentId: number,

@@ -1,4 +1,5 @@
 import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
+import { SuccessResponse } from "src/shared/interfaces/SuccessMessage.interface";
 import { User } from "./user.entity";
 import { UserRepository } from "./user.repository";
 
@@ -12,7 +13,7 @@ export class UserService {
   followUser = async (
     followedId: number,
     follower: User
-  ): Promise<User> => {
+  ): Promise<SuccessResponse> => {
     if (followedId === follower.id) {
       throw new BadRequestException();
     }

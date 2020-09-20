@@ -3,13 +3,15 @@ import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from "src/decorators/get-user.decorator";
 import { User } from "./user.entity";
 import { UserService } from './user.service';
+import { MailgunService, EmailOptions } from '@nextnm/nestjs-mailgun';
 
 @Controller('users/:userId')
 @UseGuards(AuthGuard())
 export class UserController {
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private mailgunService: MailgunService
   ) { }
 
 
@@ -33,6 +35,19 @@ export class UserController {
     @Param('userId', ParseIntPipe) userId: number,
   ) {
     return this.userService.getFollowing(userId);
+  }
+
+  @Get('/test')
+  test() {
+    const options: EmailOptions = {
+      from: 'Excited User <me@samples.mailgun.org>',
+      to: 'cempfoss@gmail.com',
+      subject: 'Hello',
+      text: 'Testing some Mailgun awesomeness!',
+      html: '',
+      attachment: ''
+    };
+    return this.mailgunService.sendEmail(options);
   }
 
 }

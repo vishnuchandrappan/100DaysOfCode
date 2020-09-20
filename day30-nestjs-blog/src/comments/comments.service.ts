@@ -5,6 +5,8 @@ import { CommentsRepository } from './comments.repository';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { User } from 'src/auth/user.entity';
 import { SuccessResponse } from '../shared/interfaces/SuccessMessage.interface';
+import { async } from 'rxjs';
+
 
 @Injectable()
 export class CommentsService {
@@ -14,10 +16,13 @@ export class CommentsService {
     private commentRepository: CommentsRepository
   ) { }
 
-  // getComments = async (postId: number): Promise<Comment[]> => {
-  //   const post = await this.blogPostService.getPostById(postId);
-  //   return post.comments;
-  // }
+  getComments = async (postId: number): Promise<Comment[]> => {
+    const comments = await this.commentRepository.find({
+      commentable_type: 'blogPost',
+      commentable_id: postId
+    })
+    return comments;
+  }
 
   createComment = async (
     postId: number,
@@ -30,6 +35,14 @@ export class CommentsService {
       user,
       createCommentDto
     );
+  }
+
+  getReplies = async (commentId: number): Promise<Comment[]> => {
+    const replies = await this.commentRepository.find({
+      commentable_type: 'comment',
+      commentable_id: commentId
+    })
+    return replies;
   }
 
   createReply = async (
