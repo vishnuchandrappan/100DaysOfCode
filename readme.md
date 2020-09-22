@@ -44,3 +44,4 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 - [Day 36](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day30-nestjs-blog) : Nest.js - blog: Implemented polymorphic association for comments.
 - [Day 37](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day30-nestjs-blog) : Nest.js - blog: Added Reply feature & integrated Mailgun
 - [Day 38](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/ds-python) : Python - Getting Started, solved few questions
+- [Day 39](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/ds-python) : Laravel - Creating A Blog
