@@ -16,6 +16,17 @@ class Comment extends Model
 
     public function replies()
     {
-        return $this->morphOne('App\Models\Comment', 'commentable');
+        return $this->morphMany(
+            'App\Models\Comment',
+            'commentable'
+        );
+    }
+
+    public  function likes()
+    {
+        return $this->morphMany(
+            'App\Models\Like',
+            'likeable'
+        );
     }
 }

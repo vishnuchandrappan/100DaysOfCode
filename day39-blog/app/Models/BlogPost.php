@@ -17,6 +17,22 @@ class BlogPost extends Model
 
     public function comments()
     {
-        return $this->morphOne('App\Models\Comment', 'commentable');
+        return $this->morphMany(
+            'App\Models\Comment',
+            'commentable'
+        );
+    }
+
+    public function likes()
+    {
+        return $this->morphMany(
+            'App\Models\Like',
+            'likeable'
+        );
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Models\Tag');
     }
 }
