@@ -47,3 +47,4 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 - [Day 39](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day39-blog) : Laravel - Creating A Blog
 - [Day 40](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day39-blog) : Laravel - Implemented like, follow and tags
 - [Day 41](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day39-blog) : Rails - MicroBlog app with scaffolding.
+- [Day 42](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day39-blog) : Rails - Writing tests
