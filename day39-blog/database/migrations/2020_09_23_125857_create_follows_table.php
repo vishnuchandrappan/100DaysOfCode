@@ -17,7 +17,7 @@ class CreateFollowsTable extends Migration
             $table->id();
             $table->bigInteger('follower_id');
             $table->bigInteger('followed_id');
-            $table->primary(['follower_id', 'followed_id']);
+            $table->unique(['follower_id', 'followed_id']);
             $table->timestamps();
         });
     }

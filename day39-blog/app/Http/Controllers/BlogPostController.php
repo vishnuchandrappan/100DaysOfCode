@@ -23,8 +23,7 @@ class BlogPostController extends Controller
 
     public function create(CreateBlogPostRequest $request)
     {
-        $user = auth()->user();
-        $blogPost = $user->blogPost()->create($request->all());
+        $blogPost = auth()->user()->blogPosts()->create($request->all());
         return response()->json($blogPost);
     }
 

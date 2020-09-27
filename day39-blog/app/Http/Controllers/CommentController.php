@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use Illuminate\Http\Request;
 use App\Models\Comment;
@@ -16,13 +17,10 @@ class CommentController extends Controller
         return response()->json($blog_post->comments);
     }
 
-    public function create(BlogPost $blog_post, CreateCommentsTable $request)
+    public function create(BlogPost $blog_post, CreateCommentRequest $request)
     {
-        $user = auth()->user();
-        $comment = $blog_post->comments()->create([
-            'comment' => $request->comment,
-            'user_id' => $user->id
-        ]);
+        $comment = auth()->user()->comments()->create($request->all());
+        $blog_post->comments()->save($comment);
 
         return response()->json($comment);
     }

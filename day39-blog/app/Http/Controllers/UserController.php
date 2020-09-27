@@ -40,6 +40,7 @@ class UserController extends Controller
 
     public function update(User $user, UpdateUserRequest $request)
     {
+        $data = array();
         if ($request->name) {
             $data['name'] = $request->name;
         }
