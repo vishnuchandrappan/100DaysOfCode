@@ -11,4 +11,7 @@
 * Learned more on tests.
 * Red, Green, Refactor pattern
 
+## Day 47
+* Learned about asset pipeline
+* Added some custom stylings
 
