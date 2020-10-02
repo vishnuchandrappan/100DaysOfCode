@@ -23,6 +23,19 @@ body {
   color: #fff;
 }
 
+.button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  background-color: transparent !important;
+  border-color: white;
+}
+
+input{
+  color: #fff !important;
+}
+
 a {
   color: inherit;
   text-transform: none;
@@ -100,7 +113,7 @@ footer {
       justify-content: space-between;
       align-items: flex-start;
 
-      a{
+      a {
         display: inline-block;
       }
     }

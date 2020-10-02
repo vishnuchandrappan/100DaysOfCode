@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  get 'pages/home'
-  get 'pages/help'
-  get 'pages/about'
+  get '/help', to: 'pages#help'
+  get '/about', to: 'pages#about'
   resources :microposts
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  root 'users#index'
+  root 'pages#home'
 
 end

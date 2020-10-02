@@ -15,3 +15,6 @@
 * Learned about asset pipeline
 * Added some custom stylings
 
+## Day 48
+* basics of integration testing
+
