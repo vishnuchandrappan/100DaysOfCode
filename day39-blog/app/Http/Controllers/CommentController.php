@@ -14,7 +14,7 @@ class CommentController extends Controller
 
     public function index(BlogPost $blog_post)
     {
-        return response()->json($blog_post->comments);
+        return response()->json($blog_post->commentsWithReplies);
     }
 
     public function create(BlogPost $blog_post, CreateCommentRequest $request)

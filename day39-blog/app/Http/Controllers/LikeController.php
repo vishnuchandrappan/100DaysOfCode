@@ -53,7 +53,7 @@ class LikeController extends Controller
 
         return response()->json([
             'status' => 'ok',
-            'message' => 'blogPost liked successfully'
+            'message' => 'Comment liked successfully'
         ]);
     }
 
@@ -64,13 +64,13 @@ class LikeController extends Controller
         } catch (Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'unlike successful'
+                'message' => 'unlike cannot be completed'
             ]);
         }
 
         return response()->json([
             'status' => 'ok',
-            'message' => 'comment liked successfully'
+            'message' => 'unlike successful'
         ]);
     }
 }

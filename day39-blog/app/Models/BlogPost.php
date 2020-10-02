@@ -22,6 +22,11 @@ class BlogPost extends Model
         return $this->morphMany('App\Models\Comment', 'commentable');
     }
 
+    public function commentsWithReplies()
+    {
+        return $this->comments()->with('replies');
+    }
+
     public function likes()
     {
         return $this->morphMany(
@@ -32,6 +37,6 @@ class BlogPost extends Model
 
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag');
+        return $this->belongsToMany('App\Models\Tag', 'blog_posts_tags')->withTimestamps();
     }
 }

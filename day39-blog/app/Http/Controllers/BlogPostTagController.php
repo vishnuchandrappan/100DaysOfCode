@@ -14,8 +14,7 @@ class BlogPostTagController extends Controller
 
     public function assignTags(BlogPost $blog_post, AssignTagsRequest $request)
     {
-        $tags = $request->tags;
-        $blog_post->insert($tags);
+        $blog_post->tags()->attach($request->tags);
 
         return response()->json([
             'status' => 'ok',
@@ -26,7 +25,7 @@ class BlogPostTagController extends Controller
     public function removeTag(BlogPost $blog_post, Tag $tag)
     {
         try {
-            $blog_post->tags()->where('tag_id', $tag->id);
+            $blog_post->tags()->detach($tag);
         } catch (Exception $e) {
             return response()->json([
                 'status' => 'error',
@@ -42,6 +41,6 @@ class BlogPostTagController extends Controller
 
     public function getBlogPostsByTag(Tag $tag)
     {
-        return response()->json($tag->blog_posts()->get());
+        return response()->json($tag->blogPosts()->get());
     }
 }

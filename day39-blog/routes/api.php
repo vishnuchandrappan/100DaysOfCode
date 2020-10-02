@@ -50,7 +50,7 @@ Route::group([
 
 Route::group([
     'middleware' => ['api', 'auth'],
-    'prefix' => 'blog_posts/{post}/comments'
+    'prefix' => 'blog_posts/{blog_post}/comments'
 ], function () {
     Route::get('/', [CommentController::class, 'index']);
     Route::post('/', [CommentController::class, 'create']);
@@ -82,17 +82,17 @@ Route::group([
     'middleware' => ['api', 'auth'],
     'prefix' => 'like'
 ], function () {
-    Route::post('/blog_post/{blog_post}', [LikeController::class, 'likeBlogPost']);
-    Route::post('/comment/{comment}', [LikeController::class, 'likeComment']);
-    Route::delete('/blog_post/{blog_post}', [LikeController::class, 'unlikeBlogPost']);
-    Route::delete('/comment/{comment}', [LikeController::class, 'unlikeComment']);
+    Route::post('/blog_posts/{blog_post}', [LikeController::class, 'likeBlogPost']);
+    Route::post('/comments/{comment}', [LikeController::class, 'likeComment']);
+    Route::delete('/blog_posts/{blog_post}', [LikeController::class, 'unlikeBlogPost']);
+    Route::delete('/comments/{comment}', [LikeController::class, 'unlikeComment']);
 });
 
 Route::group([
     'middleware' => ['api', 'auth'],
     'prefix' => 'blog_posts'
 ], function () {
-    Route::post('/tags', [BlogPostTagController::class, 'assignTags']);
+    Route::post('/{blog_post}/tags', [BlogPostTagController::class, 'assignTags']);
     Route::delete('/{blog_post}/tags/{tag}', [BlogPostTagController::class, 'removeTag']);
     Route::get('/tags/{tag}', [BlogPostTagController::class, 'getBlogPostsByTag']);
 });

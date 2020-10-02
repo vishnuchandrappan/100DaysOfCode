@@ -10,20 +10,18 @@ class FollowController extends Controller
 {
     public function followUser(User $user)
     {
-        auth()->user()->follows()->create([
-            'follower_id' => $user->id
-        ]);
+        auth()->user()->follows()->save($user);
 
         return response()->json([
             'status' => 'ok',
-            'message' => 'followed' . $user->name . 'successfully'
+            'message' => 'You are following ' . $user->name . ' now'
         ]);
     }
 
     public function unFollowUser(User $user)
     {
         try {
-            auth()->user()->follows()->where('followed_id', $user->id)->delete();
+            auth()->user()->follows()->detach($user);
         } catch (Exception $e) {
             return response()->json([
                 'status' => 'error',
@@ -32,7 +30,7 @@ class FollowController extends Controller
         }
         return response()->json([
             'status' => 'ok',
-            'message' => 'record deleted successfully'
+            'message' => 'unfollowed '.$user->name
         ]);
     }
 

@@ -52,3 +52,4 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 - Days 44 - 46 : Learned basics of Ruby
 - [Day 47](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day39-blog) : Rails - Asset Pipeline
 - [Day 47](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day39-blog) : Rails - Integration Testing
+- [Day 48](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day39-blog) : Laravel - Code Refactor (Day 39)

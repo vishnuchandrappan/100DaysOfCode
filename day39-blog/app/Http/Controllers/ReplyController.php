@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Http\Controllers;
@@ -13,7 +12,8 @@ class ReplyController extends Controller
 
     public function create(Comment $comment, CreateCommentRequest $request)
     {
-        $reply = $comment->replies()->create($request->all());
+        $reply = auth()->user()->comments()->create($request->all());
+        $comment->replies()->save($reply);
         return response()->json($reply);
     }
 
