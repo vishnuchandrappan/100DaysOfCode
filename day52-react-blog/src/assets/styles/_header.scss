@@ -1,0 +1,28 @@
+header {
+  width: 100vw;
+
+  .nav {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 60%;
+    margin: auto;
+
+    &__logo {
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 4rem;
+    }
+
+    &__links {
+      display: flex;
+      align-items: center;
+
+      a {
+        margin: 0 10px;
+        font-size: 2rem;
+      }
+    }
+  }
+}
