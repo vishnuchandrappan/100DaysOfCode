@@ -1,0 +1,36 @@
+@mixin flex {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-center($jc: flex-start) {
+  @include flex;
+  justify-content: $jc;
+}
+
+@mixin center-width($width) {
+  width: $width;
+  margin: auto;
+}
+
+@mixin animated-links {
+  margin: 0 10px;
+  font-size: 2rem;
+  position: relative;
+  transition: all 0.2s;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 0;
+    border-bottom: solid 2px;
+    transition: all 0.2s;
+    height: 100%;
+  }
+
+  &:hover::before {
+    width: 100%;
+  }
+}

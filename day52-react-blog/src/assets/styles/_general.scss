@@ -3,7 +3,47 @@ a {
   color: inherit;
   cursor: pointer;
 
+  &:hover {
+    text-decoration: none;
+    color: darken($color, 30);
+  }
+
   &:disabled {
     cursor: not-allowed;
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $bg-color;
+  margin: 0;
+  padding: 0;
+  font-family: $font-1;
+  color: $color;
+}
+
+.container {
+  width: $width-1;
+  margin: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $color;
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }

@@ -1,0 +1,22 @@
+.login {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+
+    .form-group {
+      margin: 10px 0;
+      color: $color !important;
+      border-color: $color !important;
+    }
+
+    label,
+    input {
+      color: $color;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+  }
+}

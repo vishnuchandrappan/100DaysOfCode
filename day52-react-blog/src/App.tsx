@@ -1,16 +1,14 @@
-import React from "react";
-import Footer from "./components/layout/Footer";
+import React, { FC } from "react";
 import Header from "./components/layout/Header";
 import Routes from "./components/routes/Routes";
+import Toast from "./components/toast/Toast";
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Routes />
-      <Footer />
-    </div>
-  );
-}
+const App: FC = () => (
+  <div className="App">
+    <Header />
+    <Routes />
+    <Toast />
+  </div>
+);
 
 export default App;
