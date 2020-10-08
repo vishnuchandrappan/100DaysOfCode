@@ -28,7 +28,7 @@ export const authApiRequestFlow = ({ dispatch }: any) => (next: any) => (action:
 
     const { method, url, onSuccess, onError } = action.meta;
 
-    Api.defaults.headers.common['Authorization'] = getToken();
+    Api.defaults.headers.common['Authorization'] = "Bearer "+getToken();
 
     Api({
       method,

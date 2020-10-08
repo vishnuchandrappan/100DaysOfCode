@@ -38,7 +38,7 @@ export default function Login() {
           dispatch(loginRequest(values));
         }}
       >
-        {({ submitForm }) => (
+        {({ submitForm, setSubmitting, isSubmitting }) => (
           <Form className="login__form">
             <Field
               className="form-group"
@@ -57,7 +57,13 @@ export default function Login() {
               variant="outlined"
             />
             <div className="btn-container">
-              <SubmitButton onClick={submitForm}>Login</SubmitButton>
+              <SubmitButton
+                submitting={isSubmitting}
+                setSubmitting={setSubmitting}
+                onClick={submitForm}
+              >
+                Login
+              </SubmitButton>
             </div>
           </Form>
         )}

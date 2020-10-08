@@ -39,4 +39,9 @@ class BlogPost extends Model
     {
         return $this->belongsToMany('App\Models\Tag', 'blog_posts_tags')->withTimestamps();
     }
+
+    public function likesCount()
+    {
+        return count($this->likes()->get());
+    }
 }

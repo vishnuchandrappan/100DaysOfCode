@@ -24,7 +24,7 @@ export const authApiRequest = (
   onSuccess: string,
   onError: string
 ) => ({
-  type: Types.API_REQUEST,
+  type: Types.AUTH_API_REQUEST,
   payload: body,
   meta: { method, url, onSuccess, onError },
 });

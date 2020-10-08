@@ -36,12 +36,13 @@ Route::group([
     Route::delete('/{user}', [UserController::class, 'destroy']);
 });
 
+Route::get('blog_posts/all', [BlogPostController::class, 'index']);
+
 Route::group([
     'middleware' => ['api', 'auth'],
     'prefix' => 'blog_posts'
 ], function () {
     Route::get('/', [BlogPostController::class, 'usersIndex']);
-    Route::get('/all', [BlogPostController::class, 'index']);
     Route::post('/', [BlogPostController::class, 'create']);
     Route::get('/{blog_post}', [BlogPostController::class, 'show']);
     Route::put('/{blog_post}', [BlogPostController::class, 'update']);

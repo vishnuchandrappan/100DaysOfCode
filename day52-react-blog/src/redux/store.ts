@@ -3,6 +3,8 @@ import { reducers } from "./reducers";
 import { uiMiddleware } from './middleware/ui';
 import { apiMiddleWare } from "./middleware/api";
 import { authMiddleware } from "./middleware/auth";
+import { userMiddleware } from "./middleware/user";
+import { blogPostMiddleware } from "./middleware/blog_post";
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -13,7 +15,9 @@ export const store = createStore(
     applyMiddleware(
       ...uiMiddleware,
       ...apiMiddleWare,
-      ...authMiddleware
+      ...authMiddleware,
+      ...userMiddleware,
+      ...blogPostMiddleware
     )
   )
 );

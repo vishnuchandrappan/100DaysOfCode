@@ -18,8 +18,8 @@ class BlogPostSeeder extends Seeder
         $faker = Faker::create();
         foreach (range(1, 50) as $index) {
             DB::table('blog_posts')->insert([
-                'title' => $faker->text,
-                'body' => $faker->paragraph,
+                'title' => $faker->sentence,
+                'body' => $faker->paragraph . "\n" . $faker->paragraph . $faker->paragraph,
                 'user_id' => (int)(($index - 1) / 5) + 1
             ]);
         }

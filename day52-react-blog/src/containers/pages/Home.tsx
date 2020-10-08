@@ -1,9 +1,27 @@
 import React from "react";
+import { CircularProgress } from "@material-ui/core";
+import BlogPost from "../../components/BlogPost/BlogPost";
+import NewBlogPost from "../../components/BlogPost/NewBlogPost";
 
-export default function Home() {
+interface BlogPostProps {
+  blogPosts: any[];
+  isFetching: boolean;
+}
+
+export default function Home({ blogPosts, isFetching }: BlogPostProps) {
   return (
-    <div className="container home">
-      <h1>Hello World</h1>
-    </div>
+    <>
+      <NewBlogPost />
+      <div className="container home">
+        {blogPosts.map((item) => (
+          <BlogPost {...item} key={item.id} />
+        ))}
+        {(blogPosts.length === 0 && isFetching) && (
+          <div className="full-page">
+            <CircularProgress size={40} />
+          </div>
+        )}
+      </div>
+    </>
   );
 }

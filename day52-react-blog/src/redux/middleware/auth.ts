@@ -1,21 +1,17 @@
-import { apiRequest } from '../actions';
-import { Types } from '../actions/auth';
+import { Types, logoutSuccess } from '../actions/auth';
 import { Action } from '../_interfaces';
-import { toast } from 'react-toastify';
-import { ToastOptions } from 'react-toastify/dist/types/index';
-import { resetSubmitting, setSubmitting } from '../actions/ui';
+import {
+  apiRequest,
+  userRequest,
+  resetSubmitting,
+  setSubmitting,
+  showDangerToast,
+  showSuccessToast
+} from '../actions';
 
 const LOGIN_URL = "/auth/login";
+const LOGOUT_URL = "/auth/logout";
 
-const toastOptions: ToastOptions = {
-  position: "top-right",
-  autoClose: 5000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-}
 
 export const loginFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
@@ -40,7 +36,8 @@ export const loginSuccessFlow = ({ dispatch }: any) => (next: any) => (action: A
 
   if (action.type === Types.LOGIN_SUCCESS) {
     dispatch(resetSubmitting())
-    toast.success(action.payload, toastOptions)
+    dispatch(userRequest())
+    dispatch(showSuccessToast("Logged in Successfully"));
   }
 
 };
@@ -50,7 +47,35 @@ export const loginErrorFlow = ({ dispatch }: any) => (next: any) => (action: Act
 
   if (action.type === Types.LOGIN_ERROR) {
     dispatch(resetSubmitting());
-    toast.error(action.payload, toastOptions)
+    dispatch(showDangerToast(action.payload));
+  }
+
+};
+
+export const logoutFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
+  next(action);
+
+  if (action.type === Types.LOGOUT_REQUEST) {
+    dispatch(
+      apiRequest(
+        "POST",
+        LOGOUT_URL,
+        action.payload,
+        Types.LOGOUT_SUCCESS,
+        Types.LOGOUT_ERROR
+      )
+    );
+    dispatch(setSubmitting());
+  }
+
+  if (action.type === Types.LOGOUT_SUCCESS) {
+    dispatch(resetSubmitting());
+    dispatch(showSuccessToast(action.payload));
+  }
+
+  if (action.type === Types.LOGOUT_SUCCESS) {
+    dispatch(resetSubmitting());
+    dispatch(logoutSuccess());
   }
 
 };
@@ -59,5 +84,6 @@ export const loginErrorFlow = ({ dispatch }: any) => (next: any) => (action: Act
 export const authMiddleware = [
   loginFlow,
   loginSuccessFlow,
-  loginErrorFlow
+  loginErrorFlow,
+  logoutFlow
 ]

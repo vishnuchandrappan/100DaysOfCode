@@ -1,5 +1,18 @@
 import { Types, updateSubmitting } from '../actions/ui'
 import { Action } from '../_interfaces';
+import { toast } from 'react-toastify';
+import { ToastOptions } from 'react-toastify/dist/types/index';
+import { transformErrors } from '../../utils/ui';
+
+const toastOptions: ToastOptions = {
+  position: "bottom-right",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+}
 
 export const setSubmittingFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
@@ -17,7 +30,37 @@ export const resetSubmittingFlow = ({ dispatch }: any) => (next: any) => (action
   }
 };
 
+export const showToastFlow = () => (next: any) => (action: Action) => {
+  next(action);
+
+  if (action.type === Types.SHOW_SUCCESS_TOAST) {
+    toast.success(action.payload, toastOptions);
+  }
+
+  if (action.type === Types.SHOW_DANGER_TOAST) {
+    transformErrors(action.payload)
+      .forEach((error: string) => {
+        toast.error(error, { ...toastOptions, autoClose: false});
+      });
+  }
+
+  if (action.type === Types.SHOW_INFO_TOAST) {
+    toast.info(action.payload, toastOptions);
+  }
+
+  if (action.type === Types.SHOW_WARNING_TOAST) {
+    toast.warning(action.payload, toastOptions);
+  }
+
+  if (action.type === Types.SHOW_TOAST) {
+    toast(action.payload, toastOptions);
+  }
+
+};
+
+
 export const uiMiddleware = [
   setSubmittingFlow,
-  resetSubmittingFlow
+  resetSubmittingFlow,
+  showToastFlow
 ]

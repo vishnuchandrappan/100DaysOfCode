@@ -28,3 +28,11 @@ export const loginSuccess = (
   type: Types.LOGIN_SUCCESS,
   payload: loginResponse
 });
+
+export const logoutRequest = () => ({
+  type: Types.LOGOUT_REQUEST
+})
+
+export const logoutSuccess = () => ({
+  type: Types.LOGIN_SUCCESS
+})

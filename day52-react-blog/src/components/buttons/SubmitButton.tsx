@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { RootState } from "typesafe-actions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-export default function SubmitButton({ children = "Submit", onClick }: any) {
+export default function SubmitButton({
+  children = "Submit",
+  onClick,
+  setSubmitting,
+  submitting,
+}: any) {
   const { isSubmitting } = useSelector((state: RootState) => state.ui);
+
+  useEffect(() => {
+    if (!isSubmitting) {
+      setSubmitting(false);
+    }
+  }, [isSubmitting, setSubmitting]);
+
   return (
     <Button
       variant="contained"
@@ -13,7 +25,7 @@ export default function SubmitButton({ children = "Submit", onClick }: any) {
       disabled={isSubmitting}
       onClick={onClick}
     >
-      {isSubmitting ? <CircularProgress /> : children}
+      {submitting ? <CircularProgress size="20" /> : children}
     </Button>
   );
 }

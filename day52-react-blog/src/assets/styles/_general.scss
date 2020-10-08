@@ -47,3 +47,13 @@ h6 {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+.full-page {
+  width: 100%;
+  min-height: 50vh;
+  @include flex-center(center);
+}
+
+body {
+  overflow-x: hidden;
+}

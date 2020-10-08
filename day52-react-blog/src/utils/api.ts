@@ -17,7 +17,7 @@ Api.interceptors.response.use(function (response) {
   console.log("[Api] Response", response);
   return response.data;
 }, function (error) {
-  console.log("[Api] Error in response");
+  console.log("[Api] Error in response",);
   return Promise.reject(parseError(error));
 });
 

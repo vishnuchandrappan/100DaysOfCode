@@ -18,7 +18,7 @@ class BlogPostController extends Controller
 
     public function index()
     {
-        return response()->json(BlogPost::all());
+        return response()->json(BlogPost::withCount('likes')->withCount('comments')->with('user')->get());
     }
 
     public function create(CreateBlogPostRequest $request)

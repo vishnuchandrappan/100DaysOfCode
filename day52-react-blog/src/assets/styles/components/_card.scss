@@ -1,0 +1,80 @@
+@mixin neu-1($br: 10px) {
+  transition: 0.3s;
+  border-radius: $br;
+  background: linear-gradient(145deg, #1a2228, #1f292f);
+  box-shadow: 20px 20px 60px #0c0f12, -20px -20px 60px #2e3d46;
+  display: flex;
+
+  &:hover {
+    background: linear-gradient(45deg, #1f292f, #1a2228);
+    box-shadow: 20px 20px 60px #0c0f12, -20px -20px 60px #2e3d46;
+  }
+}
+
+.card {
+  padding: 50px 20px;
+  font-size: 12px;
+  cursor: pointer;
+
+  &__icon {
+    position: relative;
+    transition: 0.3s;
+
+    &:hover {
+      fill: rgba(crimson, 0.5);
+    }
+
+    &:disabled {
+      fill: rgba(gray, 0.5);
+    }
+  }
+}
+
+.post {
+  @include neu-1;
+  margin: 50px 0;
+
+  &__title {
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  &__body {
+    font-size: 1.5em;
+    margin-top: 10px;
+  }
+
+  &__actions {
+    @include flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px;
+  }
+}
+
+.new__post {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+
+  svg {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.8);
+    transition: 0.3s;
+
+    &:hover {
+      fill: rgba(white, 0.2);
+      transform: scale(1);
+    }
+  }
+}
+
+.icon__content {
+  display: flex;
+  align-items: flex-end;
+  font-size: 12px;
+}
