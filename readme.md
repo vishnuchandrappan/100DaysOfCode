@@ -55,3 +55,4 @@ Read More at [100daysofcode.com](https://www.100daysofcode.com/)
 - [Day 48](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day39-blog) : Laravel - Code Refactor (Day 39)
 - [Day 52](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day52-react-blog) : React - Started Creating front-end for Laravel Blog (day 39).
 - [Day 53](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day52-react-blog) : React - Created login page & necessary redux actions, reducers and middleware
+- [Day 54, 55](https://github.com/vishnuchandrappan/100DaysOfCode/tree/master/day52-react-blog) : React - Created home page ang blog_posts list
