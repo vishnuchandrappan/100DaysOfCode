@@ -1,0 +1,18 @@
+.post-details {
+  &__title {
+    margin: 20px 0 0 0;
+    font-size: 2rem;
+  }
+  &__author {
+    font-size: 0.7rem;
+  }
+
+  &__body {
+    margin: 13px 0;
+  }
+
+  .post__actions {
+    flex-direction: row;
+  }
+
+}

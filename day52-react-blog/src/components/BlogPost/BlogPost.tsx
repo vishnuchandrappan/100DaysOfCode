@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import BlogPostActions from "./BlogPostActions";
 
 const BlogPost = ({
+  id,
   title,
   body,
   likes_count,
@@ -11,7 +12,7 @@ const BlogPost = ({
 }: BlogPostsResponse) => {
   return (
     <div className="card post">
-      <Link to={"/blog_posts/1"} className="post__contents">
+      <Link to={`/blog_posts/${id}`} className="post__contents">
         <span className="post__title">{title}</span>
         <p className="post__body">{body}</p>
       </Link>

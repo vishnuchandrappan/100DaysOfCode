@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -41,7 +42,10 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        $data = User::where('id',auth()->user()->id)->withCount('follows')->withCount('followers')->get();
+        $data[0]['liked_posts'] = auth()->user()->likedPosts()->get()->pluck('likeable_id');
+        $data[0]['liked_comments'] = auth()->user()->likedComments()->get()->pluck('likeable_id');
+        return response()->json($data);
     }
 
     /**

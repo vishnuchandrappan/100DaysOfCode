@@ -12,11 +12,9 @@ export default function HomeContainer() {
     ({ blogPosts }: RootState) => blogPosts.blogPosts
   );
 
-  const { isFetching } = useSelector(({ ui }: RootState) => ui);
-
   useEffect(() => {
     dispatch(initialBlogPostsRequest());
   }, [dispatch]);
 
-  return <Home blogPosts={blogPosts || []} isFetching={isFetching} />;
+  return <Home blogPosts={blogPosts} />;
 }

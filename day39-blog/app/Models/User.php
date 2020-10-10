@@ -28,7 +28,7 @@ class User extends Authenticatable  implements JWTSubject
      * @var array
      */
     protected $hidden = [
-        'password', 'salt',
+        'password', 'salt','created_at', 'updated_at'
     ];
 
     /**
@@ -82,8 +82,18 @@ class User extends Authenticatable  implements JWTSubject
         )->withTimestamps();
     }
 
-    public function like()
+    public function likes()
     {
         return $this->hasMany('App\Models\Like');
+    }
+
+    public function likedPosts()
+    {
+        return $this->likes()->select('likeable_id')->where('likeable_type', 'App\Models\BlogPost');
+    }
+
+    public function likedComments()
+    {
+        return $this->likes()->select('likeable_id')->where('likeable_type', 'App\Models\Comment');
     }
 }

@@ -1,5 +1,7 @@
 import { Types } from '../actions/blog_post'
 import { BlogPostsResponse, Action } from '../_interfaces/index';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const blogPostState: {
   blogPosts: BlogPostsResponse[]
@@ -7,7 +9,7 @@ const blogPostState: {
   blogPosts: []
 }
 
-export function blogPostReducer(
+function baseReducer(
   state = blogPostState,
   action: Action
 ) {
@@ -33,3 +35,14 @@ export function blogPostReducer(
       return state;
   }
 }
+
+export const blogPostReducer = persistReducer(
+  {
+    storage,
+    key: 'blogPosts',
+    whitelist: ["blogPosts"]
+  },
+  baseReducer
+)
+
+export default blogPostReducer
