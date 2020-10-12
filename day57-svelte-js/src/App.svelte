@@ -5,7 +5,11 @@
 	export let todos;
 
 	const addNewTodo = (e) => {
-		todos = [...todos,e.detail]
+		todos = [...todos,{
+			id: todos.length + 1,
+			text: e.detail,
+			done: false
+		}]
 	}
 
 </script>

@@ -22,6 +22,12 @@ export {
   showWarningToast,
   showToast
 } from './ui';
-export { apiRequest, authApiRequest } from './api'
+export {
+  apiRequest,
+  authApiRequest
+} from './api'
 export { userRequest } from './user';
-export { initialBlogPostsRequest } from './blog_post'
+export {
+  initialBlogPostsRequest,
+  likeBlogPost
+} from './blog_post'

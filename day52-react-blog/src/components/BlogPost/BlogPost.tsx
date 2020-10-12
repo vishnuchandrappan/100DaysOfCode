@@ -19,6 +19,7 @@ const BlogPost = ({
       <BlogPostActions
         likes_count={likes_count}
         comments_count={comments_count}
+        id={id}
       />
     </div>
   );

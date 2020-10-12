@@ -3,6 +3,9 @@
 </script>
 
 <style>
+  .selected{
+    color: purple;
+  }
   h2 {
     color: #ff3e00;
     text-transform: capitalize;
@@ -13,6 +16,10 @@
 
 <div class="container">
   {#each todos as todo}
-    <h2>{todo}</h2>
+    <div class="todo">
+      <input type="checkbox" bind:checked="{todo.done}">
+      <h2 class:selected="{todo.done}">{todo.text}</h2>
+    </div>
   {/each}
+  <span class="selected"></span>
 </div>
