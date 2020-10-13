@@ -1,4 +1,4 @@
-import { Types } from "../actions/auth";
+  import { Types } from "../actions/auth";
 import { Action, AuthState } from "../_interfaces";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from 'redux-persist';

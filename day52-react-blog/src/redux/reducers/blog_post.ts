@@ -31,6 +31,29 @@ function baseReducer(
         ]
       };
 
+    // case Types.LIKE_BLOG_POST_REQUEST_SUCCESS:
+    //   temp = state.blogPosts.map(post => {
+
+    //     if (post.id === action.payload.id) {
+    //       if (action.payload.deleted) {
+    //         return {
+    //           ...post,
+    //           likes_count: post.likes_count - 1
+    //         }
+    //       }
+    //       return {
+    //         ...post,
+    //         likes_count: post.likes_count + 1
+    //       }
+    //     }
+
+    //     return post;
+    //   });
+
+    //   return {
+    //     blogPosts: temp
+    //   };
+
     default:
       return state;
   }

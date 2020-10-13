@@ -57,3 +57,17 @@ h6 {
 body {
   overflow-x: hidden;
 }
+
+.liked {
+  fill: crimson;
+  animation: pulse 0.4s ease-out;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}

@@ -6,7 +6,6 @@ const USER_URL = '/auth/me';
 
 export const userRequestFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
-
   if (action.type === Types.USER_REQUEST) {
     dispatch(
       authApiRequest(
@@ -24,7 +23,6 @@ export const userRequestFlow = ({ dispatch }: any) => (next: any) => (action: Ac
 
 export const userRequestSuccessFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
-
   if (action.type === Types.USER_REQUEST_SUCCESS) {
     dispatch(resetSubmitting())
   }

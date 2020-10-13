@@ -5,7 +5,14 @@ import BlogPostActions from "./BlogPostActions";
 
 export const BlogPostDetails = (props: any): ReactElement => {
   if (props.blogPost) {
-    const { title, body, likes_count, comments_count, user } = props.blogPost;
+    const {
+      title,
+      body,
+      likes_count,
+      comments_count,
+      user,
+      id,
+    } = props.blogPost;
     return (
       <div className="container post-details">
         <h2 className="post-details__title">
@@ -18,6 +25,7 @@ export const BlogPostDetails = (props: any): ReactElement => {
         <BlogPostActions
           likes_count={likes_count}
           comments_count={comments_count}
+          id={id}
         />
       </div>
     );

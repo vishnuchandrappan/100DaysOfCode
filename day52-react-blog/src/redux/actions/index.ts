@@ -20,7 +20,9 @@ export {
   showDangerToast,
   showInfoToast,
   showWarningToast,
-  showToast
+  showToast,
+  showCommentBar,
+  hideCommentBar
 } from './ui';
 export {
   apiRequest,

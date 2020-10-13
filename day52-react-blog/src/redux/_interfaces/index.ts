@@ -17,6 +17,7 @@ export interface AuthState {
 
 export interface UiState {
   isSubmitting: boolean,
+  showCommentBar: boolean,
 }
 
 export interface LoginCredentials {
@@ -29,7 +30,9 @@ export interface UserResponse {
   name: string,
   email: string,
   created_at: string,
-  updated_at: string
+  updated_at: string,
+  liked_posts: [],
+  liked_comments: []
 }
 
 export interface BlogPostsResponse {

@@ -18,13 +18,25 @@ class LikeController extends Controller
 
     public function likeBlogPost(BlogPost $blog_post)
     {
-        $blog_post->likes()->create([
-            'user_id' => $this->user->id
-        ]);
+        try {
+            $blog_post->likes()->create([
+                'user_id' => $this->user->id
+            ]);
+        } catch (Exception  $e) {
+            $blog_post->likes()->where('user_id', auth()->user()->id)->delete();
+            return response()->json([
+                'status' => 'ok',
+                'message' => 'unlike successful',
+                'id' => $blog_post->id,
+                'deleted' => true
+            ]);
+        }
 
         return response()->json([
             'status' => 'ok',
-            'message' => 'blogPost liked successfully'
+            'message' => 'blogPost liked successfully',
+            'id' => $blog_post->id,
+            'deleted' => false
         ]);
     }
 

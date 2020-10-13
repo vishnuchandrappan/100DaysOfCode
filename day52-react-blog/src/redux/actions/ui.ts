@@ -11,6 +11,8 @@ export const Types = {
   SHOW_INFO_TOAST: `${entity} Show Info Toast`,
   SHOW_WARNING_TOAST: `${entity} Show Warning Toast`,
   SHOW_TOAST: `${entity} Show Default Toast`,
+  SHOW_COMMENT_BAR: `${entity} Show Comment Bar`,
+  HIDE_COMMENT_BAR: `${entity} Hide Comment Bar`
 };
 
 export const updateSubmitting = (
@@ -61,4 +63,12 @@ export const showInfoToast = (
 ): Action => ({
   type: Types.SHOW_INFO_TOAST,
   payload: data
+})
+
+export const showCommentBar = (): Action => ({
+  type: Types.SHOW_COMMENT_BAR
+})
+
+export const hideCommentBar = (): Action => ({
+  type: Types.HIDE_COMMENT_BAR
 })

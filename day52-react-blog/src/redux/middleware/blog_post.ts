@@ -4,7 +4,8 @@ import {
   authApiRequest,
   setSubmitting,
   resetSubmitting,
-  showDangerToast
+  showDangerToast,
+  userRequest, initialBlogPostsRequest
 } from '../actions'
 
 const GET_ALL = "/blog_posts/all";
@@ -49,7 +50,9 @@ export const likeBlogPostFlow = ({ dispatch }: any) => (next: any) => (action: A
     );
     dispatch(setSubmitting());
   } else if (action.type === Types.LIKE_BLOG_POST_REQUEST_SUCCESS) {
-    dispatch(resetSubmitting())
+    dispatch(userRequest());
+    dispatch(initialBlogPostsRequest());
+    dispatch(resetSubmitting());
   } else if (action.type === Types.LIKE_BLOG_POST_REQUEST_ERROR) {
     dispatch(resetSubmitting())
     dispatch(showDangerToast(action.payload));
