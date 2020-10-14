@@ -71,3 +71,9 @@ body {
     transform: scale(1);
   }
 }
+
+.MuiOutlinedInput-input,
+.MuiInputLabel-outlined,
+.MuiInputLabel-outlined.MuiInputLabel-shrink {
+  color: white !important;
+}

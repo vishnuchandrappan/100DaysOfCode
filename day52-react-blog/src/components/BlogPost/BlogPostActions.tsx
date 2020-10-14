@@ -47,7 +47,7 @@ export default function BlogPostActions({
         <MessageCircle
           className="card__icon"
           onClick={() => {
-            dispatch(showCommentBar());
+            dispatch(showCommentBar(id));
           }}
         />
         {comments_count > 0 && <span>{comments_count}</span>}

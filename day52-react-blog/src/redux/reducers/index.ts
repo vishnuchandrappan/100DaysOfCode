@@ -4,13 +4,15 @@ import { UiReducer } from './ui';
 import { userReducer } from './user';
 import { blogPostReducer } from './blog_post';
 import { Action } from "../_interfaces";
+import { commentsReducer } from "./comments";
 
 
 export const appReducer = combineReducers({
   auth: authReducer,
   ui: UiReducer,
   user: userReducer,
-  blogPosts: blogPostReducer
+  blogPosts: blogPostReducer,
+  comments: commentsReducer
 });
 
 export const reducers = (state: any, action: Action) => {

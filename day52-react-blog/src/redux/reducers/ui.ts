@@ -3,7 +3,8 @@ import { Types } from '../actions/ui';
 
 const uiState: UiState = {
   isSubmitting: false,
-  showCommentBar: false
+  showCommentBar: false,
+  blogPostId: null
 }
 
 export function UiReducer(
@@ -21,12 +22,14 @@ export function UiReducer(
       return {
         ...state,
         showCommentBar: true,
+        blogPostId: action.payload
       }
 
     case Types.HIDE_COMMENT_BAR:
       return {
         ...state,
-        showCommentBar: false
+        showCommentBar: false,
+        blogPostId: null
       }
 
     default:

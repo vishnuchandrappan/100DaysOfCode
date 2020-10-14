@@ -65,8 +65,9 @@ export const showInfoToast = (
   payload: data
 })
 
-export const showCommentBar = (): Action => ({
-  type: Types.SHOW_COMMENT_BAR
+export const showCommentBar = (id: number): Action => ({
+  type: Types.SHOW_COMMENT_BAR,
+  payload: id
 })
 
 export const hideCommentBar = (): Action => ({

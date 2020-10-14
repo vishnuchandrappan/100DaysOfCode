@@ -1,15 +1,27 @@
-import { TextField } from "@material-ui/core";
-import { Field, Form, Formik } from "formik";
+import { Card } from "@material-ui/core";
+import { Formik, Form, Field } from "formik";
+import { TextField } from "formik-material-ui";
 import React from "react";
 import SubmitButton from "../buttons/SubmitButton";
 
+interface Props {
+  showCommentBar: boolean;
+  closeCommentBar: () => void;
+  initialValues: {
+    comment: string;
+  };
+  commentSchema: any;
+  onSubmit: (values: any) => void;
+  comments: any[];
+}
 export default function CommentBar({
   showCommentBar,
   closeCommentBar,
   initialValues,
   commentSchema,
   onSubmit,
-}: any) {
+  comments,
+}: Props) {
   return (
     <div
       className={
@@ -52,6 +64,13 @@ export default function CommentBar({
               </Form>
             )}
           </Formik>
+        </div>
+        <div className="comments">
+          {comments.map((comment) => (
+            <Card key={comment.id}>
+              <h1>{comment.comment}</h1>
+            </Card>
+          ))}
         </div>
       </div>
     </div>

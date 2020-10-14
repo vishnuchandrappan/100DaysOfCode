@@ -18,6 +18,7 @@ export interface AuthState {
 export interface UiState {
   isSubmitting: boolean,
   showCommentBar: boolean,
+  blogPostId: number | null
 }
 
 export interface LoginCredentials {

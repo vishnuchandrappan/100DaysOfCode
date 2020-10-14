@@ -3,16 +3,19 @@ import { Types as UiTypes } from './ui';
 import { Types as ApiTypes } from './api';
 import { Types as UserTypes } from './user';
 import { Types as BlogPostTypes } from './blog_post'
+import { Types as CommentsTypes } from './comments';
 
 export const Types = {
   ...AuthTypes,
   ...UiTypes,
   ...ApiTypes,
   ...UserTypes,
-  ...BlogPostTypes
+  ...BlogPostTypes,
+  ...CommentsTypes,
 }
 
 export { loginRequest } from './auth';
+
 export {
   setSubmitting,
   resetSubmitting,
@@ -24,12 +27,20 @@ export {
   showCommentBar,
   hideCommentBar
 } from './ui';
+
 export {
   apiRequest,
   authApiRequest
 } from './api'
+
 export { userRequest } from './user';
+
 export {
   initialBlogPostsRequest,
-  likeBlogPost
+  likeBlogPost,
+  createComment
 } from './blog_post'
+
+export {
+  getCommentsRequest
+} from './comments';
