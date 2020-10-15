@@ -1,4 +1,4 @@
-import { UserResponse, Action } from "../_interfaces";
+import { Action } from "../_interfaces";
 
 
 const entity = "[UI]";
@@ -11,11 +11,4 @@ export const Types = {
 
 export const userRequest = (): Action => ({
   type: Types.USER_REQUEST
-});
-
-export const userRequestSuccess = (
-  userResponse: UserResponse
-): Action => ({
-  type: Types.USER_REQUEST_SUCCESS,
-  payload: userResponse
 });

@@ -1,4 +1,4 @@
-import { Types, logoutSuccess } from '../actions/auth';
+import { loginSuccess, Types } from '../actions/auth';
 import { Action } from '../_interfaces';
 import {
   apiRequest,
@@ -11,7 +11,7 @@ import {
 
 const LOGIN_URL = "/auth/login";
 const LOGOUT_URL = "/auth/logout";
-
+const SIGNUP_URL = "/users";
 
 export const loginFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
@@ -27,30 +27,17 @@ export const loginFlow = ({ dispatch }: any) => (next: any) => (action: Action) 
       )
     );
     dispatch(setSubmitting());
-  }
-
-};
-
-export const loginSuccessFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
-  next(action);
-
-  if (action.type === Types.LOGIN_SUCCESS) {
+  } else if (action.type === Types.LOGIN_SUCCESS) {
     dispatch(resetSubmitting())
     dispatch(userRequest())
     dispatch(showSuccessToast("Logged in Successfully"));
-  }
-
-};
-
-export const loginErrorFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
-  next(action);
-
-  if (action.type === Types.LOGIN_ERROR) {
+  } else if (action.type === Types.LOGIN_ERROR) {
     dispatch(resetSubmitting());
     dispatch(showDangerToast(action.payload));
   }
 
 };
+
 
 export const logoutFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
@@ -66,16 +53,37 @@ export const logoutFlow = ({ dispatch }: any) => (next: any) => (action: Action)
       )
     );
     dispatch(setSubmitting());
-  }
-
-  if (action.type === Types.LOGOUT_SUCCESS) {
+  } else if (action.type === Types.LOGOUT_SUCCESS) {
     dispatch(resetSubmitting());
     dispatch(showSuccessToast(action.payload));
+  } else if (action.type === Types.LOGIN_ERROR) {
+    dispatch(resetSubmitting());
   }
 
-  if (action.type === Types.LOGOUT_SUCCESS) {
+};
+
+
+export const signupFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
+  next(action);
+
+  if (action.type === Types.SIGNUP_REQUEST) {
+    dispatch(
+      apiRequest(
+        "POST",
+        SIGNUP_URL,
+        action.payload,
+        Types.SIGNUP_SUCCESS,
+        Types.LOGIN_ERROR
+      )
+    );
+    dispatch(setSubmitting());
+  } else if (action.type === Types.SIGNUP_SUCCESS) {
+    dispatch(resetSubmitting())
+    dispatch(loginSuccess(action.payload));
+    dispatch(showSuccessToast("Account created successfully"));
+  } else if (action.type === Types.LOGIN_ERROR) {
     dispatch(resetSubmitting());
-    dispatch(logoutSuccess());
+    dispatch(showDangerToast(action.payload));
   }
 
 };
@@ -83,7 +91,6 @@ export const logoutFlow = ({ dispatch }: any) => (next: any) => (action: Action)
 
 export const authMiddleware = [
   loginFlow,
-  loginSuccessFlow,
-  loginErrorFlow,
-  logoutFlow
+  logoutFlow,
+  signupFlow
 ]

@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use \Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UserController extends Controller
 {
@@ -29,8 +30,9 @@ class UserController extends Controller
         $data['password'] = Hash::make($data['password']);
 
         $user = User::create($data);
+        $token = JWTAuth::fromUser($user);
 
-        return response()->json($user);
+        return $this->respondWithToken($token);
     }
 
     public function show(User $user)
@@ -60,6 +62,23 @@ class UserController extends Controller
         return response()->json([
             'status' => 'ok',
             'message' => 'user deleted successfully'
+        ]);
+    }
+
+
+    /**
+     * Get the token array structure.
+     *
+     * @param  string $token
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60
         ]);
     }
 }

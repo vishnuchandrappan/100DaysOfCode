@@ -9,7 +9,6 @@ export const createCommentsFlow = ({ dispatch }: any) => (next: any) => (action:
 
 
   if (action.type === Types.GET_COMMENTS_REQUEST) {
-    console.log("---<",getBlogPostId());
     dispatch(
       authApiRequest(
         "GET",

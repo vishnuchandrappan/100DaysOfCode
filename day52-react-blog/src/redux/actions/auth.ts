@@ -1,5 +1,5 @@
-import { Action, LoginResponse } from "../_interfaces";
-import { AxiosResponse } from 'axios';
+import { AxiosResponse } from "axios";
+import { Action, LoginResponse, SignupData } from "../_interfaces";
 import { LoginCredentials } from '../_interfaces/index';
 
 const entity = "[Auth]";
@@ -13,7 +13,9 @@ export const Types = {
   LOGOUT_ERROR: `${entity} Logout Error`,
   REFRESH_TOKEN_REQUEST: `${entity} Refresh Token Request`,
   REFRESH_TOKEN_SUCCESS: `${entity} Refresh Token Success`,
-  REFRESH_TOKEN_ERROR: `${entity} Refresh Token Error`
+  REFRESH_TOKEN_ERROR: `${entity} Refresh Token Error`,
+  SIGNUP_REQUEST: `${entity} Signup Request`,
+  SIGNUP_SUCCESS: `${entity} Signup Success`
 };
 
 
@@ -29,10 +31,14 @@ export const loginSuccess = (
   payload: loginResponse
 });
 
+
 export const logoutRequest = () => ({
   type: Types.LOGOUT_REQUEST
 })
 
-export const logoutSuccess = () => ({
-  type: Types.LOGIN_SUCCESS
+
+export const signupRequest = (data: SignupData) => ({
+  type: Types.SIGNUP_REQUEST,
+  payload: data
 })
+

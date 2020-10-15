@@ -14,7 +14,11 @@ export const Types = {
   ...CommentsTypes,
 }
 
-export { loginRequest } from './auth';
+export {
+  loginRequest,
+  signupRequest,
+  loginSuccess
+} from './auth';
 
 export {
   setSubmitting,

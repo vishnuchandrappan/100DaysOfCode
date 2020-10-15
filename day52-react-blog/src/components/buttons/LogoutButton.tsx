@@ -16,7 +16,11 @@ export default function LogoutButton({ children = "Logout" }: any) {
         dispatch(logoutRequest());
       }}
     >
-      {isSubmitting ? <CircularProgress size="20" /> : children}
+      {isSubmitting ? (
+        <CircularProgress color="secondary" size="20" />
+      ) : (
+        children
+      )}
     </Button>
   );
 }

@@ -41,7 +41,7 @@ export default function CommentBar({
             validationSchema={commentSchema}
             onSubmit={onSubmit}
           >
-            {({ submitForm, setSubmitting, isSubmitting }) => (
+            {({ submitForm, setSubmitting, isSubmitting, resetForm }) => (
               <Form className="new-comment__form">
                 <h2 className="new-comment__form-text">Add new comment</h2>
                 <Field
@@ -57,6 +57,7 @@ export default function CommentBar({
                     submitting={isSubmitting}
                     setSubmitting={setSubmitting}
                     onClick={submitForm}
+                    resetForm={resetForm}
                   >
                     Comment !
                   </SubmitButton>

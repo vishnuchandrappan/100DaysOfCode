@@ -4,19 +4,29 @@ import { useSelector } from "react-redux";
 import { RootState } from "typesafe-actions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
+interface SubmitButtonProps {
+  children: string;
+  onClick: () => void;
+  resetForm: () => void;
+  setSubmitting: (value: boolean) => void;
+  submitting: boolean;
+}
+
 export default function SubmitButton({
   children = "Submit",
   onClick,
   setSubmitting,
   submitting,
-}: any) {
+  resetForm,
+}: SubmitButtonProps) {
   const { isSubmitting } = useSelector((state: RootState) => state.ui);
 
   useEffect(() => {
     if (!isSubmitting) {
       setSubmitting(false);
+      resetForm();
     }
-  }, [isSubmitting, setSubmitting]);
+  }, [isSubmitting, setSubmitting, resetForm]);
 
   return (
     <Button
@@ -25,7 +35,7 @@ export default function SubmitButton({
       disabled={isSubmitting}
       onClick={onClick}
     >
-      {submitting ? <CircularProgress size="20" /> : children}
+      {submitting ? <CircularProgress color="secondary" size={20} /> : children}
     </Button>
   );
 }

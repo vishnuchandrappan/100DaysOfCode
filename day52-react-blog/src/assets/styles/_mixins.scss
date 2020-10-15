@@ -13,22 +13,26 @@
   margin: auto;
 }
 
+@mixin link-style($width: 0) {
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: $width;
+    border-bottom: solid 2px;
+    transition: all 0.2s;
+    height: 100%;
+  }
+}
+
 @mixin animated-links {
   margin: 0 10px;
   font-size: 2rem;
   position: relative;
   transition: all 0.2s;
 
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 2px;
-    width: 0;
-    border-bottom: solid 2px;
-    transition: all 0.2s;
-    height: 100%;
-  }
+  @include link-style;
 
   &:hover::before {
     width: 100%;

@@ -22,6 +22,11 @@ header {
         font-size: 1.2rem;
       }
     }
+
+    .active {
+      @include link-style(100%);
+      padding-bottom: 5px;
+    }
   }
 }
 
