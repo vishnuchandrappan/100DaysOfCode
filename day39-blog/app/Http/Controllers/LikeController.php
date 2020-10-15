@@ -59,13 +59,25 @@ class LikeController extends Controller
 
     public function likeComment(Comment $comment)
     {
-        $comment->likes()->create([
-            'user_id' => $this->user->id
-        ]);
+        try{
+            $comment->likes()->create([
+                'user_id' => $this->user->id
+            ]);
+        } catch (Exception $e) {
+            $comment->likes()->where('user_id', $this->user->id)->delete();
+            return response()->json([
+                'status' => 'ok',
+                'message' => 'unlike successfully',
+                'id' => $comment->id,
+                'deleted' => true
+            ]);
+        }
 
         return response()->json([
             'status' => 'ok',
-            'message' => 'Comment liked successfully'
+            'message' => 'Comment liked successfully',
+            'id' => $comment->id,
+            'deleted' => false
         ]);
     }
 

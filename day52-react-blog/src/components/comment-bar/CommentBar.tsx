@@ -3,6 +3,7 @@ import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
 import React from "react";
 import SubmitButton from "../buttons/SubmitButton";
+import CommentActions from "./CommentActions";
 
 interface Props {
   showCommentBar: boolean;
@@ -68,8 +69,13 @@ export default function CommentBar({
         </div>
         <div className="comments">
           {comments.map((comment) => (
-            <Card key={comment.id}>
-              <h1>{comment.comment}</h1>
+            <Card key={comment.id} className="comments__card">
+              <span className="comments__card-text">{comment.comment}</span>
+              <CommentActions
+                id={comment.id}
+                likes_count={comment.likes_count}
+                comments_count={comment.comments_count}
+              />
             </Card>
           ))}
         </div>

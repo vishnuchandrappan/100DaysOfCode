@@ -46,5 +46,6 @@ export {
 } from './blog_post'
 
 export {
-  getCommentsRequest
+  getCommentsRequest,
+  likeComment
 } from './comments';
