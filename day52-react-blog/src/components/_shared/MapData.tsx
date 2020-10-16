@@ -1,7 +1,7 @@
 import React from "react";
-import { CircularProgress } from '@material-ui/core';
-import { useSelector } from 'react-redux';
-import { RootState } from 'typesafe-actions';
+import { CircularProgress } from "@material-ui/core";
+import { useSelector } from "react-redux";
+import { RootState } from "typesafe-actions";
 
 interface MapDataProps {
   data: any[];
@@ -9,18 +9,16 @@ interface MapDataProps {
 }
 
 export default function MapData({ data, Component }: MapDataProps) {
+  const { isSubmitting } = useSelector(({ ui }: RootState) => ui);
 
-  const { isFetching } = useSelector(({ ui }: RootState) => ui);
-
-  const isLoading = ():boolean => data.length && isFetching
   return (
     <>
       {data.map((item) => (
         <Component key={item.id} {...item} />
       ))}
-      {isLoading && (
+      {data.length && isSubmitting && (
         <div className="full-page">
-          <CircularProgress size={40} />
+          <CircularProgress color="secondary" size={40} />
         </div>
       )}
     </>

@@ -6,7 +6,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import AuthRoute from "./AuthRoute";
 import Profile from "../../containers/pages/Profile";
 import HomeContainer from "../../containers/pages/HomeContainer";
-import { BlogPostDetailsContainer } from '../BlogPost/BlogPostDetailsContainer';
+import { BlogPostDetailsContainer } from "../BlogPost/BlogPostDetailsContainer";
+import NotFound from "../_shared/NotFound";
 
 export default function Router() {
   return (
@@ -20,6 +21,8 @@ export default function Router() {
       <AuthRoute path="/auth/login" component={LoginContainer} />
       <AuthRoute path="/auth/signup" component={SignupContainer} />
       <ProtectedRoute path="/profile" component={Profile} />
+
+      <Route component={NotFound} />
     </Switch>
   );
 }

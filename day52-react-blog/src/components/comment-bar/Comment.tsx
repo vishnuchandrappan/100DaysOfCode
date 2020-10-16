@@ -8,14 +8,19 @@ interface Comment {
   likes_count: number;
   comments_count: number;
 }
-export default function Comment(comment: Comment) {
+export default function Comment({
+  id,
+  comment,
+  likes_count,
+  comments_count,
+}: Comment) {
   return (
     <Card className="comments__card">
-      <span className="comments__card-text">{comment.comment}</span>
+      <span className="comments__card-text">{comment}</span>
       <CommentActions
-        id={comment.id}
-        likes_count={comment.likes_count}
-        comments_count={comment.comments_count}
+        id={id}
+        likes_count={likes_count}
+        comments_count={comments_count}
       />
     </Card>
   );

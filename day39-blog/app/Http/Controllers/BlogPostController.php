@@ -18,7 +18,18 @@ class BlogPostController extends Controller
 
     public function index()
     {
-        return response()->json(BlogPost::withCount('likes')->withCount('comments')->with('user')->get());
+        return response()->json(
+            BlogPost::withCount('likes')
+                ->withCount('comments')
+                ->with('user')
+                ->with('tags')
+                ->get()
+                ->map(function ($data) {
+                    $data->tags_list = $data->tags->pluck('name');
+                    unset($data->tags);
+                    return $data;
+                })
+        );
     }
 
     public function create(CreateBlogPostRequest $request)

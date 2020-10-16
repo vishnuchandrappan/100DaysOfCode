@@ -48,7 +48,8 @@ export interface BlogPostsResponse {
   user: {
     id: number,
     name: string
-  }
+  },
+  tags_list: string[]
 }
 
 

@@ -10,14 +10,14 @@ export default function LogoutButton({ children = "Logout" }: any) {
 
   return (
     <Button
-      variant="contained"
-      color="primary"
+      variant="outlined"
+      color="secondary"
       onClick={() => {
         dispatch(logoutRequest());
       }}
     >
       {isSubmitting ? (
-        <CircularProgress color="secondary" size="20" />
+        <CircularProgress color="secondary" size={20} />
       ) : (
         children
       )}

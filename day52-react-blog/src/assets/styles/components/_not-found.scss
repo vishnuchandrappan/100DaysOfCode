@@ -1,0 +1,20 @@
+.not-found {
+  width: 100%;
+  @include flex-center(center);
+  min-height: 80vh;
+  &__text {
+    @include flex;
+    padding: 20px 50px;
+    border: solid 7px rgba(black, 0.1);
+    flex-direction: column;
+    position: relative;
+    @include animated-box;
+
+    &-main {
+      font-size: 10rem;
+    }
+    &-sub {
+      font-size: 3rem;
+    }
+  }
+}

@@ -30,8 +30,8 @@ export default function SubmitButton({
 
   return (
     <Button
-      variant="contained"
-      color="primary"
+      variant="outlined"
+      color="secondary"
       disabled={isSubmitting}
       onClick={onClick}
     >
