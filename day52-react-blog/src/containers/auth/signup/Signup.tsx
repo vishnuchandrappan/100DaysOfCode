@@ -1,7 +1,8 @@
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import React from "react";
 import { TextField } from "formik-material-ui";
 import SubmitButton from "../../../components/buttons/SubmitButton";
+import CustomField from '../../../components/_shared/CustomField';
 
 interface SignupProps {
   initialValues: {
@@ -30,37 +31,29 @@ export default function Signup({
       >
         {({ submitForm, setSubmitting, isSubmitting, resetForm }) => (
           <Form className="signup__form">
-            <Field
-              className="form-group"
+            <CustomField
               component={TextField}
               name="name"
               type="text"
               label="Name"
-              variant="outlined"
             />
-            <Field
-              className="form-group"
+            <CustomField
               component={TextField}
               name="email"
               type="email"
               label="Email"
-              variant="outlined"
             />
-            <Field
-              className="form-group"
+            <CustomField
               component={TextField}
               type="password"
               label="Password"
               name="password"
-              variant="outlined"
             />
-            <Field
-              className="form-group"
+            <CustomField
               component={TextField}
               type="password"
               label="Password Confirmation"
               name="password_confirmation"
-              variant="outlined"
             />
             <div className="btn-container">
               <SubmitButton
