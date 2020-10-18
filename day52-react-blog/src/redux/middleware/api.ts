@@ -2,7 +2,7 @@ import { Types } from '../actions/api'
 import { Api } from '../../utils/api';
 import { getToken } from '../../utils/store';
 
-export const apiRequestFlow = ({ dispatch }: any) => (next: any) => (action: any) => {
+const apiRequestFlow = ({ dispatch }: any) => (next: any) => (action: any) => {
   if (action.type === Types.API_REQUEST) {
 
     const { method, url, onSuccess, onError } = action.meta;
@@ -23,12 +23,12 @@ export const apiRequestFlow = ({ dispatch }: any) => (next: any) => (action: any
   return next(action);
 };
 
-export const authApiRequestFlow = ({ dispatch }: any) => (next: any) => (action: any) => {
+const authApiRequestFlow = ({ dispatch }: any) => (next: any) => (action: any) => {
   if (action.type === Types.AUTH_API_REQUEST) {
 
     const { method, url, onSuccess, onError } = action.meta;
 
-    Api.defaults.headers.common['Authorization'] = "Bearer "+getToken();
+    Api.defaults.headers.common['Authorization'] = "Bearer " + getToken();
 
     Api({
       method,
@@ -46,4 +46,7 @@ export const authApiRequestFlow = ({ dispatch }: any) => (next: any) => (action:
   return next(action);
 };
 
-export const apiMiddleWare = [apiRequestFlow, authApiRequestFlow];
+export const apiMiddleWare = [
+  apiRequestFlow,
+  authApiRequestFlow
+];

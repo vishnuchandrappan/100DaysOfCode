@@ -59,3 +59,9 @@ export interface SignupData {
   password: string,
   password_confirmation: string
 }
+
+export interface BlogPostValues {
+  title: string,
+  body: string,
+  image: string
+}

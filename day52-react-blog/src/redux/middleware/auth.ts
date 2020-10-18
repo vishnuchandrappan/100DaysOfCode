@@ -1,27 +1,27 @@
-import { loginSuccess, Types } from '../actions/auth';
+import { loginSuccess } from '../actions/auth';
 import { Action } from '../_interfaces';
-import { LOGIN, LOGOUT, SIGNUP } from '../../utils/urls';
+import { AUTH_URLS } from '../../utils/urls';
 import {
   apiRequest,
   userRequest,
   resetSubmitting,
   setSubmitting,
-  showDangerToast,
-  showSuccessToast
+  showSuccessToast,
+  Types
 } from '../actions';
 
 
-export const loginFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
+const loginFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
 
   if (action.type === Types.LOGIN_REQUEST) {
     dispatch(
       apiRequest(
         "POST",
-        LOGIN,
+        AUTH_URLS.LOGIN,
         action.payload,
         Types.LOGIN_SUCCESS,
-        Types.LOGIN_ERROR
+        Types.SET_ERROR
       )
     );
     dispatch(setSubmitting());
@@ -29,22 +29,19 @@ export const loginFlow = ({ dispatch }: any) => (next: any) => (action: Action) 
     dispatch(resetSubmitting())
     dispatch(userRequest())
     dispatch(showSuccessToast("Logged in Successfully"));
-  } else if (action.type === Types.LOGIN_ERROR) {
-    dispatch(resetSubmitting());
-    dispatch(showDangerToast(action.payload));
   }
 
 };
 
 
-export const logoutFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
+const logoutFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
 
   if (action.type === Types.LOGOUT_REQUEST) {
     dispatch(
       apiRequest(
         "POST",
-        LOGOUT,
+        AUTH_URLS.LOGOUT,
         action.payload,
         Types.LOGOUT_SUCCESS,
         Types.LOGOUT_ERROR
@@ -61,14 +58,14 @@ export const logoutFlow = ({ dispatch }: any) => (next: any) => (action: Action)
 };
 
 
-export const signupFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
+const signupFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
 
   if (action.type === Types.SIGNUP_REQUEST) {
     dispatch(
       apiRequest(
         "POST",
-        SIGNUP,
+        AUTH_URLS.SIGNUP,
         action.payload,
         Types.SIGNUP_SUCCESS,
         Types.LOGIN_ERROR
@@ -79,9 +76,6 @@ export const signupFlow = ({ dispatch }: any) => (next: any) => (action: Action)
     dispatch(resetSubmitting())
     dispatch(loginSuccess(action.payload));
     dispatch(showSuccessToast("Account created successfully"));
-  } else if (action.type === Types.LOGIN_ERROR) {
-    dispatch(resetSubmitting());
-    dispatch(showDangerToast(action.payload));
   }
 
 };

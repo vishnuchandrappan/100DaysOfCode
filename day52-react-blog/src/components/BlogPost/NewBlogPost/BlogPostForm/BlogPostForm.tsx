@@ -6,7 +6,7 @@ import { TextField } from "formik-material-ui";
 import SubmitButton from "../../../buttons/SubmitButton";
 import TextArea from "../../../_shared/TextArea";
 import CustomField from "../../../_shared/CustomField";
-import { NewFormValues } from "./BlogPostFormContainer";
+import { BlogPostValues } from "../../../../redux/_interfaces";
 
 interface FormProps {
   classes: {
@@ -15,12 +15,8 @@ interface FormProps {
   };
   open: boolean;
   handleClose: () => void;
-  newBlogPostValues: {
-    title: string;
-    body: string;
-    image: string;
-  };
-  onSubmit: (values: NewFormValues) => void;
+  newBlogPostValues: BlogPostValues;
+  onSubmit: (values: BlogPostValues) => void;
   newBlogPostValidation: any;
 }
 

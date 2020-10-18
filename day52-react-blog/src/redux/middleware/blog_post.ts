@@ -4,47 +4,41 @@ import {
   authApiRequest,
   setSubmitting,
   resetSubmitting,
-  showDangerToast,
   userRequest, initialBlogPostsRequest, getCommentsRequest
 } from '../actions'
-import { GET_ALL_BLOG_POSTS, LIKE_BLOG_POST, COMMENT_BLOG_POST } from '../../utils/urls';
+import { BLOG_POST_URLS } from '../../utils/urls';
 
-
-export const initialBlogPostsFLow = ({ dispatch }: any) => (next: any) => (action: Action) => {
+const initialBlogPostsFLow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
 
   if (action.type === Types.INITIAL_BLOG_POST_REQUEST) {
     dispatch(
       authApiRequest(
         "GET",
-        GET_ALL_BLOG_POSTS,
+        BLOG_POST_URLS.GET_ALL_BLOG_POSTS,
         action.payload,
         Types.INITIAL_BLOG_POST_REQUEST_SUCCESS,
-        Types.INITIAL_BLOG_POST_REQUEST_ERROR
+        Types.SET_ERROR
       )
     );
     dispatch(setSubmitting());
   } else if (action.type === Types.INITIAL_BLOG_POST_REQUEST_SUCCESS) {
     dispatch(resetSubmitting())
-  } else if (action.type === Types.INITIAL_BLOG_POST_REQUEST_ERROR) {
-    dispatch(resetSubmitting())
-    dispatch(showDangerToast(action.payload));
   }
-
 };
 
 
-export const likeBlogPostFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
+const likeBlogPostFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
 
   if (action.type === Types.LIKE_BLOG_POST_REQUEST) {
     dispatch(
       authApiRequest(
         "POST",
-        `${LIKE_BLOG_POST}/${action.payload}`,
+        `${BLOG_POST_URLS.LIKE_BLOG_POST}/${action.payload}`,
         {},
         Types.LIKE_BLOG_POST_REQUEST_SUCCESS,
-        Types.LIKE_BLOG_POST_REQUEST_ERROR
+        Types.SET_ERROR
       )
     );
     dispatch(setSubmitting());
@@ -52,41 +46,57 @@ export const likeBlogPostFlow = ({ dispatch }: any) => (next: any) => (action: A
     dispatch(userRequest());
     dispatch(initialBlogPostsRequest());
     dispatch(resetSubmitting());
-  } else if (action.type === Types.LIKE_BLOG_POST_REQUEST_ERROR) {
-    dispatch(resetSubmitting())
-    dispatch(showDangerToast(action.payload));
   }
 
 };
 
 
-export const createCommentFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
+const createCommentFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
 
   if (action.type === Types.CREATE_COMMENT_REQUEST) {
     dispatch(
       authApiRequest(
         "POST",
-        COMMENT_BLOG_POST.replace('{{blogPostId}}', action.meta.blogPostId),
+        BLOG_POST_URLS.COMMENT_BLOG_POST.replace('{{blogPostId}}', action.meta.blogPostId),
         action.payload,
         Types.CREATE_COMMENT_REQUEST_SUCCESS,
-        Types.CREATE_COMMENT_REQUEST_ERROR
+        Types.SET_ERROR
       )
     );
     dispatch(setSubmitting());
   } else if (action.type === Types.CREATE_COMMENT_REQUEST_SUCCESS) {
     dispatch(resetSubmitting());
     dispatch(getCommentsRequest());
-  } else if (action.type === Types.CREATE_COMMENT_REQUEST_ERROR) {
-    dispatch(resetSubmitting())
-    dispatch(showDangerToast(action.payload));
   }
 
 };
 
 
+const createNewBlogPostFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
+  next(action);
+
+  if (action.type === Types.CREATE_BLOG_POST_REQUEST) {
+    dispatch(
+      authApiRequest(
+        "GET",
+        BLOG_POST_URLS.CREATE_BLOG_POST,
+        action.payload,
+        Types.CREATE_BLOG_POST_SUCCESS,
+        Types.SET_ERROR
+      )
+    );
+    dispatch(setSubmitting());
+  } else if (action.type === Types.CREATE_BLOG_POST_SUCCESS) {
+    dispatch(resetSubmitting())
+  }
+};
+
+
+
 export const blogPostMiddleware = [
   initialBlogPostsFLow,
   likeBlogPostFlow,
-  createCommentFlow
+  createCommentFlow,
+  createNewBlogPostFlow
 ]

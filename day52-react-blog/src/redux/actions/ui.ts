@@ -12,7 +12,8 @@ export const Types = {
   SHOW_WARNING_TOAST: `${entity} Show Warning Toast`,
   SHOW_TOAST: `${entity} Show Default Toast`,
   SHOW_COMMENT_BAR: `${entity} Show Comment Bar`,
-  HIDE_COMMENT_BAR: `${entity} Hide Comment Bar`
+  HIDE_COMMENT_BAR: `${entity} Hide Comment Bar`,
+  SET_ERROR: `${entity} Set Error`,
 };
 
 export const updateSubmitting = (

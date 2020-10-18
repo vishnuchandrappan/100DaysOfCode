@@ -2,6 +2,9 @@ import React from "react";
 import BlogPostForm from "./BlogPostForm";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { object, string } from "yup";
+import { BlogPostValues } from "../../../../redux/_interfaces";
+import { useDispatch } from "react-redux";
+import { createBlogPost } from "../../../../redux/actions";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,24 +28,18 @@ interface NewFormProps {
   handleClose: () => void;
 }
 
-export interface NewFormValues {
-  title: string;
-  body: string;
-  image: string;
-}
-
 export default function BlogPostFormContainer(props: NewFormProps) {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
-  const initialValues: NewFormValues = {
+  const initialValues: BlogPostValues = {
     title: "",
     body: "",
     image: "",
   };
 
-  const onSubmit = (values: NewFormValues) => {
-    // dispatch create blog post
-    console.log("==>", values);
+  const onSubmit = (values: BlogPostValues) => {
+    dispatch(createBlogPost(values));
   };
 
   const newBlogPostValidation = object().shape({

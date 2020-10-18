@@ -42,7 +42,8 @@ export { userRequest } from './user';
 export {
   initialBlogPostsRequest,
   likeBlogPost,
-  createComment
+  createComment,
+  createBlogPost
 } from './blog_post'
 
 export {

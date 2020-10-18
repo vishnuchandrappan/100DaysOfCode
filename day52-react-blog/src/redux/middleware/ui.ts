@@ -1,4 +1,4 @@
-import { Types, updateSubmitting } from '../actions/ui'
+import { resetSubmitting, showDangerToast, Types, updateSubmitting } from '../actions/ui'
 import { Action } from '../_interfaces';
 import { toast } from 'react-toastify';
 import { ToastOptions } from 'react-toastify/dist/types/index';
@@ -14,17 +14,20 @@ const toastOptions: ToastOptions = {
   progress: undefined,
 }
 
-export const submittingFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
+const submittingFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
 
   if (action.type === Types.SET_SUBMITTING) {
     dispatch(updateSubmitting(true));
   } else if (action.type === Types.RESET_SUBMITTING) {
     dispatch(updateSubmitting(false));
+  } else if(action.type === Types.SET_ERROR) {
+    dispatch(resetSubmitting())
+    dispatch(showDangerToast(action.payload));
   }
 };
 
-export const showToastFlow = () => (next: any) => (action: Action) => {
+const showToastFlow = () => (next: any) => (action: Action) => {
   next(action);
 
   if (action.type === Types.SHOW_SUCCESS_TOAST) {

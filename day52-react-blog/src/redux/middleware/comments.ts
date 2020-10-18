@@ -1,44 +1,46 @@
 import { getBlogPostId } from '../../utils/store';
-import { GET_COMMENTS, LIKE_COMMENT } from '../../utils/urls';
-import { Types, authApiRequest, resetSubmitting, setSubmitting, showDangerToast, userRequest, getCommentsRequest } from '../actions';
+import { COMMENT_URLS } from '../../utils/urls';
 import { Action } from '../_interfaces';
+import {
+  Types,
+  authApiRequest,
+  resetSubmitting,
+  setSubmitting,
+  userRequest,
+  getCommentsRequest
+} from '../actions';
 
-export const createCommentsFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
+const createCommentsFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
-
 
   if (action.type === Types.GET_COMMENTS_REQUEST) {
     dispatch(
       authApiRequest(
         "GET",
-        GET_COMMENTS.replace('{{blogPostId}}', getBlogPostId()),
+        COMMENT_URLS.GET_COMMENTS.replace('{{blogPostId}}', getBlogPostId()),
         {},
         Types.GET_COMMENTS_REQUEST_SUCCESS,
-        Types.GET_COMMENTS_REQUEST_ERROR
+        Types.SET_ERROR
       )
     );
     dispatch(setSubmitting());
   } else if (action.type === Types.GET_COMMENTS_REQUEST_SUCCESS) {
     dispatch(resetSubmitting())
-  } else if (action.type === Types.GET_COMMENTS_REQUEST_ERROR) {
-    dispatch(resetSubmitting())
-    dispatch(showDangerToast(action.payload));
   }
 
 };
 
-export const likeCommentFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
+const likeCommentFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
-
 
   if (action.type === Types.LIKE_COMMENT) {
     dispatch(
       authApiRequest(
         "POST",
-        `${LIKE_COMMENT}/${action.payload}`,
+        `${COMMENT_URLS.LIKE_COMMENT}/${action.payload}`,
         {},
         Types.LIKE_COMMENT_SUCCESS,
-        Types.LIKE_COMMENT_ERROR
+        Types.SET_ERROR
       )
     );
     dispatch(setSubmitting());
@@ -46,9 +48,6 @@ export const likeCommentFlow = ({ dispatch }: any) => (next: any) => (action: Ac
     dispatch(userRequest());
     dispatch(getCommentsRequest());
     dispatch(resetSubmitting())
-  } else if (action.type === Types.LIKE_COMMENT_ERROR) {
-    dispatch(resetSubmitting())
-    dispatch(showDangerToast(action.payload));
   }
 
 };
