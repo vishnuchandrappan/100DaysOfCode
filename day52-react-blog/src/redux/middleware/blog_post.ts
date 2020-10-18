@@ -4,7 +4,7 @@ import {
   authApiRequest,
   setSubmitting,
   resetSubmitting,
-  userRequest, initialBlogPostsRequest, getCommentsRequest
+  userRequest, initialBlogPostsRequest, getCommentsRequest, getTags
 } from '../actions'
 import { BLOG_POST_URLS } from '../../utils/urls';
 
@@ -16,12 +16,13 @@ const initialBlogPostsFLow = ({ dispatch }: any) => (next: any) => (action: Acti
       authApiRequest(
         "GET",
         BLOG_POST_URLS.GET_ALL_BLOG_POSTS,
-        action.payload,
+        {},
         Types.INITIAL_BLOG_POST_REQUEST_SUCCESS,
         Types.SET_ERROR
       )
     );
     dispatch(setSubmitting());
+    dispatch(getTags());
   } else if (action.type === Types.INITIAL_BLOG_POST_REQUEST_SUCCESS) {
     dispatch(resetSubmitting())
   }

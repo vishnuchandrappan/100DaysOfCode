@@ -7,6 +7,7 @@ import SubmitButton from "../../../buttons/SubmitButton";
 import TextArea from "../../../_shared/TextArea";
 import CustomField from "../../../_shared/CustomField";
 import { BlogPostValues } from "../../../../redux/_interfaces";
+import SelectTags from "./SelectTags";
 
 interface FormProps {
   classes: {
@@ -62,6 +63,7 @@ export default function BlogPostForm({
                     label="Image Url"
                     name="image"
                   />
+                  <SelectTags />
                   <CustomField
                     component={TextArea}
                     label="Type something..."

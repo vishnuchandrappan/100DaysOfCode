@@ -4,6 +4,7 @@ import { Types as ApiTypes } from './api';
 import { Types as UserTypes } from './user';
 import { Types as BlogPostTypes } from './blog_post'
 import { Types as CommentsTypes } from './comments';
+import { Types as TagsTypes } from './tags';
 
 export const Types = {
   ...AuthTypes,
@@ -12,6 +13,7 @@ export const Types = {
   ...UserTypes,
   ...BlogPostTypes,
   ...CommentsTypes,
+  ...TagsTypes
 }
 
 export {
@@ -50,3 +52,7 @@ export {
   getCommentsRequest,
   likeComment
 } from './comments';
+
+export {
+  getTags,
+} from './tags'

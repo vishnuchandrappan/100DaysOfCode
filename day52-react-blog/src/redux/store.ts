@@ -7,6 +7,7 @@ import { userMiddleware } from "./middleware/user";
 import { blogPostMiddleware } from "./middleware/blog_post";
 import { persistStore } from 'redux-persist'
 import { commentsMiddleware } from "./middleware/comments";
+import { tagsMiddleware } from "./middleware/tags";
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -20,6 +21,7 @@ export const store = createStore(
       ...userMiddleware,
       ...blogPostMiddleware,
       ...commentsMiddleware,
+      ...tagsMiddleware
     )
   )
 );

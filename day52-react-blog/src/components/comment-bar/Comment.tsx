@@ -26,10 +26,10 @@ export default function Comment({
       {auth_user_id === user_id ? (
         <>
           <span className="comments__card-delete">
-            <Trash stroke-width="0.5" size={16} />
+            <Trash strokeWidth="0.5" size={16} />
           </span>
           <span className="comments__card-edit">
-            <Edit stroke-width="0.5" size={16} />
+            <Edit strokeWidth="0.5" size={16} />
           </span>
         </>
       ) : (

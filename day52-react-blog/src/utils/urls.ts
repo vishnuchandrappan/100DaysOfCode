@@ -25,3 +25,7 @@ export const COMMENT_URLS = {
   GET_COMMENTS: "/blog_posts/{{blogPostId}}/comments",
   LIKE_COMMENT: "/like/comments",
 }
+
+export const TAG_URLS = {
+  GET_TAGS: "/tags"
+}

@@ -5,6 +5,7 @@ import { userReducer } from './user';
 import { blogPostReducer } from './blog_post';
 import { Action } from "../_interfaces";
 import { commentsReducer } from "./comments";
+import { tagsReducer } from "./tags";
 
 
 export const appReducer = combineReducers({
@@ -12,10 +13,14 @@ export const appReducer = combineReducers({
   ui: UiReducer,
   user: userReducer,
   blogPosts: blogPostReducer,
-  comments: commentsReducer
+  comments: commentsReducer,
+  tags: tagsReducer
 });
 
-export const reducers = (state: any, action: Action) => {
+export const reducers = (
+  state: any,
+  action: Action
+) => {
   return appReducer(state, action);
 };
 

@@ -11,7 +11,7 @@ const userState = {
   liked_comments: []
 }
 
-export function baseReducer(
+function baseReducer(
   state = userState,
   action: Action
 ) {
