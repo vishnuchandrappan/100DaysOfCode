@@ -1,5 +1,6 @@
 import { loginSuccess, Types } from '../actions/auth';
 import { Action } from '../_interfaces';
+import { LOGIN, LOGOUT, SIGNUP } from '../../utils/urls';
 import {
   apiRequest,
   userRequest,
@@ -9,9 +10,6 @@ import {
   showSuccessToast
 } from '../actions';
 
-const LOGIN_URL = "/auth/login";
-const LOGOUT_URL = "/auth/logout";
-const SIGNUP_URL = "/users";
 
 export const loginFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
@@ -20,7 +18,7 @@ export const loginFlow = ({ dispatch }: any) => (next: any) => (action: Action) 
     dispatch(
       apiRequest(
         "POST",
-        LOGIN_URL,
+        LOGIN,
         action.payload,
         Types.LOGIN_SUCCESS,
         Types.LOGIN_ERROR
@@ -46,7 +44,7 @@ export const logoutFlow = ({ dispatch }: any) => (next: any) => (action: Action)
     dispatch(
       apiRequest(
         "POST",
-        LOGOUT_URL,
+        LOGOUT,
         action.payload,
         Types.LOGOUT_SUCCESS,
         Types.LOGOUT_ERROR
@@ -70,7 +68,7 @@ export const signupFlow = ({ dispatch }: any) => (next: any) => (action: Action)
     dispatch(
       apiRequest(
         "POST",
-        SIGNUP_URL,
+        SIGNUP,
         action.payload,
         Types.SIGNUP_SUCCESS,
         Types.LOGIN_ERROR

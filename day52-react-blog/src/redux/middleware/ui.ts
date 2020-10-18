@@ -14,18 +14,12 @@ const toastOptions: ToastOptions = {
   progress: undefined,
 }
 
-export const setSubmittingFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
+export const submittingFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
 
   if (action.type === Types.SET_SUBMITTING) {
     dispatch(updateSubmitting(true));
-  }
-};
-
-export const resetSubmittingFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
-  next(action);
-
-  if (action.type === Types.RESET_SUBMITTING) {
+  } else if (action.type === Types.RESET_SUBMITTING) {
     dispatch(updateSubmitting(false));
   }
 };
@@ -35,24 +29,16 @@ export const showToastFlow = () => (next: any) => (action: Action) => {
 
   if (action.type === Types.SHOW_SUCCESS_TOAST) {
     toast.success(action.payload, toastOptions);
-  }
-
-  if (action.type === Types.SHOW_DANGER_TOAST) {
+  } else if (action.type === Types.SHOW_DANGER_TOAST) {
     transformErrors(action.payload)
       .forEach((error: string) => {
-        toast.error(error, { ...toastOptions, autoClose: false});
+        toast.error(error, { ...toastOptions, autoClose: false });
       });
-  }
-
-  if (action.type === Types.SHOW_INFO_TOAST) {
+  } else if (action.type === Types.SHOW_INFO_TOAST) {
     toast.info(action.payload, toastOptions);
-  }
-
-  if (action.type === Types.SHOW_WARNING_TOAST) {
+  } else if (action.type === Types.SHOW_WARNING_TOAST) {
     toast.warning(action.payload, toastOptions);
-  }
-
-  if (action.type === Types.SHOW_TOAST) {
+  } else if (action.type === Types.SHOW_TOAST) {
     toast(action.payload, toastOptions);
   }
 
@@ -60,7 +46,6 @@ export const showToastFlow = () => (next: any) => (action: Action) => {
 
 
 export const uiMiddleware = [
-  setSubmittingFlow,
-  resetSubmittingFlow,
+  submittingFlow,
   showToastFlow
 ]

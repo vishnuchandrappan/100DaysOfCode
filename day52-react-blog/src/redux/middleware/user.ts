@@ -1,8 +1,7 @@
 import { setSubmitting, authApiRequest, resetSubmitting, showDangerToast } from '../actions';
 import { Types } from '../actions';
 import { Action } from '../_interfaces';
-
-const USER_URL = '/auth/me';
+import { AUTH_USER } from '../../utils/urls';
 
 export const userRequestFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
@@ -10,29 +9,16 @@ export const userRequestFlow = ({ dispatch }: any) => (next: any) => (action: Ac
     dispatch(
       authApiRequest(
         "GET",
-        USER_URL,
+        AUTH_USER,
         action.payload,
         Types.USER_REQUEST_SUCCESS,
         Types.USER_REQUEST_ERROR
       )
     );
     dispatch(setSubmitting());
-  }
-
-};
-
-export const userRequestSuccessFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
-  next(action);
-  if (action.type === Types.USER_REQUEST_SUCCESS) {
+  } else if (action.type === Types.USER_REQUEST_SUCCESS) {
     dispatch(resetSubmitting())
-  }
-
-};
-
-export const userResponseErrorFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
-  next(action);
-
-  if (action.type === Types.USER_REQUEST_ERROR) {
+  } else if (action.type === Types.USER_REQUEST_ERROR) {
     dispatch(resetSubmitting())
     dispatch(showDangerToast(action.payload));
   }
@@ -41,6 +27,4 @@ export const userResponseErrorFlow = ({ dispatch }: any) => (next: any) => (acti
 
 export const userMiddleware = [
   userRequestFlow,
-  userRequestSuccessFlow,
-  userResponseErrorFlow
 ]

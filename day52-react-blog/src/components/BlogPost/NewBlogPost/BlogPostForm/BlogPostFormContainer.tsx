@@ -42,10 +42,12 @@ export default function BlogPostFormContainer(props: NewFormProps) {
 
   const onSubmit = (values: NewFormValues) => {
     // dispatch create blog post
+    console.log("==>", values);
   };
 
   const newBlogPostValidation = object().shape({
     title: string().required("Oh its required! Yes it is"),
+    image: string().url("This is not a link.. You fool... you fool"),
     body: string().required("Oh its required! Yes it is"),
   });
 

@@ -73,3 +73,21 @@
     border-color: rgba(white, 0.1);
   }
 }
+
+@mixin hide-scroll-bar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin icon {
+  width: 30px;
+  height: 30px;
+}
+
+@mixin icon-round {
+  @include icon;
+  border-radius: 50%;
+}

@@ -1,9 +1,7 @@
 import { getBlogPostId } from '../../utils/store';
+import { GET_COMMENTS, LIKE_COMMENT } from '../../utils/urls';
 import { Types, authApiRequest, resetSubmitting, setSubmitting, showDangerToast, userRequest, getCommentsRequest } from '../actions';
 import { Action } from '../_interfaces';
-
-const GET_COMMENTS_URL = "/blog_posts/{{blogPostId}}/comments";
-const LIKE_URL = "/like/comments";
 
 export const createCommentsFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
@@ -13,7 +11,7 @@ export const createCommentsFlow = ({ dispatch }: any) => (next: any) => (action:
     dispatch(
       authApiRequest(
         "GET",
-        GET_COMMENTS_URL.replace('{{blogPostId}}', getBlogPostId()),
+        GET_COMMENTS.replace('{{blogPostId}}', getBlogPostId()),
         {},
         Types.GET_COMMENTS_REQUEST_SUCCESS,
         Types.GET_COMMENTS_REQUEST_ERROR
@@ -37,7 +35,7 @@ export const likeCommentFlow = ({ dispatch }: any) => (next: any) => (action: Ac
     dispatch(
       authApiRequest(
         "POST",
-        `${LIKE_URL}/${action.payload}`,
+        `${LIKE_COMMENT}/${action.payload}`,
         {},
         Types.LIKE_COMMENT_SUCCESS,
         Types.LIKE_COMMENT_ERROR

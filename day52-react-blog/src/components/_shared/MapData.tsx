@@ -16,7 +16,7 @@ export default function MapData({ data, Component }: MapDataProps) {
       {data.map((item) => (
         <Component key={item.id} {...item} />
       ))}
-      {data.length && isSubmitting && (
+      {isSubmitting && (
         <div className="full-page">
           <CircularProgress color="secondary" size={40} />
         </div>

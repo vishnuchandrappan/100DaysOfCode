@@ -7,10 +7,8 @@ import {
   showDangerToast,
   userRequest, initialBlogPostsRequest, getCommentsRequest
 } from '../actions'
+import { GET_ALL_BLOG_POSTS, LIKE_BLOG_POST, COMMENT_BLOG_POST } from '../../utils/urls';
 
-const GET_ALL = "/blog_posts/all";
-const LIKE_URL = "/like/blog_posts";
-const COMMENT_URL = "/blog_posts/{{blogPostId}}/comments";
 
 export const initialBlogPostsFLow = ({ dispatch }: any) => (next: any) => (action: Action) => {
   next(action);
@@ -19,7 +17,7 @@ export const initialBlogPostsFLow = ({ dispatch }: any) => (next: any) => (actio
     dispatch(
       authApiRequest(
         "GET",
-        GET_ALL,
+        GET_ALL_BLOG_POSTS,
         action.payload,
         Types.INITIAL_BLOG_POST_REQUEST_SUCCESS,
         Types.INITIAL_BLOG_POST_REQUEST_ERROR
@@ -43,7 +41,7 @@ export const likeBlogPostFlow = ({ dispatch }: any) => (next: any) => (action: A
     dispatch(
       authApiRequest(
         "POST",
-        `${LIKE_URL}/${action.payload}`,
+        `${LIKE_BLOG_POST}/${action.payload}`,
         {},
         Types.LIKE_BLOG_POST_REQUEST_SUCCESS,
         Types.LIKE_BLOG_POST_REQUEST_ERROR
@@ -69,7 +67,7 @@ export const createCommentFlow = ({ dispatch }: any) => (next: any) => (action: 
     dispatch(
       authApiRequest(
         "POST",
-        COMMENT_URL.replace('{{blogPostId}}', action.meta.blogPostId),
+        COMMENT_BLOG_POST.replace('{{blogPostId}}', action.meta.blogPostId),
         action.payload,
         Types.CREATE_COMMENT_REQUEST_SUCCESS,
         Types.CREATE_COMMENT_REQUEST_ERROR

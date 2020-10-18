@@ -3,6 +3,7 @@ import { BlogPostsResponse } from "../../redux/_interfaces/index";
 import { Link } from "react-router-dom";
 import BlogPostActions from "./BlogPostActions";
 import Tag from "./Tag";
+import MapItem from "../_shared/MapItem";
 
 const BlogPost = ({
   id,
@@ -25,9 +26,7 @@ const BlogPost = ({
           {body.length > 340 ? `${body.slice(0, 340)}...` : body}
         </p>
         <div className="tags">
-          {tags_list.map((item) => (
-            <Tag key={item} value={item} />
-          ))}
+          <MapItem data={tags_list} Component={Tag} />
         </div>
       </Link>
       <BlogPostActions

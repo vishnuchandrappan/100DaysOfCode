@@ -64,13 +64,33 @@
 
 .comments {
   margin-top: 15px;
+  max-height: 75vh;
+  overflow-y: auto;
+  @include hide-scroll-bar;
   &__card {
     margin: 10px 0;
     background-color: #2b3841 !important;
     color: white !important;
     padding: 10px;
+    position: relative;
     &-text {
       font-size: 1rem;
+    }
+    &-delete {
+      @include flex-center(center);
+      @include icon-round;
+      position: absolute;
+      background: rgba(crimson, 0.2);
+      right: 10px;
+      top: 4px;
+    }
+    &-edit {
+      @include flex-center(center);
+      @include icon-round;
+      position: absolute;
+      background: rgba(crimson, 0.2);
+      right: 10px;
+      bottom: 4px;
     }
   }
 }
