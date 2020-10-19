@@ -1,4 +1,4 @@
-import { Action, BlogPostValues } from "../_interfaces";
+import { Action, BlogPostFinalValues } from "../_interfaces";
 
 const entity = "[Blog Post]";
 
@@ -31,7 +31,7 @@ export const createComment = (
   meta: { blogPostId }
 })
 
-export const createBlogPost = (values: BlogPostValues): Action => ({
+export const createBlogPost = (values: BlogPostFinalValues): Action => ({
   type: Types.CREATE_BLOG_POST_REQUEST,
   payload: values
 })

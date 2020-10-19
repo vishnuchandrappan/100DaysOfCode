@@ -99,13 +99,14 @@ Route::group([
 });
 
 
+Route::get('/tags', [TagController::class, 'index']);
+
 Route::group([
     'middleware' => ['api', 'auth'],
     'prefix' => 'tags'
 ], function () {
-    Route::get('/',[TagController::class, 'index']);
-    Route::post('/',[TagController::class, 'create']);
+    Route::post('/', [TagController::class, 'create']);
     Route::get('/{tag}', [TagController::class, 'show']);
-    Route::put('/{tag}',[TagController::class, 'update']);
+    Route::put('/{tag}', [TagController::class, 'update']);
     Route::delete('/{tag}', [TagController::class, 'destroy']);
 });

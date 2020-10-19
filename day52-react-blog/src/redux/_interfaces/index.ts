@@ -63,5 +63,12 @@ export interface SignupData {
 export interface BlogPostValues {
   title: string,
   body: string,
-  image: string
+  image: string,
+}
+
+export interface BlogPostFinalValues {
+  title: string,
+  body: string,
+  image: string,
+  tags: number[]
 }

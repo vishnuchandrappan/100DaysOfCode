@@ -6,8 +6,13 @@ import { TextField } from "formik-material-ui";
 import SubmitButton from "../../../buttons/SubmitButton";
 import TextArea from "../../../_shared/TextArea";
 import CustomField from "../../../_shared/CustomField";
-import { BlogPostValues } from "../../../../redux/_interfaces";
+import { Action, BlogPostValues } from "../../../../redux/_interfaces";
 import SelectTags from "./SelectTags";
+
+interface TagValues {
+  id: number;
+  name: string;
+}
 
 interface FormProps {
   classes: {
@@ -19,6 +24,9 @@ interface FormProps {
   newBlogPostValues: BlogPostValues;
   onSubmit: (values: BlogPostValues) => void;
   newBlogPostValidation: any;
+  dispatchTag: React.Dispatch<Action>;
+  selectedTags: number[];
+  tags: TagValues[];
 }
 
 export default function BlogPostForm({
@@ -28,6 +36,9 @@ export default function BlogPostForm({
   newBlogPostValues,
   onSubmit,
   newBlogPostValidation,
+  dispatchTag,
+  selectedTags,
+  tags,
 }: FormProps) {
   return (
     <Modal
@@ -63,7 +74,11 @@ export default function BlogPostForm({
                     label="Image Url"
                     name="image"
                   />
-                  <SelectTags />
+                  <SelectTags
+                    tags={tags}
+                    selectedTags={selectedTags}
+                    dispatchTag={dispatchTag}
+                  />
                   <CustomField
                     component={TextArea}
                     label="Type something..."

@@ -23,6 +23,7 @@ class BlogPostController extends Controller
                 ->withCount('comments')
                 ->with('user')
                 ->with('tags')
+                ->orderBy('id', 'DESC')
                 ->get()
                 ->map(function ($data) {
                     $data->tags_list = $data->tags->pluck('name');
@@ -35,6 +36,7 @@ class BlogPostController extends Controller
     public function create(CreateBlogPostRequest $request)
     {
         $blogPost = auth()->user()->blogPosts()->create($request->all());
+        $blogPost->tags()->attach($request->tags);
         return response()->json($blogPost);
     }
 

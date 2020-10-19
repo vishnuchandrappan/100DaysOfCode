@@ -53,11 +53,16 @@
     margin-top: 10px;
   }
 
+  &__contents {
+    flex: 11;
+  }
+
   &__actions {
     @include flex;
     flex-direction: column;
     justify-content: space-evenly;
     padding: 10px;
+    flex: 1;
   }
 }
 

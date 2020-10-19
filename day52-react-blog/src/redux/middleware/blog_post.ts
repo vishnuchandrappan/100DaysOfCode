@@ -80,7 +80,7 @@ const createNewBlogPostFlow = ({ dispatch }: any) => (next: any) => (action: Act
   if (action.type === Types.CREATE_BLOG_POST_REQUEST) {
     dispatch(
       authApiRequest(
-        "GET",
+        "POST",
         BLOG_POST_URLS.CREATE_BLOG_POST,
         action.payload,
         Types.CREATE_BLOG_POST_SUCCESS,
@@ -89,6 +89,7 @@ const createNewBlogPostFlow = ({ dispatch }: any) => (next: any) => (action: Act
     );
     dispatch(setSubmitting());
   } else if (action.type === Types.CREATE_BLOG_POST_SUCCESS) {
+    dispatch(initialBlogPostsRequest());
     dispatch(resetSubmitting())
   }
 };

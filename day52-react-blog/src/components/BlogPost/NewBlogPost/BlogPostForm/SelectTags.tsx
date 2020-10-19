@@ -1,117 +1,59 @@
-import {
-  FormControl,
-  Input,
-  InputLabel,
-  MenuItem,
-  Select,
-} from "@material-ui/core";
-import React, { useState } from "react";
-import Tag from "../../Tag";
-// import { useSelector } from "react-redux";
-// import { RootState } from "typesafe-actions";
+import React from "react";
+import { Chip } from "@material-ui/core";
+import { Action } from "../../../../redux/_interfaces";
 
-import Chip from "@material-ui/core/Chip";
-
-interface Tag {
+interface TagValues {
   id: number;
   name: string;
 }
 
-const tags = [
-  {
-    id: 1,
-    name: "omnis",
-    created_at: null,
-    updated_at: null,
-  },
-  {
-    id: 2,
-    name: "ea",
-    created_at: null,
-    updated_at: null,
-  },
-  {
-    id: 3,
-    name: "optio",
-    created_at: null,
-    updated_at: null,
-  },
-  {
-    id: 4,
-    name: "enim",
-    created_at: null,
-    updated_at: null,
-  },
-  {
-    id: 5,
-    name: "eveniet",
-    created_at: null,
-    updated_at: null,
-  },
-  {
-    id: 6,
-    name: "fugiat",
-    created_at: null,
-    updated_at: null,
-  },
-  {
-    id: 7,
-    name: "sit",
-    created_at: null,
-    updated_at: null,
-  },
-  {
-    id: 8,
-    name: "doloribus",
-    created_at: null,
-    updated_at: null,
-  },
-  {
-    id: 9,
-    name: "sed",
-    created_at: null,
-    updated_at: null,
-  },
-  {
-    id: 10,
-    name: "officia",
-    created_at: null,
-    updated_at: null,
-  },
-];
+interface SelectTagsProps {
+  tags: TagValues[];
+  selectedTags: number[];
+  dispatchTag: React.Dispatch<Action>;
+}
 
-export default function SelectTags() {
-  const [personName, setPersonName] = useState<string[]>([]);
+interface TagProps {
+  tag: TagValues;
+  selected: boolean;
+  dispatch: React.Dispatch<Action>;
+}
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setPersonName(event.target.value as string[]);
-  };
-
+const Tag = ({ tag, dispatch, selected }: TagProps) => {
   return (
-    <div>
-      <FormControl>
-        <InputLabel>Tags</InputLabel>
-        <Select
-          multiple
-          value={personName}
-          onChange={handleChange}
-          input={<Input id="select-multiple-chip" />}
-          renderValue={(selected) => (
-            <div>
-              {(selected as string[]).map((value) => (
-                <Chip key={value} label={value} />
-              ))}
-            </div>
-          )}
-          variant="outlined"
-        >
-          {tags.map((tag: Tag) => (
-            <MenuItem key={tag.id} value={tag.id}>
-              {tag.name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+    <Chip
+      className="tag"
+      label={tag.name}
+      color="secondary"
+      variant={selected ? "default" : "outlined"}
+      size="small"
+      onClick={() => {
+        selected
+          ? dispatch({
+              type: "REMOVE_TAG",
+              payload: tag.id,
+            })
+          : dispatch({
+              type: "APPEND_TAG",
+              payload: tag.id,
+            });
+      }}
+    />
+  );
+};
+
+const SelectTags = ({ tags, selectedTags, dispatchTag }: SelectTagsProps) => {
+  return (
+    <div className="tags">
+      {tags.map((tag: TagValues) => (
+        <Tag
+          tag={tag}
+          dispatch={dispatchTag}
+          selected={selectedTags.includes(tag.id)}
+        />
+      ))}
     </div>
   );
-}
+};
+
+export default SelectTags;

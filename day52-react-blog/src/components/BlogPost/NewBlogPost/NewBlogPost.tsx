@@ -6,6 +6,7 @@ interface NewBlogProps {
   open: boolean;
   handleOpen: () => void;
   handleClose: () => void;
+  setCreate: (value: boolean) => void;
 }
 
 const NewBlogPost = (props: NewBlogProps) => {
