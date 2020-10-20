@@ -50,7 +50,8 @@ export {
 
 export {
   getCommentsRequest,
-  likeComment
+  likeComment,
+  clearComments
 } from './comments';
 
 export {

@@ -3,6 +3,7 @@ import { Action } from '../_interfaces';
 import { toast } from 'react-toastify';
 import { ToastOptions } from 'react-toastify/dist/types/index';
 import { transformErrors } from '../../utils/ui';
+import { clearComments } from '../actions';
 
 const toastOptions: ToastOptions = {
   position: "bottom-right",
@@ -21,7 +22,7 @@ const submittingFlow = ({ dispatch }: any) => (next: any) => (action: Action) =>
     dispatch(updateSubmitting(true));
   } else if (action.type === Types.RESET_SUBMITTING) {
     dispatch(updateSubmitting(false));
-  } else if(action.type === Types.SET_ERROR) {
+  } else if (action.type === Types.SET_ERROR) {
     dispatch(resetSubmitting())
     dispatch(showDangerToast(action.payload));
   }
@@ -47,8 +48,18 @@ const showToastFlow = () => (next: any) => (action: Action) => {
 
 };
 
+const commentBarFlow = ({ dispatch }: any) => (next: any) => (action: Action) => {
+  next(action);
+
+  if (action.type === Types.HIDE_COMMENT_BAR) {
+    dispatch(clearComments());
+  }
+
+};
+
 
 export const uiMiddleware = [
   submittingFlow,
-  showToastFlow
+  showToastFlow,
+  commentBarFlow
 ]

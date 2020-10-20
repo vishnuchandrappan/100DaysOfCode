@@ -19,6 +19,9 @@ function baseReducer(
         comments: action.payload
       }
 
+    case Types.CLEAR_COMMENTS:
+      return commentsState;
+
     default:
       return state;
 

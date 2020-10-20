@@ -8,7 +8,8 @@ export const Types = {
   GET_COMMENTS_REQUEST_ERROR: `${entity} Get Error`,
   LIKE_COMMENT: `${entity} Like Comment`,
   LIKE_COMMENT_SUCCESS: `${entity} Like Success`,
-  LIKE_COMMENT_ERROR: `${entity} Like Error`
+  LIKE_COMMENT_ERROR: `${entity} Like Error`,
+  CLEAR_COMMENTS: `${entity} Clear`
 }
 
 export const getCommentsRequest = (): Action => ({
@@ -18,4 +19,8 @@ export const getCommentsRequest = (): Action => ({
 export const likeComment = (commentId: number): Action => ({
   type: Types.LIKE_COMMENT,
   payload: commentId
+})
+
+export const clearComments = (): Action => ({
+  type: Types.CLEAR_COMMENTS
 })

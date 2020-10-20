@@ -1,0 +1,19 @@
+body {
+  background: #2b3841;
+  color: #fff !important;
+}
+
+input {
+  color: #fff;
+}
+
+.error-msg {
+  color: crimson;
+  font-size: smaller;
+  font-weight: bold;
+  float: right;
+}
+
+label {
+  display: inline !important;
+}
