@@ -2,11 +2,14 @@ import React from "react";
 import { EMAIL_REGEX } from "../login/LoginContainer";
 import { signup } from "../../helpers/auth";
 import Signup from "./Signup";
+import { useHistory } from "react-router-dom";
 
 export default function SignupContainer() {
+  const history = useHistory();
   const handleSubmit = async (values) => {
     try {
       await signup(values.email, values.password);
+      history.push("/");
     } catch (error) {
       console.log("error");
     }
