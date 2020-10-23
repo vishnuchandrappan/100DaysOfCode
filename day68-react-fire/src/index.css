@@ -1,0 +1,36 @@
+body {
+  background: #212e37;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background: #2b3841;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10px;
+}
+
+nav .nav-logo {
+  font-size: 4rem;
+}
+
+nav .nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  margin: 0 10px;
+}
+
+a {
+  color: inherit !important;
+  text-decoration: none;
+}
+
+a:hover {
+  color: inherit !important;
+  text-decoration: none;
+}
