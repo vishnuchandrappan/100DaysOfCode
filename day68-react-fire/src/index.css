@@ -34,3 +34,53 @@ a:hover {
   color: inherit !important;
   text-decoration: none;
 }
+
+input {
+  color: #fff;
+}
+
+.input-group {
+  display: flex;
+}
+
+.chats {
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+  overflow-y: auto;
+}
+
+.chat {
+  padding: 10px 15px;
+  background: white;
+  margin: 4px 0;
+  border-radius: 40px;
+  max-width: 60%;
+}
+
+.my-chat {
+  background: #204e8a;
+  color: #fff;
+  text-align: right;
+  border-bottom-right-radius: 0;
+  margin-left: auto;
+}
+
+.other-chat {
+  border-bottom-left-radius: 0;
+}
+
+.chat .content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content .user_details {
+  font-size: 1rem;
+  padding: 0 10px;
+  font-weight: bold;
+}
+
+.content .text {
+  font-size: 2rem;
+}
