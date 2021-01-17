@@ -17,6 +17,7 @@ body {
   width: 90vw;
   height: 90vh;
   margin: 5vh auto;
+  position: relative;
 }
 
 .board {
@@ -38,6 +39,9 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+    background: #2b3841;
+    box-shadow: 34px 34px 68px #222c33, -34px -34px 68px #34444f;
+    border-radius: 10px;
 
     &:nth-child(1),
     &:nth-child(2),
@@ -143,6 +147,46 @@ body {
         height: calc(var(--mark-size) * 0.7);
         background-color: #2b3841;
       }
+    }
+  }
+}
+
+.winning-message {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  background: #2b3841;
+  box-shadow: 20px 20px 60px #253037, -20px -20px 60px #31404b;
+  flex-direction: column;
+  color: #fff;
+  display: none;
+
+  &.show {
+    display: flex;
+  }
+
+  [data-winning-message-text] {
+    font-size: 5rem;
+  }
+
+  #restartButton {
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    border: solid 3px #fff;
+    cursor: pointer;
+
+    &:hover {
+      background: transparent;
+      color: #fff;
     }
   }
 }
